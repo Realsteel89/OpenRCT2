@@ -17923,4 +17923,4 @@ namespace TRexRC
         return nullptr;
     }
 
-} // namespace SingleRailRC
+} // namespace TRexRC
