@@ -1,4 +1,7 @@
-0.4.5 (in development)
+0.4.6 (in development)
+------------------------------------------------------------------------
+
+0.4.5 (2023-05-08)
 ------------------------------------------------------------------------
 - Feature: [#18713] Block brakes have speed control and brakes slower than adjacent block brakes copy block brake speed when block brake open.
 - Feature: [#19276] Add Powered Lifthill to Giga Coaster.
@@ -8,6 +11,8 @@
 - Feature: [#19547] Add large sloped turns to hybrid coaster and single rail coaster.
 - Feature: [#19930] Add plugin APIs for research.
 - Feature: [OpenMusic#25] Added Prehistoric ride music style.
+- Feature: [OpenMusic#26] Fairground Organ style 2 with new recordings from Herman's 35er Voigt (Previously known as Bressingham Voigt).
+- Feature: [OpenMusic#28] Add Ragtime style 2 ride music.
 - Improved: [#17739] Raise water and land height limits to 254 units/182m/600ft.
 - Improved: [#18490] Reduce guests walking through trains on level crossing next to station.
 - Improved: [#18996] When marketing campaigns are disabled, disable the Marketing tab in the Finances window.
@@ -44,6 +49,7 @@
 - Fix: [#20033] Asset packs cannot reference game data.
 - Fix: [#20104] [Plugin] Some network APIs use player index and group index.
 - Fix: [#20099] Some scrollbar is glitched or have incorrect size when open window for the first time
+- Fix: [#20134] Grass length being updated for tiles in the void, causing unneccesary drawing operations.
 
 0.4.4 (2023-03-28)
 ------------------------------------------------------------------------
