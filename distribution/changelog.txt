@@ -1,7 +1,7 @@
 0.4.6 (in development)
 ------------------------------------------------------------------------
 - Feature: [#15660] Ability to show window buttons on the left.
-- Feature: [#20141] New track elements available to the Giga Coaster when using cheats.
+- Feature: [#20141] New track elements available on the Giga Coaster.
 - Feature: [OpenMusic#41] Official Title Theme by Allister Brimble.
 - Improved: [#20119, #20243] Add new colour presets to several roller coasters (using the new colours).
 - Change: [#20110] Fix a few RCT1 build height parity discrepancies.
