@@ -522,7 +522,7 @@ private:
 
             if (viewport->flags & VIEWPORT_FLAG_SOUND_ON)
             {
-                GfxDrawSprite(dpi, ImageId(SPR_HEARING_VIEWPORT), windowPos + ScreenCoordsXY{ 2, 2 });
+                GfxDrawSprite(dpi, ImageId(SPR_HEARING_VIEWPORT), WindowGetViewportSoundIconPos(*this));
             }
         }
 
@@ -1055,6 +1055,8 @@ private:
             {
                 SetWidgetDisabled(WIDX_PICKUP, true);
             }
+
+            SetWidgetDisabled(WIDX_FIRE, staff->State == PeepState::Fixing || staff->State == PeepState::Inspecting);
         }
     }
 
