@@ -3315,6 +3315,18 @@
         "palette": "keep"
     },	
     {
+        "path": "track/intamin/right_vertical_loop_4_3_2.png",
+        "x_offset": 0,
+        "y_offset": 25,
+        "palette": "keep"
+    },
+	{
+        "path": "track/intamin/right_vertical_loop_2_4_2.png",
+        "x_offset": 11,
+		"y_offset": 20,
+        "palette": "keep"
+    },	
+    {
         "path": "track/intamin/quarter_loop_up_1_1.png",
         "x_offset": -18,
         "y_offset": -55,

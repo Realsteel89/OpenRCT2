@@ -10608,14 +10608,45 @@ static void GigaRCTrackRightVerticalLoop(
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP + 31),
                         { 0, 0, height + 32 }, { 32, 16, 3 });
+                    PaintAddImageAsParentRotated(
+                        session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_3),
+                        { 0, 0, height + 32 }, { 32, 16, 3 });
                     break;
             }
             PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
             break;
         case 4:
+            switch (direction)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    PaintAddImageAsParentRotated(
+                        session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_4),
+                        { 0, 16, height + 32 }, { 32, 16, 3 });
+                    break;
+            }
             PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
             break;
         case 5:
+            switch (direction)
+            {
+                case 0:
+                    break;
+                case 1:
+                    PaintAddImageAsParentRotated(
+                        session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_4),
+                        { 0, 16, height + 32 }, { 32, 16, 3 });
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
             PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
             break;
         case 6:
@@ -10629,6 +10660,9 @@ static void GigaRCTrackRightVerticalLoop(
                 case 1:
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP + 31),
+                        { 0, 0, height + 32 }, { 32, 16, 3 });
+                    PaintAddImageAsParentRotated(
+                        session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_3),
                         { 0, 0, height + 32 }, { 32, 16, 3 });
                     break;
                 case 2:
