@@ -10240,7 +10240,7 @@ static void GigaRCTrackLeftVerticalLoop(
                         { 0, 0, height }, { 32, 26, 3 });
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_1),
-                        { 10, 16, height }, { { 16, 16, height }, { 0, 0, 0 } });
+                        { 10, 16, height }, { { 16, 16, 3 }, { 0, 0, height } });
                     break;
                 case 1:
                     PaintAddImageAsParentRotated(
@@ -10332,7 +10332,7 @@ static void GigaRCTrackLeftVerticalLoop(
                 case 2:
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_2),
-                        { 0, 16, height + 32 }, { 32, 16, 3 });
+                        { 0, 16, height + 32 }, { { 32, 16, 3 }, { 0, 0, height } });
                     break;
                 case 3:
                     break;
@@ -10345,7 +10345,7 @@ static void GigaRCTrackLeftVerticalLoop(
                 case 0:
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_2),
-                        { 0, 16, height + 32 }, { 32, 16, 3 });
+                        { 0, 16, height + 32 }, { { 32, 16, 3 }, { 0, 0, height } });
                     break;
                 case 1:
                     break;
@@ -10433,7 +10433,7 @@ static void GigaRCTrackLeftVerticalLoop(
                         { 0, 0, height }, { 32, 26, 3 });
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_1),
-                        { 10, 16, height }, { { 16, 16, height }, { 0, 0, 0 } });
+                        { 10, 16, height }, { { 16, 16, 3 }, { 0, 0, height } });
                     break;
                 case 3:
                     PaintAddImageAsParentRotated(
@@ -10610,7 +10610,7 @@ static void GigaRCTrackRightVerticalLoop(
                         { 0, 0, height + 32 }, { 32, 16, 3 });
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_3),
-                        { 0, 0, height + 32 }, { 32, 16, 3 });
+                        { 0, 0, height + 32 }, { { 32, 16, 3 }, { 0, 0, height } });
                     break;
             }
             PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
@@ -10627,7 +10627,7 @@ static void GigaRCTrackRightVerticalLoop(
                 case 3:
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_4),
-                        { 0, 16, height + 32 }, { 32, 16, 3 });
+                        { 0, 16, height + 32 }, { { 32, 16, 3 }, { 0, 0, height } });
                     break;
             }
             PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
@@ -10640,7 +10640,7 @@ static void GigaRCTrackRightVerticalLoop(
                 case 1:
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_4),
-                        { 0, 16, height + 32 }, { 32, 16, 3 });
+                        { 0, 16, height + 32 }, { { 32, 16, 3 }, { 0, 0, height } });
                     break;
                 case 2:
                     break;
@@ -10663,7 +10663,7 @@ static void GigaRCTrackRightVerticalLoop(
                         { 0, 0, height + 32 }, { 32, 16, 3 });
                     PaintAddImageAsParentRotated(
                         session, direction, session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_GIGA_TRACK_VERTICAL_LOOP_FIX_3),
-                        { 0, 0, height + 32 }, { 32, 16, 3 });
+                        { 0, 0, height + 32 }, { { 32, 16, 3 }, { 0, 0, height } });
                     break;
                 case 2:
                     PaintAddImageAsParentRotated(
