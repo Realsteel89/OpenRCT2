@@ -91,7 +91,7 @@ RideMode& operator++(RideMode& d, int)
     return d = (d == RideMode::Count) ? RideMode::Normal : static_cast<RideMode>(static_cast<uint8_t>(d) + 1);
 }
 
-static constexpr const int32_t RideInspectionInterval[] = {
+static constexpr int32_t RideInspectionInterval[] = {
     10, 20, 30, 45, 60, 120, 0, 0,
 };
 
@@ -1204,7 +1204,7 @@ void Ride::UpdatePopularity(const uint8_t pop_amount)
 }
 
 /** rct2: 0x0098DDB8, 0x0098DDBA */
-static constexpr const CoordsXY ride_spiral_slide_main_tile_offset[][4] = {
+static constexpr CoordsXY ride_spiral_slide_main_tile_offset[][4] = {
     {
         { 32, 32 },
         { 0, 32 },
@@ -2593,7 +2593,7 @@ static StationIndexWithMessage RideModeCheckStationPresent(const Ride& ride)
     if (stationIndex.IsNull())
     {
         const auto& rtd = ride.GetRideTypeDescriptor();
-        if (rtd.HasFlag(RIDE_TYPE_FLAG_HAS_NO_TRACK))
+        if (!rtd.HasFlag(RIDE_TYPE_FLAG_HAS_TRACK))
             return { StationIndex::GetNull(), STR_NOT_YET_CONSTRUCTED };
 
         if (rtd.HasFlag(RIDE_TYPE_FLAG_IS_MAZE))
@@ -3155,7 +3155,7 @@ static int32_t count_free_misc_sprite_slots()
     return std::max(0, miscSpriteCount + remainingSpriteCount - 300);
 }
 
-static constexpr const CoordsXY word_9A3AB4[4] = {
+static constexpr CoordsXY word_9A3AB4[4] = {
     { 0, 0 },
     { 0, -96 },
     { -96, -96 },
@@ -3163,7 +3163,7 @@ static constexpr const CoordsXY word_9A3AB4[4] = {
 };
 
 // clang-format off
-static constexpr const CoordsXY word_9A2A60[] = {
+static constexpr CoordsXY word_9A2A60[] = {
     { 0, 16 },
     { 16, 31 },
     { 31, 16 },
@@ -4758,9 +4758,12 @@ OpenRCT2::BitSet<TRACK_GROUP_COUNT> RideEntryGetSupportedTrackPieces(const RideO
         { SpriteGroupType::Corkscrews, SpritePrecision::Sprites4, SpriteGroupType::SlopeInverted,
           SpritePrecision::Sprites4 },                                 // TRACK_CORKSCREW
         { SpriteGroupType::SlopeFlat, SpritePrecision::None },         // TRACK_TOWER_BASE
-        { SpriteGroupType::FlatBanked45, SpritePrecision::Sprites16 }, // TRACK_HELIX_SMALL
-        { SpriteGroupType::FlatBanked45, SpritePrecision::Sprites16 }, // TRACK_HELIX_LARGE
-        { SpriteGroupType::SlopeFlat, SpritePrecision::Sprites16 },    // TRACK_HELIX_LARGE_UNBANKED
+        { SpriteGroupType::FlatBanked45, SpritePrecision::Sprites16 }, // TRACK_HELIX_UP_BANKED_HALF
+        { SpriteGroupType::FlatBanked45, SpritePrecision::Sprites16 }, // TRACK_HELIX_DOWN_BANKED_HALF
+        { SpriteGroupType::FlatBanked45, SpritePrecision::Sprites16 }, // TRACK_HELIX_UP_BANKED_QUARTER
+        { SpriteGroupType::FlatBanked45, SpritePrecision::Sprites16 }, // TRACK_HELIX_DOWN_BANKED_QUARTER
+        { SpriteGroupType::SlopeFlat, SpritePrecision::Sprites16 },    // TRACK_HELIX_UP_UNBANKED_QUARTER
+        { SpriteGroupType::SlopeFlat, SpritePrecision::Sprites16 },    // TRACK_HELIX_DOWN_UNBANKED_QUARTER
         { SpriteGroupType::SlopeFlat, SpritePrecision::Sprites4 },     // TRACK_BRAKES
         { SpriteGroupType::SlopeFlat, SpritePrecision::Sprites4 },     // TRACK_ON_RIDE_PHOTO
         { SpriteGroupType::SlopeFlat, SpritePrecision::Sprites4, SpriteGroupType::Slopes12,
@@ -4792,8 +4795,8 @@ OpenRCT2::BitSet<TRACK_GROUP_COUNT> RideEntryGetSupportedTrackPieces(const RideO
           SpritePrecision::Sprites4 },                             // TRACK_SLOPE_STEEP_LONG
         { SpriteGroupType::Slopes90, SpritePrecision::Sprites16 }, // TRACK_CURVE_VERTICAL
         { SpriteGroupType::Slopes25, SpritePrecision::Sprites4, SpriteGroupType::Slopes60,
-          SpritePrecision::Sprites4 },                                   // TRACK_LIFT_HILL_CABLE
-        { SpriteGroupType::CurvedLiftHill, SpritePrecision::Sprites16 }, // TRACK_LIFT_HILL_CURVED
+          SpritePrecision::Sprites4 },                                     // TRACK_LIFT_HILL_CABLE
+        { SpriteGroupType::CurvedLiftHillUp, SpritePrecision::Sprites16 }, // TRACK_LIFT_HILL_CURVED
         { SpriteGroupType::Slopes90, SpritePrecision::Sprites4, SpriteGroupType::SlopesLoop, SpritePrecision::Sprites4,
           SpriteGroupType::SlopeInverted, SpritePrecision::Sprites4 }, // TRACK_QUARTER_LOOP
         { SpriteGroupType::SlopeFlat, SpritePrecision::Sprites4 },     // TRACK_SPINNING_TUNNEL

@@ -944,7 +944,7 @@ const uint8_t PitchInvertTable[] = {
     0,  0,  0,  0,  0,  0,                                                          // Helices
     53, 54, 55, 50, 51, 52,                                                         // Slopes 2
     56, 57, 58,                                                                     // Zero-G Rolls
-    0 // 59 = Spiral Lift. This is the only pitch with no corresponding pitch down, so flat will be used instead
+    60, 59                                                                          // Spiral Lift Hills
 };
 
 // Opposite Bank values for reversed cars
@@ -1036,10 +1036,8 @@ static void VehicleSpritePaintRestraints(
     PaintSession& session, const Vehicle* vehicle, int32_t imageDirection, int32_t z, const CarEntry* carEntry)
 {
     int32_t boundingBoxNum = YawTo16(imageDirection);
-    auto restraintFrame = ((vehicle->restraints_position - 64) / 64) * 4;
-    auto spriteNum = (carEntry->SpriteByYaw(imageDirection, SpriteGroupType::RestraintAnimation) + restraintFrame)
-            * carEntry->base_num_frames
-        + carEntry->GroupImageId(SpriteGroupType::RestraintAnimation);
+    auto restraintFrame = ((vehicle->restraints_position - 64) / 64);
+    auto spriteNum = carEntry->SpriteOffset(SpriteGroupType::RestraintAnimation, imageDirection, restraintFrame);
     vehicle_sprite_paint(session, vehicle, spriteNum, VehicleBoundboxes[carEntry->draw_order][boundingBoxNum], z, carEntry);
 }
 
@@ -3674,13 +3672,28 @@ static void VehiclePitchInvertingDown60(
 #pragma region SpiralLiftSlopes
 
 // 6D4773
-static void VehiclePitchSpiralLift(
+static void VehiclePitchSpiralLiftUp(
     PaintSession& session, const Vehicle* vehicle, int32_t imageDirection, int32_t z, const CarEntry* carEntry)
 {
-    if (carEntry->GroupEnabled(SpriteGroupType::CurvedLiftHill))
+    if (carEntry->GroupEnabled(SpriteGroupType::CurvedLiftHillUp))
     {
         int32_t boundingBoxNum = YawTo16(imageDirection);
-        int32_t spriteNum = carEntry->SpriteOffset(SpriteGroupType::CurvedLiftHill, imageDirection, 0);
+        int32_t spriteNum = carEntry->SpriteOffset(SpriteGroupType::CurvedLiftHillUp, imageDirection, 0);
+        VehicleSpritePaintWithSwinging(session, vehicle, spriteNum, boundingBoxNum, z, carEntry);
+    }
+    else
+    {
+        VehiclePitchFlat(session, vehicle, imageDirection, z, carEntry);
+    }
+}
+
+static void VehiclePitchSpiralLiftDown(
+    PaintSession& session, const Vehicle* vehicle, int32_t imageDirection, int32_t z, const CarEntry* carEntry)
+{
+    if (carEntry->GroupEnabled(SpriteGroupType::CurvedLiftHillDown))
+    {
+        int32_t boundingBoxNum = YawTo16(imageDirection);
+        int32_t spriteNum = carEntry->SpriteOffset(SpriteGroupType::CurvedLiftHillDown, imageDirection, 0);
         VehicleSpritePaintWithSwinging(session, vehicle, spriteNum, boundingBoxNum, z, carEntry);
     }
     else
@@ -3696,7 +3709,7 @@ using vehicle_sprite_func = void (*)(
     PaintSession& session, const Vehicle* vehicle, int32_t imageDirection, int32_t z, const CarEntry* carEntry);
 
 // clang-format off
-static constexpr const vehicle_sprite_func PaintFunctionsByPitch[] = {
+static constexpr vehicle_sprite_func PaintFunctionsByPitch[] = {
     VehiclePitchFlat,
     VehiclePitchUp12,
     VehiclePitchUp25,
@@ -3756,7 +3769,8 @@ static constexpr const vehicle_sprite_func PaintFunctionsByPitch[] = {
     VehiclePitchInvertingDown25,
     VehiclePitchInvertingDown42,
     VehiclePitchInvertingDown60,
-    VehiclePitchSpiralLift,
+    VehiclePitchSpiralLiftUp,
+    VehiclePitchSpiralLiftDown,
 };
 // clang-format on
 

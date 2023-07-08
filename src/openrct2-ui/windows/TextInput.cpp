@@ -20,8 +20,8 @@
 #include <openrct2/localisation/Localisation.h>
 #include <openrct2/util/Util.h>
 
-static constexpr const int32_t WW = 250;
-static constexpr const int32_t WH = 90;
+static constexpr int32_t WW = 250;
+static constexpr int32_t WH = 90;
 
 enum WindowTextInputWidgetIdx
 {
@@ -32,7 +32,7 @@ enum WindowTextInputWidgetIdx
     WIDX_OKAY
 };
 
-static Widget window_text_input_widgets[] = {
+static Widget _textInputWidgets[] = {
     WINDOW_SHIM(STR_NONE, WW, WH),
     MakeWidget({ 170, 68 }, { 71, 14 }, WindowWidgetType::Button, WindowColour::Secondary, STR_CANCEL),
     MakeWidget({ 10, 68 }, { 71, 14 }, WindowWidgetType::Button, WindowColour::Secondary, STR_OK),
@@ -61,7 +61,7 @@ private:
 public:
     void OnOpen() override
     {
-        widgets = window_text_input_widgets;
+        widgets = _textInputWidgets;
         WindowInitScrollWidgets(*this);
         SetParentWindow(nullptr, 0);
     }
@@ -130,7 +130,7 @@ public:
         ContextStopTextInput();
     }
 
-    void OnPeriodicUpdate() override
+    void OnUpdate() override
     {
         if (HasParentWindow())
         {
@@ -311,6 +311,11 @@ public:
         int32_t numLines{};
         GfxWrapString(text, WW - (24 + 13), FontStyle::Medium, nullptr, &numLines);
         return numLines * 10 + WH;
+    }
+
+    void OnResize() override
+    {
+        ResizeFrame();
     }
 
 private:

@@ -83,16 +83,16 @@ enum
 
 #pragma region Measurements
 
-static constexpr const int32_t WH_SUMMARY = 309;
-static constexpr const int32_t WH_RESEARCH = 207;
-static constexpr const int32_t WH_OTHER_TABS = 257;
-static constexpr const int32_t WW_RESEARCH = 320;
-static constexpr const int32_t WW_OTHER_TABS = 530;
-static constexpr const int32_t RSH_SUMMARY = 266;
-static constexpr const int32_t RSH_RESEARCH = 164;
-static constexpr const int32_t RSH_OTHER_TABS = 214;
-static constexpr const int32_t RSW_RESEARCH = WW_RESEARCH;
-static constexpr const int32_t RSW_OTHER_TABS = WW_OTHER_TABS;
+static constexpr int32_t WH_SUMMARY = 309;
+static constexpr int32_t WH_RESEARCH = 207;
+static constexpr int32_t WH_OTHER_TABS = 257;
+static constexpr int32_t WW_RESEARCH = 320;
+static constexpr int32_t WW_OTHER_TABS = 530;
+static constexpr int32_t RSH_SUMMARY = 266;
+static constexpr int32_t RSH_RESEARCH = 164;
+static constexpr int32_t RSH_OTHER_TABS = 214;
+static constexpr int32_t RSW_RESEARCH = WW_RESEARCH;
+static constexpr int32_t RSW_OTHER_TABS = WW_OTHER_TABS;
 
 #pragma endregion
 
@@ -179,7 +179,7 @@ static_assert(std::size(_windowFinancesPageWidgets) == WINDOW_FINANCES_PAGE_COUN
 
 #pragma endregion
 
-static constexpr const StringId _windowFinancesSummaryRowLabels[static_cast<int32_t>(ExpenditureType::Count)] = {
+static constexpr StringId _windowFinancesSummaryRowLabels[static_cast<int32_t>(ExpenditureType::Count)] = {
     STR_FINANCES_SUMMARY_RIDE_CONSTRUCTION,
     STR_FINANCES_SUMMARY_RIDE_RUNNING_COSTS,
     STR_FINANCES_SUMMARY_LAND_PURCHASE,
@@ -196,7 +196,7 @@ static constexpr const StringId _windowFinancesSummaryRowLabels[static_cast<int3
     STR_FINANCES_SUMMARY_LOAN_INTEREST,
 };
 
-static constexpr const int32_t _windowFinancesTabAnimationFrames[] = {
+static constexpr int32_t _windowFinancesTabAnimationFrames[] = {
     8,  // WINDOW_FINANCES_PAGE_SUMMARY
     16, // WINDOW_FINANCES_PAGE_FINANCIAL_GRAPH
     16, // WINDOW_FINANCES_PAGE_VALUE_GRAPH
@@ -206,9 +206,9 @@ static constexpr const int32_t _windowFinancesTabAnimationFrames[] = {
 };
 static_assert(std::size(_windowFinancesTabAnimationFrames) == WINDOW_FINANCES_PAGE_COUNT);
 
-static constexpr const int32_t EXPENDITURE_COLUMN_WIDTH = 80;
+static constexpr int32_t EXPENDITURE_COLUMN_WIDTH = 80;
 
-static constexpr const uint32_t _windowFinancesPageHoldDownWidgets[] = {
+static constexpr uint32_t _windowFinancesPageHoldDownWidgets[] = {
     (1uLL << WIDX_LOAN_INCREASE) | (1uLL << WIDX_LOAN_DECREASE), // WINDOW_FINANCES_PAGE_SUMMARY
 
     0, // WINDOW_FINANCES_PAGE_FINANCIAL_GRAPH
@@ -253,7 +253,7 @@ public:
                 OnMouseDownSummary(widgetIndex);
                 break;
             case WINDOW_FINANCES_PAGE_RESEARCH:
-                OnMouseDownResearch(widgetIndex);
+                WindowResearchFundingMouseDown(this, widgetIndex, WIDX_RESEARCH_FUNDING);
                 break;
         }
     }
@@ -280,7 +280,7 @@ public:
                         OnMouseUpMarketing(widgetIndex);
                         break;
                     case WINDOW_FINANCES_PAGE_RESEARCH:
-                        OnMouseUpResearch(widgetIndex);
+                        WindowResearchFundingMouseUp(widgetIndex, WIDX_RESEARCH_FUNDING);
                 }
                 break;
         }
@@ -290,7 +290,7 @@ public:
     {
         if (page == WINDOW_FINANCES_PAGE_RESEARCH)
         {
-            OnDropdownResearch(widgetIndex, selectedIndex);
+            WindowResearchFundingDropdown(widgetIndex, selectedIndex, WIDX_RESEARCH_FUNDING);
         }
     }
 
@@ -318,7 +318,7 @@ public:
                 OnPrepareDrawMarketing();
                 break;
             case WINDOW_FINANCES_PAGE_RESEARCH:
-                OnPrepareDrawResearch();
+                WindowResearchFundingPrepareDraw(this, WIDX_RESEARCH_FUNDING);
                 break;
         }
     }
@@ -346,7 +346,7 @@ public:
                 OnDrawMarketing(dpi);
                 break;
             case WINDOW_FINANCES_PAGE_RESEARCH:
-                OnDrawResearch(dpi);
+                WindowResearchFundingDraw(this, dpi);
                 break;
         }
     }
@@ -903,101 +903,6 @@ public:
 
 #pragma endregion
 
-#pragma region Research Events
-
-    void OnMouseUpResearch(WidgetIndex widgetIndex)
-    {
-        if (widgetIndex >= WIDX_TRANSPORT_RIDES && widgetIndex <= WIDX_SCENERY_AND_THEMING)
-        {
-            auto activeResearchTypes = gResearchPriorities;
-            activeResearchTypes ^= 1uLL << (widgetIndex - WIDX_TRANSPORT_RIDES);
-
-            auto gameAction = ParkSetResearchFundingAction(activeResearchTypes, gResearchFundingLevel);
-            GameActions::Execute(&gameAction);
-        }
-    }
-
-    void OnMouseDownResearch(WidgetIndex widgetIndex)
-    {
-        if (widgetIndex != WIDX_RESEARCH_FUNDING_DROPDOWN_BUTTON)
-            return;
-
-        Widget* dropdownWidget = &widgets[widgetIndex - 1];
-
-        for (std::size_t i = 0; i < std::size(ResearchFundingLevelNames); i++)
-        {
-            gDropdownItems[i].Format = STR_DROPDOWN_MENU_LABEL;
-            gDropdownItems[i].Args = ResearchFundingLevelNames[i];
-        }
-
-        WindowDropdownShowTextCustomWidth(
-            { windowPos.x + dropdownWidget->left, windowPos.y + dropdownWidget->top }, dropdownWidget->height() + 1, colours[1],
-            0, Dropdown::Flag::StayOpen, 4, dropdownWidget->width() - 3);
-
-        int32_t currentResearchLevel = gResearchFundingLevel;
-        Dropdown::SetChecked(currentResearchLevel, true);
-    }
-
-    void OnDropdownResearch(WidgetIndex widgetIndex, int32_t selectedIndex)
-    {
-        if (widgetIndex != WIDX_RESEARCH_FUNDING_DROPDOWN_BUTTON || selectedIndex == -1)
-            return;
-
-        auto gameAction = ParkSetResearchFundingAction(gResearchPriorities, selectedIndex);
-        GameActions::Execute(&gameAction);
-    }
-
-    void OnPrepareDrawResearch()
-    {
-        if (gResearchProgressStage == RESEARCH_STAGE_FINISHED_ALL)
-        {
-            _windowFinancesResearchWidgets[WIDX_RESEARCH_FUNDING].type = WindowWidgetType::Empty;
-            _windowFinancesResearchWidgets[WIDX_RESEARCH_FUNDING_DROPDOWN_BUTTON].type = WindowWidgetType::Empty;
-        }
-        else
-        {
-            _windowFinancesResearchWidgets[WIDX_RESEARCH_FUNDING].type = WindowWidgetType::DropdownMenu;
-            _windowFinancesResearchWidgets[WIDX_RESEARCH_FUNDING_DROPDOWN_BUTTON].type = WindowWidgetType::Button;
-        }
-        int32_t currentResearchLevel = gResearchFundingLevel;
-
-        // Current funding
-        _windowFinancesResearchWidgets[WIDX_RESEARCH_FUNDING].text = ResearchFundingLevelNames[currentResearchLevel];
-
-        // Checkboxes
-        uint8_t activeResearchTypes = gResearchPriorities;
-        int32_t uncompletedResearchTypes = gResearchUncompletedCategories;
-        for (int32_t i = 0; i < 7; i++)
-        {
-            int32_t mask = 1 << i;
-            int32_t widgetMask = 1uLL << (i + WIDX_TRANSPORT_RIDES);
-
-            // Set checkbox disabled if research type is complete
-            if (uncompletedResearchTypes & mask)
-            {
-                disabled_widgets &= ~widgetMask;
-
-                // Set checkbox ticked if research type is active
-                if (activeResearchTypes & mask)
-                    pressed_widgets |= widgetMask;
-                else
-                    pressed_widgets &= ~widgetMask;
-            }
-            else
-            {
-                disabled_widgets |= widgetMask;
-                pressed_widgets &= ~widgetMask;
-            }
-        }
-    }
-
-    void OnDrawResearch(DrawPixelInfo& dpi)
-    {
-        WindowResearchFundingPagePaint(this, dpi, WIDX_RESEARCH_FUNDING);
-    }
-
-#pragma endregion
-
     void InitialiseScrollPosition(WidgetIndex widgetIndex, int32_t scrollId)
     {
         const auto& widget = this->widgets[widgetIndex];
@@ -1031,6 +936,11 @@ public:
         DrawTabImage(dpi, WINDOW_FINANCES_PAGE_PROFIT_GRAPH, SPR_TAB_FINANCES_PROFIT_GRAPH_0);
         DrawTabImage(dpi, WINDOW_FINANCES_PAGE_MARKETING, SPR_TAB_FINANCES_MARKETING_0);
         DrawTabImage(dpi, WINDOW_FINANCES_PAGE_RESEARCH, SPR_TAB_FINANCES_RESEARCH_0);
+    }
+
+    void OnResize() override
+    {
+        ResizeFrameWithPage();
     }
 };
 

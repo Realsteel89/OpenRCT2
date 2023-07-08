@@ -21,12 +21,12 @@ using namespace OpenRCT2::Ui;
 
 WindowBase* ResetShortcutKeysPromptOpen();
 
-static constexpr const StringId WINDOW_TITLE = STR_SHORTCUTS_TITLE;
-static constexpr const int32_t WW = 420;
-static constexpr const int32_t WH = 280;
+static constexpr StringId WINDOW_TITLE = STR_SHORTCUTS_TITLE;
+static constexpr int32_t WW = 420;
+static constexpr int32_t WH = 280;
 
-static constexpr const int32_t WW_SC_MAX = 1200;
-static constexpr const int32_t WH_SC_MAX = 800;
+static constexpr int32_t WW_SC_MAX = 1200;
+static constexpr int32_t WH_SC_MAX = 800;
 
 enum WindowShortcutWidgetIdx
 {
@@ -43,15 +43,15 @@ enum WindowShortcutWidgetIdx
 static Widget window_shortcut_widgets[] = {
     WINDOW_SHIM(WINDOW_TITLE, WW, WH),
     MakeWidget({0,    43}, {350, 287}, WindowWidgetType::Resize, WindowColour::Secondary),
-    MakeWidget({4,    47}, {412, 245}, WindowWidgetType::Scroll, WindowColour::Primary, SCROLL_VERTICAL,           STR_SHORTCUT_LIST_TIP        ),
+    MakeWidget({4,    47}, {412, 215}, WindowWidgetType::Scroll, WindowColour::Primary, SCROLL_VERTICAL,           STR_SHORTCUT_LIST_TIP        ),
     MakeWidget({4, WH-15}, {150,  12}, WindowWidgetType::Button, WindowColour::Primary, STR_SHORTCUT_ACTION_RESET, STR_SHORTCUT_ACTION_RESET_TIP),
     WIDGETS_END,
 };
 // clang-format on
 
-static constexpr const StringId CHANGE_WINDOW_TITLE = STR_SHORTCUT_CHANGE_TITLE;
-static constexpr const int32_t CHANGE_WW = 250;
-static constexpr const int32_t CHANGE_WH = 80;
+static constexpr StringId CHANGE_WINDOW_TITLE = STR_SHORTCUT_CHANGE_TITLE;
+static constexpr int32_t CHANGE_WW = 250;
+static constexpr int32_t CHANGE_WH = 80;
 
 enum
 {
@@ -562,8 +562,8 @@ WindowBase* WindowShortcutKeysOpen()
 }
 
 #pragma region Reset prompt
-static constexpr const int32_t RESET_PROMPT_WW = 200;
-static constexpr const int32_t RESET_PROMPT_WH = 80;
+static constexpr int32_t RESET_PROMPT_WW = 200;
+static constexpr int32_t RESET_PROMPT_WH = 80;
 
 enum
 {

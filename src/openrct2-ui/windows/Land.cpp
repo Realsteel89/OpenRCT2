@@ -21,9 +21,9 @@
 
 using namespace OpenRCT2;
 
-static constexpr const StringId WINDOW_TITLE = STR_LAND;
-static constexpr const int32_t WH = 160;
-static constexpr const int32_t WW = 98;
+static constexpr StringId WINDOW_TITLE = STR_LAND;
+static constexpr int32_t WH = 160;
+static constexpr int32_t WW = 98;
 
 // clang-format off
 enum WindowLandWidgetIdx {
@@ -156,7 +156,8 @@ public:
                 if (dropdownIndex == -1)
                     dropdownIndex = gDropdownHighlightedIndex;
 
-                type = (dropdownIndex == -1) ? _selectedFloorTexture : dropdownIndex;
+                type = (dropdownIndex == -1) ? _selectedFloorTexture
+                                             : LandTool::GetSurfaceStyleFromDropdownIndex(static_cast<size_t>(dropdownIndex));
 
                 if (gLandToolTerrainSurface == type)
                 {
@@ -173,7 +174,8 @@ public:
                 if (dropdownIndex == -1)
                     dropdownIndex = gDropdownHighlightedIndex;
 
-                type = (dropdownIndex == -1) ? _selectedWallTexture : dropdownIndex;
+                type = (dropdownIndex == -1) ? _selectedWallTexture
+                                             : LandTool::GetEdgeStyleFromDropdownIndex(static_cast<size_t>(dropdownIndex));
 
                 if (gLandToolTerrainEdge == type)
                 {
@@ -303,6 +305,11 @@ public:
                 DrawTextBasic(dpi, screenCoords, STR_COST_AMOUNT, ft, { TextAlignment::CENTRE });
             }
         }
+    }
+
+    void OnResize() override
+    {
+        ResizeFrame();
     }
 
 private:
