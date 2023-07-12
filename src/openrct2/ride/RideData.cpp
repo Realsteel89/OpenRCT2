@@ -49,6 +49,7 @@
 #include "coaster/meta/LIMLaunchedRollerCoaster.h"
 #include "coaster/meta/LayDownRollerCoaster.h"
 #include "coaster/meta/LoopingRollerCoaster.h"
+#include "coaster/meta/Maurer-Gerstlauer Spinner RollerCoaster.h"
 #include "coaster/meta/MineRide.h"
 #include "coaster/meta/MineTrainCoaster.h"
 #include "coaster/meta/MiniRollerCoaster.h"
@@ -344,6 +345,7 @@ constexpr RideTypeDescriptor RideTypeDescriptors[RIDE_TYPE_COUNT] = {
     /* RIDE_TYPE_SINGLE_RAIL_ROLLER_COASTER         */ SingleRailRollerCoasterRTD,
     /* RIDE_TYPE_ALPINE_COASTER                     */ AlpineCoasterRTD,
     /* RIDE_TYPE_CLASSIC_WOODEN_ROLLER_COASTER      */ ClassicWoodenRollerCoasterRTD,
+    /* RIDE_TYPE_MAURER_GERSTL_SPIN_ROLLER_COASTER  */ Maurer_Gerstl_SpinRollerCoasterRTD,
 };
 
 bool RideTypeDescriptor::HasFlag(uint64_t flag) const

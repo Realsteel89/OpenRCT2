@@ -410,6 +410,7 @@
     <ClInclude Include="ride\coaster\meta\LayDownRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\LIMLaunchedRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\LoopingRollerCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\Maurer-Gerstlauer Spinner RollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\MineRide.h" />
     <ClInclude Include="ride\coaster\meta\MineTrainCoaster.h" />
     <ClInclude Include="ride\coaster\meta\MiniRollerCoaster.h" />
@@ -909,6 +910,7 @@
     <ClCompile Include="ride\coaster\LayDownRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\LimLaunchedRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\LoopingRollerCoaster.cpp" />
+	<ClCompile Include="ride\coaster\Maurer-Gerstlauer Spinner RollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\MineRide.cpp" />
     <ClCompile Include="ride\coaster\MineTrainCoaster.cpp" />
     <ClCompile Include="ride\coaster\MiniRollerCoaster.cpp" />
