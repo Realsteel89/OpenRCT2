@@ -98,7 +98,7 @@ STR_0093    :Hybrid Coaster
 STR_0094    :Single Rail Roller Coaster
 STR_0095    :Alpine Coaster
 STR_0096    :Classic Wooden Roller Coaster
-STR_0097    :Maurer/Gerstlauer Spinning Roller Coaster
+STR_0097    :Steel Spinning Roller Coaster
 STR_0512    :A compact roller coaster with a spiral lift hill and smooth, twisting drops.
 STR_0513    :A looping roller coaster where the riders ride in a standing position
 STR_0514    :Trains suspended beneath the roller coaster track swing out to the side around corners

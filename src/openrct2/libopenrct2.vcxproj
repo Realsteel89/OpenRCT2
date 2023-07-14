@@ -410,7 +410,6 @@
     <ClInclude Include="ride\coaster\meta\LayDownRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\LIMLaunchedRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\LoopingRollerCoaster.h" />
-	<ClInclude Include="ride\coaster\meta\Maurer-Gerstlauer Spinner RollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\MineRide.h" />
     <ClInclude Include="ride\coaster\meta\MineTrainCoaster.h" />
     <ClInclude Include="ride\coaster\meta\MiniRollerCoaster.h" />
@@ -420,6 +419,7 @@
     <ClInclude Include="ride\coaster\meta\ReverserRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\SideFrictionRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\SingleRailRollerCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\SteelSpinningRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\SpinningWildMouse.h" />
     <ClInclude Include="ride\coaster\meta\SpiralRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\StandUpRollerCoaster.h" />
@@ -910,7 +910,6 @@
     <ClCompile Include="ride\coaster\LayDownRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\LimLaunchedRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\LoopingRollerCoaster.cpp" />
-	<ClCompile Include="ride\coaster\Maurer-Gerstlauer Spinner RollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\MineRide.cpp" />
     <ClCompile Include="ride\coaster\MineTrainCoaster.cpp" />
     <ClCompile Include="ride\coaster\MiniRollerCoaster.cpp" />
@@ -920,6 +919,7 @@
     <ClCompile Include="ride\coaster\ReverserRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\SideFrictionRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\SingleRailRollerCoaster.cpp" />
+	<ClCompile Include="ride\coaster\SteelSpinningRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\StandUpRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\Steeplechase.cpp" />
     <ClCompile Include="ride\coaster\SuspendedSwingingCoaster.cpp" />

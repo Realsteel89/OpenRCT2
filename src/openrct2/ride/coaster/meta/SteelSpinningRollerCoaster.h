@@ -15,7 +15,7 @@
 #include "../../Track.h"
 
 // clang-format off
-constexpr const RideTypeDescriptor Maurer_Gerstl_SpinRollerCoasterRTD =
+constexpr const RideTypeDescriptor SteelSpinningRollerCoasterRTD =
 {
     SET_FIELD(AlternateType, RIDE_TYPE_NULL),
     SET_FIELD(Category, RIDE_CATEGORY_ROLLERCOASTER),
@@ -23,7 +23,7 @@ constexpr const RideTypeDescriptor Maurer_Gerstl_SpinRollerCoasterRTD =
     SET_FIELD(ExtraTrackPieces,  { TRACK_POWERED_LIFT, TRACK_SLOPE_STEEP_LONG, TRACK_CORKSCREW, TRACK_BARREL_ROLL, TRACK_BARREL_ROLL, TRACK_QUARTER_LOOP, TRACK_HALF_LOOP, TRACK_HALF_LOOP_MEDIUM, TRACK_HALF_LOOP_LARGE, TRACK_VERTICAL_LOOP, TRACK_CORKSCREW_LARGE, TRACK_ZERO_G_ROLL, TRACK_ZERO_G_ROLL_LARGE}),
     SET_FIELD(CoveredTrackPieces, {}),
     SET_FIELD(StartTrackPiece, TrackElemType::EndStation),
-    SET_FIELD(TrackPaintFunction, Maurer_Gerstl_SpinRC::GetTrackPaintFunction),
+    SET_FIELD(TrackPaintFunction, SteelSpinningRC::GetTrackPaintFunction),
     SET_FIELD(Flags, RIDE_TYPE_FLAGS_TRACK_HAS_3_COLOURS | RIDE_TYPE_FLAG_HAS_TRACK_COLOUR_SUPPORTS | RIDE_TYPE_FLAG_HAS_LEAVE_WHEN_ANOTHER_VEHICLE_ARRIVES_AT_STATION |
                      RIDE_TYPE_FLAGS_COMMON_COASTER | RIDE_TYPE_FLAGS_COMMON_COASTER_NON_ALT |
                      RIDE_TYPE_FLAG_PEEP_CHECK_GFORCES | RIDE_TYPE_FLAG_ALLOW_MULTIPLE_CIRCUITS |
@@ -31,9 +31,9 @@ constexpr const RideTypeDescriptor Maurer_Gerstl_SpinRollerCoasterRTD =
     SET_FIELD(RideModes, EnumsToFlags(RideMode::ContinuousCircuit, RideMode::ContinuousCircuitBlockSectioned)),
     SET_FIELD(DefaultMode, RideMode::ContinuousCircuit),
     SET_FIELD(OperatingSettings, { 0, 0, 30, 15, 52, 0 }),
-    SET_FIELD(Naming, { STR_RIDE_NAME_MAURER_GERSTL_SPIN_ROLLER_COASTER, STR_RIDE_DESCRIPTION_MAURER_GERSTL_SPIN_ROLLER_COASTER }),
+    SET_FIELD(Naming, { STR_RIDE_NAME_STEEL_SPINNING_ROLLER_COASTER, STR_RIDE_DESCRIPTION_STEEL_SPINNING_ROLLER_COASTER }),
     SET_FIELD(NameConvention, { RideComponentType::Train, RideComponentType::Track, RideComponentType::Station }),
-    SET_FIELD(EnumName, nameof(RIDE_TYPE_MAURER_GERSTL_SPIN_COASTER)),
+    SET_FIELD(EnumName, nameof(RIDE_TYPE_STEEL_SPINNING_COASTER)),
     SET_FIELD(AvailableBreakdowns, (1 << BREAKDOWN_SAFETY_CUT_OUT) | (1 << BREAKDOWN_RESTRAINTS_STUCK_CLOSED) | (1 << BREAKDOWN_RESTRAINTS_STUCK_OPEN) | (1 << BREAKDOWN_VEHICLE_MALFUNCTION) | (1 << BREAKDOWN_BRAKES_FAILURE)),
     SET_FIELD(Heights, { 17, 24, 9, 11,}),
     SET_FIELD(MaxMass, 18),
@@ -50,9 +50,9 @@ constexpr const RideTypeDescriptor Maurer_Gerstl_SpinRollerCoasterRTD =
         { COLOUR_YELLOW, COLOUR_YELLOW, COLOUR_BLACK },
         { COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, COLOUR_DARK_GREEN }
     )),
-    SET_FIELD(ColourPreview, { SPR_RIDE_DESIGN_PREVIEW_MAURER_GERSTL_SPIN_TRACK, SPR_RIDE_DESIGN_PREVIEW_MAURER_GERSTL_SPIN_SUPPORTS }),
+    SET_FIELD(ColourPreview, { SPR_RIDE_DESIGN_PREVIEW_STEEL_SPINNING_TRACK, SPR_RIDE_DESIGN_PREVIEW_STEEL_SPINNING_SUPPORTS }),
     SET_FIELD(ColourKey, RideColourKey::Ride),
-    SET_FIELD(Name, "maurer_gerstl_spin_rc"),
+    SET_FIELD(Name, "steel_spinning_rc"),
 
     SET_FIELD(RatingsData,
     {
