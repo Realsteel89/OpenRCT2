@@ -10752,7 +10752,7 @@ namespace SteelSpinningRC
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 12),
                             { 0, 6, height }, { 32, 20, 7 });
                         MetalASupportsPaintSetup(
-                            session, MetalSupportType::Tubes, 4, 6, height, session.TrackColours[SCHEME_SUPPORTS]);
+                            session, MetalSupportType::Tubes, 4, 9, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                 }
                 if (direction == 0 || direction == 3)
@@ -10774,24 +10774,32 @@ namespace SteelSpinningRC
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 1),
                             { 0, 0, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 45, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 1:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 5),
                             { 0, 14, height }, { 32, 2, 63 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 18, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 2:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 9),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 24, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 3:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 13),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 14, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
@@ -10949,24 +10957,32 @@ namespace SteelSpinningRC
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 9),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 24, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 1:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 13),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 9, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 2:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 1),
                             { 0, 0, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 30, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 3:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 5),
                             { 0, 14, height }, { 32, 2, 63 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 16, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
@@ -11080,24 +11096,32 @@ namespace SteelSpinningRC
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 17),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 9, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 1:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 21),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 18, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 2:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 25),
                             { 0, 14, height }, { 32, 2, 63 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 16, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 3:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 29),
                             { 0, 0, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 45, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                 }
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
@@ -11236,24 +11260,32 @@ namespace SteelSpinningRC
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 25),
                             { 0, 14, height }, { 32, 2, 63 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 15, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 1:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 29),
                             { 0, 0, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 30, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 2:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 17),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 9, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                     case 3:
                         PaintAddImageAsParentRotated(
                             session, direction,
                             session.TrackColours[SCHEME_TRACK].WithIndex(SPR_G2_STEEL_SPINNING_TRACK_VERTICAL_LOOP + 21),
                             { 0, 6, height }, { 32, 26, 3 });
+                        MetalASupportsPaintSetup(
+                            session, MetalSupportType::Tubes, 4, 18, height, session.TrackColours[SCHEME_SUPPORTS]);
                         break;
                 }
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
