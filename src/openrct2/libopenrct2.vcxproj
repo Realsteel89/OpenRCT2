@@ -401,6 +401,7 @@
     <ClInclude Include="ride\coaster\meta\GigaCoaster.h" />
     <ClInclude Include="ride\coaster\meta\HeartlineTwisterCoaster.h" />
     <ClInclude Include="ride\coaster\meta\HybridCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\HydraulicLaunchedRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\Hypercoaster.h" />
     <ClInclude Include="ride\coaster\meta\HyperTwister.h" />
     <ClInclude Include="ride\coaster\meta\InvertedHairpinCoaster.h" />
@@ -902,6 +903,7 @@
     <ClCompile Include="ride\coaster\GigaCoaster.cpp" />
     <ClCompile Include="ride\coaster\HeartlineTwisterCoaster.cpp" />
     <ClCompile Include="ride\coaster\HybridCoaster.cpp" />
+	<ClCompile Include="ride\coaster\HydraulicLaunchedRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\InvertedHairpinCoaster.cpp" />
     <ClCompile Include="ride\coaster\InvertedImpulseCoaster.cpp" />
     <ClCompile Include="ride\coaster\InvertedRollerCoaster.cpp" />
