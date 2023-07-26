@@ -120,7 +120,7 @@ namespace HydraulicLaunchedRC
             { { 0, 2, height }, { 32, 28, 2 } });
         TrackPaintUtilDrawStationMetalSupports2(
             session, direction, height, session.TrackColours[SCHEME_SUPPORTS], MetalSupportType::Tubes);
-        TrackPaintUtilDrawStation2(session, ride, direction, height, trackElement, 4, 7);
+        TrackPaintUtilDrawStation2(session, ride, direction, height, trackElement, 10, 13);
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_SQUARE_FLAT);
         PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
