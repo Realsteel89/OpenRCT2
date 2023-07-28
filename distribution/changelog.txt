@@ -1,5 +1,6 @@
 0.4.6 (in development)
 ------------------------------------------------------------------------
+- add: [#20587] Add Steel Spinning Roller Coaster Track
 - Feature: [#15660] Ability to show window buttons on the left.
 - Feature: [#20141] New track elements available on the Giga Coaster.
 - Feature: [OpenMusic#41] Official Title Theme by Allister Brimble.

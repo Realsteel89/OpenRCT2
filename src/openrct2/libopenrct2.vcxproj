@@ -419,6 +419,7 @@
     <ClInclude Include="ride\coaster\meta\ReverserRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\SideFrictionRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\SingleRailRollerCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\SteelSpinningRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\SpinningWildMouse.h" />
     <ClInclude Include="ride\coaster\meta\SpiralRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\StandUpRollerCoaster.h" />
@@ -919,6 +920,7 @@
     <ClCompile Include="ride\coaster\ReverserRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\SideFrictionRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\SingleRailRollerCoaster.cpp" />
+	<ClCompile Include="ride\coaster\SteelSpinningRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\StandUpRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\Steeplechase.cpp" />
     <ClCompile Include="ride\coaster\SuspendedSwingingCoaster.cpp" />
