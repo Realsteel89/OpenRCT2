@@ -179,12 +179,6 @@ namespace String
      */
     std::string_view UTF8Truncate(std::string_view v, size_t size);
 
-    /**
-     * Truncates a string to at most `size` codepoints,
-     * making sure not to cut in the middle of a sequence.
-     */
-    std::string_view UTF8TruncateCodePoints(std::string_view v, size_t size);
-
     // Escapes special characters in a string to the percentage equivalent that can be used in URLs.
     std::string URLEncode(std::string_view value);
 } // namespace String
@@ -226,7 +220,7 @@ public:
             {
                 const utf8* nextch;
                 GetNextCodepoint(&_str[_index], &nextch);
-                _index = std::min<size_t>(nextch - _str.data(), _str.size());
+                _index = nextch - _str.data();
             }
             return *this;
         }
@@ -237,7 +231,7 @@ public:
             {
                 const utf8* nextch;
                 GetNextCodepoint(&_str[_index], &nextch);
-                _index = std::min<size_t>(nextch - _str.data(), _str.size());
+                _index = nextch - _str.data();
             }
             return result;
         }
@@ -251,7 +245,7 @@ public:
     };
 
     CodepointView(std::string_view str)
-        : _str(String::UTF8Truncate(str, str.size()))
+        : _str(str)
     {
     }
 
