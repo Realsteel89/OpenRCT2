@@ -2309,3 +2309,8 @@ TRACK_PAINT_FUNCTION GetTrackPaintFunctionClassicWoodenRC(int32_t trackType)
 
     return GetTrackPaintFunctionClassicWoodenRCFallback(trackType);
 }
+
+TRACK_PAINT_FUNCTION GetTrackPaintFunctionTRexRC(int32_t trackType)
+{
+    return TRACK_PAINT_FUNCTION();
+}

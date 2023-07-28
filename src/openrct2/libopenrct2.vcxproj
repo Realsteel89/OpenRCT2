@@ -405,7 +405,7 @@
     <ClInclude Include="ride\coaster\meta\HyperTwister.h" />
     <ClInclude Include="ride\coaster\meta\InvertedHairpinCoaster.h" />
     <ClInclude Include="ride\coaster\meta\InvertedImpulseCoaster.h" />
-    <ClInclude Include="ride\coaster\meta\InvertedRollerCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\InvertedRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\JuniorRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\LayDownRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\LIMLaunchedRollerCoaster.h" />
@@ -429,6 +429,9 @@
 	<ClInclude Include="ride\coaster\meta\TRexRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\TwisterRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\VerticalDropCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\TwisterRollerCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\VerticalDropCoaster.h" />
+	<ClInclude Include="ride\coaster\meta\VekomaMineRollerCoaster.h" />
     <ClInclude Include="ride\coaster\meta\VirginiaReel.h" />
     <ClInclude Include="ride\coaster\meta\WaterCoaster.h" />
     <ClInclude Include="ride\coaster\meta\WoodenRollerCoaster.h" />
@@ -927,6 +930,9 @@
     <ClCompile Include="ride\coaster\TRexRollerCoaster.cpp" />
 	<ClCompile Include="ride\coaster\VirginiaReel.cpp" />
     <ClCompile Include="ride\coaster\WildMouse.cpp" />
+	<ClCompile Include="ride\coaster\VekomaMineRollerCoaster.cpp" />
+	<ClCompile Include="ride\coaster\VirginiaReel.cpp" />
+	<ClCompile Include="ride\coaster\WildMouse.cpp" />
     <ClCompile Include="ride\coaster\WoodenRollerCoaster.cpp" />
     <ClCompile Include="ride\coaster\WoodenWildMouse.cpp" />
     <ClCompile Include="ride\gentle\CarRide.cpp" />

@@ -68,6 +68,7 @@
 #include "coaster/meta/TRexRollerCoaster.h"
 #include "coaster/meta/TwisterRollerCoaster.h"
 #include "coaster/meta/VerticalDropCoaster.h"
+#include "coaster/meta/VekomaMineRollerCoaster.h"
 #include "coaster/meta/VirginiaReel.h"
 #include "coaster/meta/WaterCoaster.h"
 #include "coaster/meta/WoodenRollerCoaster.h"
@@ -348,6 +349,7 @@ constexpr RideTypeDescriptor RideTypeDescriptors[RIDE_TYPE_COUNT] = {
     /* RIDE_TYPE_CLASSIC_WOODEN_ROLLER_COASTER      */ ClassicWoodenRollerCoasterRTD,
     /* RIDE_TYPE_T_REX_ROLLER_COASTER               */ TRexRollerCoasterRTD,
     /* RIDE_TYPE_SPINNING_STEEL_ROLLER_COASTER      */ SteelSpinningRollerCoasterRTD,
+    /* RIDE_TYPE_VEKOMA_MINE_ROLLER_COASTER         */ VekomaMineRollerCoasterRTD,
 };
 
 bool RideTypeDescriptor::HasFlag(uint64_t flag) const
