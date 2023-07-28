@@ -93,6 +93,7 @@ class TrackDeletePromptWindow final : public Window
 };
 
 static void WindowTrackDeletePromptOpen(TrackDesignFileRef* tdFileRef);
+static void WindowTrackDesignListReloadTracks();
 
 /**
  *
@@ -114,12 +115,20 @@ void TrackDesignManageWindow::OnOpen()
     widgets = _trackManageWidgets;
     WindowInitScrollWidgets(*this);
 
-    WindowTrackDesignListSetBeingUpdated(true);
+    auto* trackDesignListWindow = WindowFindByClass(WindowClass::TrackDesignList);
+    if (trackDesignListWindow != nullptr)
+    {
+        trackDesignListWindow->track_list.track_list_being_updated = true;
+    }
 }
 
 void TrackDesignManageWindow::OnClose()
 {
-    WindowTrackDesignListSetBeingUpdated(false);
+    WindowBase* trackDesignListWindow = WindowFindByClass(WindowClass::TrackDesignList);
+    if (trackDesignListWindow != nullptr)
+    {
+        trackDesignListWindow->track_list.track_list_being_updated = false;
+    }
 }
 
 void TrackDesignManageWindow::OnMouseUp(WidgetIndex widgetIndex)
@@ -235,3 +244,11 @@ void TrackDeletePromptWindow::OnDraw(DrawPixelInfo& dpi)
         STR_ARE_YOU_SURE_YOU_WANT_TO_PERMANENTLY_DELETE_TRACK, ft, { TextAlignment::CENTRE });
 }
 
+static void WindowTrackDesignListReloadTracks()
+{
+    WindowBase* trackListWindow = WindowFindByClass(WindowClass::TrackDesignList);
+    if (trackListWindow != nullptr)
+    {
+        trackListWindow->track_list.reload_track_designs = true;
+    }
+}

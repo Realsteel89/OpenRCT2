@@ -244,8 +244,6 @@ WindowBase* WindowCreate(
     {
         for (auto it = g_window_list.begin(); it != g_window_list.end(); it++)
         {
-            if ((*it)->flags & WF_DEAD)
-                continue;
             if (!((*it)->flags & WF_STICK_TO_BACK))
             {
                 itDestPos = it;
@@ -256,8 +254,6 @@ WindowBase* WindowCreate(
     {
         for (auto it = g_window_list.rbegin(); it != g_window_list.rend(); it++)
         {
-            if ((*it)->flags & WF_DEAD)
-                continue;
             if (!((*it)->flags & WF_STICK_TO_FRONT))
             {
                 itDestPos = it.base();
@@ -289,6 +285,7 @@ WindowBase* WindowCreate(
     w->max_height = height;
 
     w->focus = std::nullopt;
+    w->page = 0;
 
     ColourSchemeUpdate(w);
     w->Invalidate();

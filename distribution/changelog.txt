@@ -24,15 +24,12 @@
 - Fix: [#20361] Crash when using random map generation.
 - Fix: [#20364] Adding too much money with cheats causes an overflow.
 - Fix: [#20365] Money cheat input does not support negative values.
-- Fix: [#20389] Reversed vehicles are now correctly banked on diagonal slopes.
 - Fix: [#20413] Crash when attempting to navigate an empty console history.
 - Fix: [#20417] Plugin/custom windows are missing the left border in the title bar.
 - Fix: [#20429] Error window tooltip not closing after 8 seconds.
 - Fix: [#20456] Downward large half loops on flying coasters (fly-to-lie) are now correctly named.
 - Fix: [#20484] Console caret not properly updated when using command history.
 - Fix: [#20543] Crash using show segments height from debug paint options.
-- Fix: [#20607] Infinite loop when renaming rides with default names longer than 32 bytes.
-- Fix: [#20642] Track list is sometimes empty due to uninitialized data for the filter string.
 
 0.4.5 (2023-05-08)
 ------------------------------------------------------------------------

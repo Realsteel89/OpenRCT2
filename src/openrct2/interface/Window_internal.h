@@ -55,7 +55,12 @@ struct WindowBase
     std::optional<Focus> focus;
     union
     {
-        int16_t page{};
+        TrackListVariables track_list;
+        void* custom_info;
+    };
+    union
+    {
+        int16_t page;
         TileInspectorPage tileInspectorPage;
     };
     uint16_t frame_no{};              // updated every tic for motion in windows sprites
