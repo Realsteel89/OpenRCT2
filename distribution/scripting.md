@@ -39,9 +39,9 @@ function main() {
 }
 
 registerPlugin({
-    name: 'Your Plugin',
+    name: 'Gameversion Realsteel',
     version: '1.0',
-    authors: ['Your Name'],
+    authors: ['Realsteel'],
     type: 'remote',
     licence: 'MIT',
     targetApiVersion: 34,
