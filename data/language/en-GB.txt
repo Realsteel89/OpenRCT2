@@ -100,6 +100,7 @@ STR_0095    :Alpine Coaster
 STR_0096    :Classic Wooden Roller Coaster
 STR_0097    :T-Rex Roller Coaster
 STR_0098    :Steel Spinning Roller Coaster
+STR_0099    :Vekoma Mine Train Coaster
 STR_0512    :A compact roller coaster with a spiral lift hill and smooth, twisting drops.
 STR_0513    :A looping roller coaster where the riders ride in a standing position
 STR_0514    :Trains suspended beneath the roller coaster track swing out to the side around corners
@@ -185,6 +186,7 @@ STR_0605    :Riders toboggan down a meandering steel track, braking to control t
 STR_0606    :An older-style wooden roller coaster with a fast and rough ride, with plenty of air-time, some lateral G’s, and designed to feel ‘out-of-control’
 STR_0607    :An Big Single Steel Roller Coaster with big Cars (6 Seater) for Giant Inversions and Co
 STR_0608    :A smooth, compact roller coaster on a steel track, where riders ride in spinning, individual cars
+STR_0609    :DescriptionRTD
 STR_0767    :Guest {INT32}
 STR_0768    :Handyman {INT32}
 STR_0769    :Mechanic {INT32}
