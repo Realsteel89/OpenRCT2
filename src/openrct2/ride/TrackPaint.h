@@ -492,7 +492,10 @@ namespace TRexRC
 }
 
 namespace SteelSpinningRC
-
+{
+    TRACK_PAINT_FUNCTION GetTrackPaintFunction(int32_t trackType);
+}
+namespace HydraulicLaunchedRC
 {
     TRACK_PAINT_FUNCTION GetTrackPaintFunction(int32_t trackType);
 }
