@@ -350,6 +350,7 @@ constexpr RideTypeDescriptor RideTypeDescriptors[RIDE_TYPE_COUNT] = {
     /* RIDE_TYPE_T_REX_ROLLER_COASTER               */ TRexRollerCoasterRTD,
     /* RIDE_TYPE_SPINNING_STEEL_ROLLER_COASTER      */ SteelSpinningRollerCoasterRTD,
     /* RIDE_TYPE_VEKOMA_MINE_ROLLER_COASTER         */ VekomaMineRollerCoasterRTD,
+    /* RIDE_TYPE_HYDRAULIC_LAUNCHED_ROLLER_COASTER  */ HydraulicLaunchedRollerCoasterRTD,
 };
 
 bool RideTypeDescriptor::HasFlag(uint64_t flag) const
