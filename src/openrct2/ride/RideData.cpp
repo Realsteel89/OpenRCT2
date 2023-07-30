@@ -40,6 +40,7 @@
 #include "coaster/meta/GigaCoaster.h"
 #include "coaster/meta/HeartlineTwisterCoaster.h"
 #include "coaster/meta/HybridCoaster.h"
+#include "coaster/meta/HydraulicLaunchedRollerCoaster.h"
 #include "coaster/meta/HyperTwister.h"
 #include "coaster/meta/Hypercoaster.h"
 #include "coaster/meta/InvertedHairpinCoaster.h"
