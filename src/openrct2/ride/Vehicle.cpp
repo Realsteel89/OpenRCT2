@@ -7687,6 +7687,14 @@ Loc6DAEB9:
                 << 16; //_vehicleVelocityF64E08 * 1.2;
         }
     }
+    else if (trackType == TrackElemType::CableLaunch) // TODO temporary
+    {
+        acceleration += 550000;
+    }
+    else if (trackType == TrackElemType::MagneticBrakeDown25 || trackType == TrackElemType::MagneticBrakeDiagDown25)
+    {
+        acceleration = -(_vehicleVelocityF64E08 * 5) >> 1;
+    }
     else if (rideEntry.flags & RIDE_ENTRY_FLAG_RIDER_CONTROLS_SPEED && num_peeps > 0)
     {
         acceleration += CalculateRiderBraking();

@@ -631,7 +631,11 @@ namespace TrackElemType
     constexpr track_type_t LeftEighthBankToOrthogonalDown25 = 335;
     constexpr track_type_t RightEighthBankToOrthogonalDown25 = 336;
 
-    constexpr track_type_t Count = 337;
+    constexpr track_type_t CableLaunch = 337;
+    constexpr track_type_t MagneticBrakeDown25 = 338;
+    constexpr track_type_t MagneticBrakeDiagDown25 = 339;
+
+    constexpr track_type_t Count = 340;
     constexpr track_type_t None = 65535;
 
 }; // namespace TrackElemType
