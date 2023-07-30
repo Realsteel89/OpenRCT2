@@ -14769,7 +14769,7 @@ namespace VekomamineRC
                 return TrackLeftQuarterTurn190DegDown;
             case TrackElemType::RightQuarterTurn1TileDown90:
                 return TrackRightQuarterTurn190DegDown;
-           
+            
             case TrackElemType::LeftBankToLeftQuarterTurn3TilesUp25:
                 return TrackLeftBankToLeftQuarterTurn3Tile25DegUp;
             case TrackElemType::RightBankToRightQuarterTurn3TilesUp25:
@@ -14778,7 +14778,7 @@ namespace VekomamineRC
                 return TrackLeftQuarterTurn3Tile25DegDownToLeftBank;
             case TrackElemType::RightQuarterTurn3TilesDown25ToRightBank:
                 return TrackRightQuarterTurn3Tile25DegDownToRightBank;
-           
+
             case TrackElemType::FlatToUp60:
                 return TrackFlatTo60DegUp;
             case TrackElemType::Up60ToFlat:
@@ -14887,9 +14887,9 @@ namespace VekomamineRC
             case TrackElemType::RightEighthBankToOrthogonalDown25:
                 return TrackRightEighthBankToOrthogonalDown25;
             case TrackElemType::Booster:
-                return TrackBooster;           
+                return TrackBooster;
         }
         return nullptr;
     }
 
-} // namespace TRexRC
+} // namespace VekomamineRC
