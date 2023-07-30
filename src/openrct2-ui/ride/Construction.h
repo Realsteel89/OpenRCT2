@@ -133,11 +133,14 @@ constexpr std::array DropdownOrder = {
     TrackElemType::RightFlyerLargeHalfLoopInvertedDown,
     TrackElemType::RightFlyerLargeHalfLoopInvertedUp,
     TrackElemType::RightFlyerLargeHalfLoopUninvertedDown,
+    TrackElemType::CableLaunch,
+    TrackElemType::MagneticBrakeDown25,
+    TrackElemType::MagneticBrakeDiagDown25,
 };
 constexpr size_t DropdownLength = DropdownOrder.size();
 
 // Update the magic number with the current number of track elements to silence
-static_assert(TrackElemType::Count == 337, "Reminder to add new track element to special dropdown list");
+static_assert(TrackElemType::Count == 340, "Reminder to add new track element to special dropdown list");
 
 constexpr bool TrackPieceDirectionIsDiagonal(const uint8_t direction)
 {
