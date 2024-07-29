@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include "Colour.h"
 #include "Window.h"
 
 #include <list>
@@ -70,7 +71,7 @@ struct WindowBase
     EntityId viewport_target_sprite{ EntityId::GetNull() };
     ScreenCoordsXY savedViewPos{};
     WindowClass classification{};
-    colour_t colours[6]{};
+    ColourWithFlags colours[6]{};
     VisibilityCache visibility{};
     EntityId viewport_smart_follow_sprite{ EntityId::GetNull() }; // Handles setting viewport target sprite etc
 
@@ -84,11 +85,6 @@ struct WindowBase
     virtual ~WindowBase() = default;
 
     WindowBase& operator=(const WindowBase&) = delete;
-
-    virtual bool IsLegacy()
-    {
-        return true;
-    }
 
     // Events
     virtual void OnOpen()
@@ -172,9 +168,15 @@ struct WindowBase
     {
     }
     virtual CursorID OnCursor(WidgetIndex, const ScreenCoordsXY&, CursorID);
+    virtual void OnLanguageChange()
+    {
+    }
 
     void ResizeFrame();
     void ResizeFrameWithPage();
+
+    void ResizeSpinner(WidgetIndex widgetIndex, const ScreenCoordsXY& origin, const ScreenSize& size);
+    void ResizeDropdown(WidgetIndex widgetIndex, const ScreenCoordsXY& origin, const ScreenSize& size);
 };
 
 #ifdef __WARN_SUGGEST_FINAL_METHODS__

@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -12,7 +12,6 @@
 #ifdef ENABLE_SCRIPTING
 
 #    include "../../../Context.h"
-#    include "../../../common.h"
 #    include "../../../object/ObjectManager.h"
 #    include "../../../object/RideObject.h"
 #    include "../../../object/SceneryGroupObject.h"
@@ -342,7 +341,7 @@ namespace OpenRCT2::Scripting
                 {
                     auto group = entry->SpriteGroups[g];
                     if (group.Enabled())
-                        groups.Set(SpriteGroupNames[g].c_str(), ToDuk<VehicleSpriteGroup>(ctx, group));
+                        groups.Set(SpriteGroupNames[g], ToDuk<VehicleSpriteGroup>(ctx, group));
                 }
             }
             return groups.Take();
@@ -864,7 +863,7 @@ namespace OpenRCT2::Scripting
             return 0;
         }
 
-        uint8_t price_get() const
+        money64 price_get() const
         {
             auto sceneryEntry = GetLegacyData();
             if (sceneryEntry != nullptr)
@@ -874,7 +873,7 @@ namespace OpenRCT2::Scripting
             return 0;
         }
 
-        uint8_t removalPrice_get() const
+        money64 removalPrice_get() const
         {
             auto sceneryEntry = GetLegacyData();
             if (sceneryEntry != nullptr)

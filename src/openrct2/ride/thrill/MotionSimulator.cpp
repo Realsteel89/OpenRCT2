@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -11,12 +11,16 @@
 #include "../../interface/Viewport.h"
 #include "../../paint/Boundbox.h"
 #include "../../paint/Paint.h"
-#include "../../paint/Supports.h"
+#include "../../paint/support/WoodenSupports.h"
+#include "../../paint/tile_element/Segment.h"
+#include "../../paint/track/Segment.h"
 #include "../Ride.h"
 #include "../RideEntry.h"
 #include "../Track.h"
 #include "../TrackPaint.h"
 #include "../Vehicle.h"
+
+using namespace OpenRCT2;
 
 enum
 {
@@ -32,7 +36,7 @@ enum
 
 static void PaintMotionSimulatorVehicle(
     PaintSession& session, const Ride& ride, int8_t offsetX, int8_t offsetY, uint8_t direction, int32_t height,
-    const TrackElement& trackElement)
+    ImageId stationColour)
 {
     auto rideEntry = ride.GetRideEntry();
     if (rideEntry == nullptr)
@@ -65,10 +69,9 @@ static void PaintMotionSimulatorVehicle(
     }
 
     auto imageTemplate = ImageId(0, ride.vehicle_colours[0].Body, ride.vehicle_colours[0].Trim);
-    auto imageFlags = session.TrackColours[SCHEME_MISC];
-    if (imageFlags != TrackGhost)
+    if (stationColour != TrackStationColour)
     {
-        imageTemplate = imageFlags;
+        imageTemplate = stationColour;
     }
     auto simulatorImageId = imageTemplate.WithIndex(imageIndex);
     auto stairsImageId = imageTemplate.WithIndex(SPR_MOTION_SIMULATOR_STAIRS_R0 + direction);
@@ -105,35 +108,37 @@ static void PaintMotionSimulator(
     PaintSession& session, const Ride& ride, uint8_t trackSequence, uint8_t direction, int32_t height,
     const TrackElement& trackElement)
 {
-    trackSequence = track_map_2x2[direction][trackSequence];
+    trackSequence = kTrackMap2x2[direction][trackSequence];
 
-    int32_t edges = edges_2x2[trackSequence];
+    int32_t edges = kEdges2x2[trackSequence];
 
-    WoodenASupportsPaintSetup(session, (direction & 1), 0, height, session.TrackColours[SCHEME_MISC]);
+    auto stationColour = GetStationColourScheme(session, trackElement);
+    WoodenASupportsPaintSetupRotated(
+        session, WoodenSupportType::Truss, WoodenSupportSubType::NeSw, direction, height, stationColour);
 
     const StationObject* stationObject = ride.GetStationObject();
 
-    TrackPaintUtilPaintFloor(session, edges, session.TrackColours[SCHEME_TRACK], height, floorSpritesCork, stationObject);
+    TrackPaintUtilPaintFloor(session, edges, session.TrackColours, height, kFloorSpritesCork, stationObject);
 
     TrackPaintUtilPaintFences(
-        session, edges, session.MapPosition, trackElement, ride, session.TrackColours[SCHEME_SUPPORTS], height,
-        fenceSpritesRope, session.CurrentRotation);
+        session, edges, session.MapPosition, trackElement, ride, session.SupportColours, height, kFenceSpritesRope,
+        session.CurrentRotation);
 
     switch (trackSequence)
     {
         case 1:
-            PaintMotionSimulatorVehicle(session, ride, 16, -16, direction, height, trackElement);
+            PaintMotionSimulatorVehicle(session, ride, 16, -16, direction, height, stationColour);
             break;
         case 2:
-            PaintMotionSimulatorVehicle(session, ride, -16, 16, direction, height, trackElement);
+            PaintMotionSimulatorVehicle(session, ride, -16, 16, direction, height, stationColour);
             break;
         case 3:
-            PaintMotionSimulatorVehicle(session, ride, -16, -16, direction, height, trackElement);
+            PaintMotionSimulatorVehicle(session, ride, -16, -16, direction, height, stationColour);
             break;
     }
 
-    PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, 0xFFFF, 0);
-    PaintUtilSetGeneralSupportHeight(session, height + 128, 0x20);
+    PaintUtilSetSegmentSupportHeight(session, kSegmentsAll, 0xFFFF, 0);
+    PaintUtilSetGeneralSupportHeight(session, height + 128);
 }
 
 /**

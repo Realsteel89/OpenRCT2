@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -11,6 +11,8 @@
 
 #    include "NetworkServerAdvertiser.h"
 
+#    include "../Diagnostic.h"
+#    include "../GameState.h"
 #    include "../config/Config.h"
 #    include "../core/Console.hpp"
 #    include "../core/Guard.hpp"
@@ -18,7 +20,7 @@
 #    include "../core/Json.hpp"
 #    include "../core/String.hpp"
 #    include "../entity/Guest.h"
-#    include "../localisation/Date.h"
+#    include "../localisation/Localisation.Date.h"
 #    include "../management/Finance.h"
 #    include "../platform/Platform.h"
 #    include "../util/Util.h"
@@ -32,6 +34,8 @@
 #    include <memory>
 #    include <random>
 #    include <string>
+
+using namespace OpenRCT2;
 
 enum class MasterServerStatus
 {
@@ -89,7 +93,7 @@ public:
     {
         UpdateLAN();
 #    ifndef DISABLE_HTTP
-        if (gConfigNetwork.Advertise)
+        if (Config::Get().network.Advertise)
         {
             UpdateWAN();
         }
@@ -104,7 +108,7 @@ private:
         {
             if (_lanListener->GetStatus() != SocketStatus::Listening)
             {
-                _lanListener->Listen(NETWORK_LAN_BROADCAST_PORT);
+                _lanListener->Listen(kNetworkLanBroadcastPort);
             }
             else
             {
@@ -116,7 +120,7 @@ private:
                 {
                     std::string sender = endpoint->GetHostname();
                     LOG_VERBOSE("Received %zu bytes from %s on LAN broadcast port", recievedBytes, sender.c_str());
-                    if (String::Equals(buffer, NETWORK_LAN_BROADCAST_MSG))
+                    if (String::Equals(buffer, kNetworkLanBroadcastMsg))
                     {
                         auto body = GetBroadcastJson();
                         auto bodyDump = body.dump();
@@ -179,9 +183,9 @@ private:
             { "port", _port },
         };
 
-        if (!gConfigNetwork.AdvertiseAddress.empty())
+        if (!Config::Get().network.AdvertiseAddress.empty())
         {
-            body["address"] = gConfigNetwork.AdvertiseAddress;
+            body["address"] = Config::Get().network.AdvertiseAddress;
         }
 
         request.body = body.dump();
@@ -284,6 +288,7 @@ private:
         else if (status == MasterServerStatus::InvalidToken)
         {
             _status = ADVERTISE_STATUS::UNREGISTERED;
+            _lastAdvertiseTime = 0;
             Console::Error::WriteLine("Master server heartbeat failed: Invalid Token");
         }
     }
@@ -297,15 +302,20 @@ private:
             { "players", numPlayers },
         };
 
-        auto& date = GetDate();
-        json_t mapSize = { { "x", gMapSize.x - 2 }, { "y", gMapSize.y - 2 } };
+        const auto& gameState = GetGameState();
+        const auto& date = GetDate();
+        json_t mapSize = { { "x", gameState.MapSize.x - 2 }, { "y", gameState.MapSize.y - 2 } };
         json_t gameInfo = {
-            { "mapSize", mapSize },         { "day", date.GetMonthTicks() }, { "month", date.GetMonthsElapsed() },
-            { "guests", gNumGuestsInPark }, { "parkValue", gParkValue },
+            { "mapSize", mapSize },
+            { "day", date.GetMonthTicks() },
+            { "month", date.GetMonthsElapsed() },
+            { "guests", gameState.NumGuestsInPark },
+            { "parkValue", gameState.Park.Value },
         };
-        if (!(gParkFlags & PARK_FLAGS_NO_MONEY))
+
+        if (!(gameState.Park.Flags & PARK_FLAGS_NO_MONEY))
         {
-            gameInfo["cash"] = gCash;
+            gameInfo["cash"] = gameState.Cash;
         }
 
         root["gameInfo"] = gameInfo;
@@ -335,10 +345,10 @@ private:
 
     static std::string GetMasterServerUrl()
     {
-        std::string result = OPENRCT2_MASTER_SERVER_URL;
-        if (!gConfigNetwork.MasterServerUrl.empty())
+        std::string result = kMasterServerURL;
+        if (!Config::Get().network.MasterServerUrl.empty())
         {
-            result = gConfigNetwork.MasterServerUrl;
+            result = Config::Get().network.MasterServerUrl;
         }
         return result;
     }

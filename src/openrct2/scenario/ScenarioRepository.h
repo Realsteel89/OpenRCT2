@@ -1,6 +1,6 @@
 
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "../common.h"
+#include "../core/DateTime.h"
 #include "../core/String.hpp"
 #include "../scenario/Scenario.h"
 
@@ -42,7 +42,7 @@ enum class ScenarioSource : uint8_t
 
 struct ScenarioIndexEntry
 {
-    utf8 Path[MAX_PATH];
+    u8string Path;
     uint64_t Timestamp;
 
     // Category / sequence
@@ -75,19 +75,18 @@ struct IScenarioRepository
     /**
      * Scans the scenario directories and grabs the metadata for all the scenarios.
      */
-    virtual void Scan(int32_t language) abstract;
+    virtual void Scan(int32_t language) = 0;
 
-    virtual size_t GetCount() const abstract;
-    virtual const ScenarioIndexEntry* GetByIndex(size_t index) const abstract;
-    virtual const ScenarioIndexEntry* GetByFilename(u8string_view filename) const abstract;
+    virtual size_t GetCount() const = 0;
+    virtual const ScenarioIndexEntry* GetByIndex(size_t index) const = 0;
+    virtual const ScenarioIndexEntry* GetByFilename(u8string_view filename) const = 0;
     /**
      * Does not return custom scenarios due to the fact that they may have the same name.
      */
-    virtual const ScenarioIndexEntry* GetByInternalName(const utf8* name) const abstract;
-    virtual const ScenarioIndexEntry* GetByPath(const utf8* path) const abstract;
+    virtual const ScenarioIndexEntry* GetByInternalName(const utf8* name) const = 0;
+    virtual const ScenarioIndexEntry* GetByPath(const utf8* path) const = 0;
 
-    virtual bool TryRecordHighscore(
-        int32_t language, const utf8* scenarioFileName, money64 companyValue, const utf8* name) abstract;
+    virtual bool TryRecordHighscore(int32_t language, const utf8* scenarioFileName, money64 companyValue, const utf8* name) = 0;
 };
 
 [[nodiscard]] std::unique_ptr<IScenarioRepository> CreateScenarioRepository(

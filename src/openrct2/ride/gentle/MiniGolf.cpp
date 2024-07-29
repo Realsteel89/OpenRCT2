@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -7,15 +7,19 @@
  * OpenRCT2 is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
-#include "../../config/Config.h"
 #include "../../entity/EntityRegistry.h"
 #include "../../entity/Guest.h"
 #include "../../interface/Viewport.h"
 #include "../../paint/Paint.SessionFlags.h"
 #include "../../paint/Paint.h"
-#include "../../paint/Supports.h"
+#include "../../paint/support/MetalSupports.h"
+#include "../../paint/support/WoodenSupports.h"
+#include "../../paint/tile_element/Segment.h"
+#include "../../paint/track/Segment.h"
+#include "../../paint/track/Support.h"
 #include "../../world/Map.h"
 #include "../../world/Surface.h"
+#include "../../world/tile_element/Slope.h"
 #include "../RideData.h"
 #include "../TrackData.h"
 #include "../TrackPaint.h"
@@ -23,6 +27,10 @@
 #include "../VehiclePaint.h"
 
 #include <iterator>
+
+using namespace OpenRCT2;
+
+static constexpr MetalSupportType kSupportType = MetalSupportType::Boxed;
 
 enum
 {
@@ -458,7 +466,7 @@ static bool MiniGolfPaintUtilShouldDrawFence(PaintSession& session, const TrackE
         return true;
     }
 
-    if (surfaceElement->GetSlope() != TILE_ELEMENT_SLOPE_FLAT)
+    if (surfaceElement->GetSlope() != kTileSlopeFlat)
     {
         return true;
     }
@@ -475,42 +483,45 @@ static void PaintMiniGolfTrackFlat(
 
     if (direction & 1)
     {
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(SprMiniGolfFlatNwSe);
+        imageId = session.TrackColours.WithIndex(SprMiniGolfFlatNwSe);
         PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 6, 0, height }, { 20, 32, 1 } });
-        PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+        PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
     }
     else
     {
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(SprMiniGolfFlatSwNe);
+        imageId = session.TrackColours.WithIndex(SprMiniGolfFlatSwNe);
         PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 0, 6, height }, { 32, 20, 1 } });
-        PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+        PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
     }
 
-    MetalASupportsPaintSetup(session, MetalSupportType::Boxed, 4, 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+    MetalASupportsPaintSetup(session, kSupportType, MetalSupportPlace::Centre, 0, height, session.SupportColours);
     PaintUtilSetSegmentSupportHeight(
-        session, PaintUtilRotateSegments(SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction), 0xFFFF, 0);
+        session,
+        PaintUtilRotateSegments(
+            EnumsToFlags(PaintSegment::bottomLeftSide, PaintSegment::centre, PaintSegment::topRightSide), direction),
+        0xFFFF, 0);
 
     if (MiniGolfPaintUtilShouldDrawFence(session, trackElement))
     {
         if (direction & 1)
         {
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceBackNwSe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceBackNwSe);
             PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 10, 0, height + 2 }, { 1, 32, 7 } });
 
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceFrontNwSe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceFrontNwSe);
             PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 22, 0, height + 2 }, { 1, 32, 7 } });
         }
         else
         {
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceBackSwNe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceBackSwNe);
             PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 0, 10, height + 2 }, { 32, 1, 7 } });
 
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceFrontSwNe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceFrontSwNe);
             PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 0, 22, height + 2 }, { 32, 1, 7 } });
         }
     }
 
-    PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
+    PaintUtilSetGeneralSupportHeight(session, height + kDefaultGeneralSupportHeight);
 }
 
 /** rct2: 0x0087F11C */
@@ -520,36 +531,39 @@ static void PaintMiniGolfTrack25DegUp(
 {
     ImageId imageId;
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSprites25DegUp[direction][0]);
+    imageId = session.TrackColours.WithIndex(MiniGolfTrackSprites25DegUp[direction][0]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { 32, 20, 1 });
 
-    MetalASupportsPaintSetup(session, MetalSupportType::Boxed, 4, 8, height, session.TrackColours[SCHEME_SUPPORTS]);
+    MetalASupportsPaintSetup(session, kSupportType, MetalSupportPlace::Centre, 8, height, session.SupportColours);
     PaintUtilSetSegmentSupportHeight(
-        session, PaintUtilRotateSegments(SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction), 0xFFFF, 0);
+        session,
+        PaintUtilRotateSegments(
+            EnumsToFlags(PaintSegment::bottomLeftSide, PaintSegment::centre, PaintSegment::topRightSide), direction),
+        0xFFFF, 0);
 
-    imageId = session.TrackColours[SCHEME_MISC].WithIndex(MiniGolfTrackSprites25DegUp[direction][1]);
+    imageId = GetStationColourScheme(session, trackElement).WithIndex(MiniGolfTrackSprites25DegUp[direction][1]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 10, height + 2 }, { 32, 1, 15 } });
 
-    imageId = session.TrackColours[SCHEME_MISC].WithIndex(MiniGolfTrackSprites25DegUp[direction][2]);
+    imageId = GetStationColourScheme(session, trackElement).WithIndex(MiniGolfTrackSprites25DegUp[direction][2]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 22, height + 2 }, { 32, 1, 15 } });
 
     switch (direction)
     {
         case 0:
-            PaintUtilPushTunnelLeft(session, height - 8, TUNNEL_1);
+            PaintUtilPushTunnelLeft(session, height - 8, TunnelType::StandardSlopeStart);
             break;
         case 1:
-            PaintUtilPushTunnelRight(session, height + 8, TUNNEL_2);
+            PaintUtilPushTunnelRight(session, height + 8, TunnelType::StandardSlopeEnd);
             break;
         case 2:
-            PaintUtilPushTunnelLeft(session, height + 8, TUNNEL_2);
+            PaintUtilPushTunnelLeft(session, height + 8, TunnelType::StandardSlopeEnd);
             break;
         case 3:
-            PaintUtilPushTunnelRight(session, height - 8, TUNNEL_1);
+            PaintUtilPushTunnelRight(session, height - 8, TunnelType::StandardSlopeStart);
             break;
     }
 
-    PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
+    PaintUtilSetGeneralSupportHeight(session, height + 56);
 }
 
 /** rct2: 0x0087F12C */
@@ -559,36 +573,39 @@ static void PaintMiniGolfTrackFlatTo25DegUp(
 {
     ImageId imageId;
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesFlatTo25DegUp[direction][0]);
+    imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesFlatTo25DegUp[direction][0]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 6, height }, { 32, 20, 1 } });
 
-    MetalASupportsPaintSetup(session, MetalSupportType::Boxed, 4, 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+    MetalASupportsPaintSetup(session, kSupportType, MetalSupportPlace::Centre, 0, height, session.SupportColours);
     PaintUtilSetSegmentSupportHeight(
-        session, PaintUtilRotateSegments(SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction), 0xFFFF, 0);
+        session,
+        PaintUtilRotateSegments(
+            EnumsToFlags(PaintSegment::bottomLeftSide, PaintSegment::centre, PaintSegment::topRightSide), direction),
+        0xFFFF, 0);
 
-    imageId = session.TrackColours[SCHEME_MISC].WithIndex(MiniGolfTrackSpritesFlatTo25DegUp[direction][1]);
+    imageId = GetStationColourScheme(session, trackElement).WithIndex(MiniGolfTrackSpritesFlatTo25DegUp[direction][1]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 10, height + 2 }, { 32, 1, 11 } });
 
-    imageId = session.TrackColours[SCHEME_MISC].WithIndex(MiniGolfTrackSpritesFlatTo25DegUp[direction][2]);
+    imageId = GetStationColourScheme(session, trackElement).WithIndex(MiniGolfTrackSpritesFlatTo25DegUp[direction][2]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 22, height + 2 }, { 32, 1, 11 } });
 
     switch (direction)
     {
         case 0:
-            PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
             break;
         case 1:
-            PaintUtilPushTunnelRight(session, height, TUNNEL_2);
+            PaintUtilPushTunnelRight(session, height, TunnelType::StandardSlopeEnd);
             break;
         case 2:
-            PaintUtilPushTunnelLeft(session, height, TUNNEL_2);
+            PaintUtilPushTunnelLeft(session, height, TunnelType::StandardSlopeEnd);
             break;
         case 3:
-            PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
             break;
     }
 
-    PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
+    PaintUtilSetGeneralSupportHeight(session, height + 48);
 }
 
 /** rct2: 0x0087F13C */
@@ -598,36 +615,39 @@ static void PaintMiniGolfTrack25DegUpToFlat(
 {
     ImageId imageId;
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSprites25DegUpToFlat[direction][0]);
+    imageId = session.TrackColours.WithIndex(MiniGolfTrackSprites25DegUpToFlat[direction][0]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 6, height }, { 32, 20, 1 } });
 
-    MetalASupportsPaintSetup(session, MetalSupportType::Boxed, 4, 8, height, session.TrackColours[SCHEME_SUPPORTS]);
+    MetalASupportsPaintSetup(session, kSupportType, MetalSupportPlace::Centre, 8, height, session.SupportColours);
     PaintUtilSetSegmentSupportHeight(
-        session, PaintUtilRotateSegments(SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction), 0xFFFF, 0);
+        session,
+        PaintUtilRotateSegments(
+            EnumsToFlags(PaintSegment::bottomLeftSide, PaintSegment::centre, PaintSegment::topRightSide), direction),
+        0xFFFF, 0);
 
-    imageId = session.TrackColours[SCHEME_MISC].WithIndex(MiniGolfTrackSprites25DegUpToFlat[direction][1]);
+    imageId = GetStationColourScheme(session, trackElement).WithIndex(MiniGolfTrackSprites25DegUpToFlat[direction][1]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 10, height + 2 }, { 32, 1, 11 } });
 
-    imageId = session.TrackColours[SCHEME_MISC].WithIndex(MiniGolfTrackSprites25DegUpToFlat[direction][2]);
+    imageId = GetStationColourScheme(session, trackElement).WithIndex(MiniGolfTrackSprites25DegUpToFlat[direction][2]);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 22, height + 2 }, { 32, 1, 11 } });
 
     switch (direction)
     {
         case 0:
-            PaintUtilPushTunnelLeft(session, height - 8, TUNNEL_0);
+            PaintUtilPushTunnelLeft(session, height - 8, TunnelType::StandardFlat);
             break;
         case 1:
-            PaintUtilPushTunnelRight(session, height + 8, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelRight(session, height + 8, TunnelType::PathAndMiniGolf);
             break;
         case 2:
-            PaintUtilPushTunnelLeft(session, height + 8, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelLeft(session, height + 8, TunnelType::PathAndMiniGolf);
             break;
         case 3:
-            PaintUtilPushTunnelRight(session, height - 8, TUNNEL_0);
+            PaintUtilPushTunnelRight(session, height - 8, TunnelType::StandardFlat);
             break;
     }
 
-    PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
+    PaintUtilSetGeneralSupportHeight(session, height + 40);
 }
 
 /** rct2: 0x0087F14C */
@@ -663,7 +683,7 @@ static void PaintMiniGolfStation(
     ImageId imageId;
     bool hasFence;
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(SprMiniGolfStationFloor);
+    imageId = session.TrackColours.WithIndex(SprMiniGolfStationFloor);
     PaintAddImageAsParentRotated(session, direction, imageId, { 0, 0, height }, { { 0, 0, height }, { 32, 28, 1 } });
 
     if (direction & 1)
@@ -671,49 +691,52 @@ static void PaintMiniGolfStation(
         hasFence = TrackPaintUtilHasFence(EDGE_NE, session.MapPosition, trackElement, ride, session.CurrentRotation);
         if (hasFence)
         {
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceBackNwSe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceBackNwSe);
             PaintAddImageAsParent(session, imageId, { -10, 0, height }, { { 0, 0, height + 2 }, { 1, 32, 7 } });
         }
 
         bool hasSWFence = TrackPaintUtilHasFence(EDGE_SW, session.MapPosition, trackElement, ride, session.CurrentRotation);
         if (hasSWFence)
         {
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceFrontNwSe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceFrontNwSe);
             PaintAddImageAsParent(session, imageId, { 10, 0, height }, { { 31, 0, height + 2 }, { 1, 32, 7 } });
         }
 
-        TrackPaintUtilDrawStationCovers(session, EDGE_NE, hasFence, stationObj, height);
-        TrackPaintUtilDrawStationCovers(session, EDGE_SW, hasSWFence, stationObj, height);
+        auto stationColour = GetStationColourScheme(session, trackElement);
+        TrackPaintUtilDrawStationCovers(session, EDGE_NE, hasFence, stationObj, height, stationColour);
+        TrackPaintUtilDrawStationCovers(session, EDGE_SW, hasSWFence, stationObj, height, stationColour);
 
         // Was leftwards tunnel in game, seems odd
-        PaintUtilPushTunnelRight(session, height, TUNNEL_SQUARE_FLAT);
+        PaintUtilPushTunnelRight(session, height, TunnelType::SquareFlat);
     }
     else
     {
         hasFence = TrackPaintUtilHasFence(EDGE_NW, session.MapPosition, trackElement, ride, session.CurrentRotation);
         if (hasFence)
         {
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceBackSwNe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceBackSwNe);
             PaintAddImageAsParent(session, imageId, { 0, -10, height }, { { 0, 0, height + 2 }, { 32, 1, 7 } });
         }
 
         bool hasSEFence = TrackPaintUtilHasFence(EDGE_SE, session.MapPosition, trackElement, ride, session.CurrentRotation);
         if (hasSEFence)
         {
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfFlatFenceFrontSwNe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfFlatFenceFrontSwNe);
             PaintAddImageAsParent(session, imageId, { 0, 10, height }, { { 0, 31, height + 2 }, { 32, 1, 7 } });
         }
 
-        TrackPaintUtilDrawStationCovers(session, EDGE_NW, hasFence, stationObj, height);
-        TrackPaintUtilDrawStationCovers(session, EDGE_SE, hasSEFence, stationObj, height);
+        auto stationColour = GetStationColourScheme(session, trackElement);
+        TrackPaintUtilDrawStationCovers(session, EDGE_NW, hasFence, stationObj, height, stationColour);
+        TrackPaintUtilDrawStationCovers(session, EDGE_SE, hasSEFence, stationObj, height, stationColour);
 
-        PaintUtilPushTunnelLeft(session, height, TUNNEL_SQUARE_FLAT);
+        PaintUtilPushTunnelLeft(session, height, TunnelType::SquareFlat);
     }
 
-    WoodenASupportsPaintSetup(session, (direction & 1), 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+    WoodenASupportsPaintSetupRotated(
+        session, WoodenSupportType::Truss, WoodenSupportSubType::NeSw, direction, height, session.SupportColours);
 
-    PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, 0xFFFF, 0);
-    PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
+    PaintUtilSetSegmentSupportHeight(session, kSegmentsAll, 0xFFFF, 0);
+    PaintUtilSetGeneralSupportHeight(session, height + kDefaultGeneralSupportHeight);
 }
 
 /** rct2: 0x0087F1AC */
@@ -724,23 +747,28 @@ static void PaintMiniGolfTrackLeftQuarterTurn1Tile(
     ImageId imageId;
 
     TrackPaintUtilLeftQuarterTurn1TilePaint(
-        session, 1, height, 0, direction, session.TrackColours[SCHEME_TRACK], MiniGolfTrackSpritesQuarterTurn1Tile);
+        session, 1, height, 0, direction, session.TrackColours, MiniGolfTrackSpritesQuarterTurn1Tile);
 
-    MetalASupportsPaintSetup(session, MetalSupportType::Boxed, 4, 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+    MetalASupportsPaintSetup(session, kSupportType, MetalSupportPlace::Centre, 0, height, session.SupportColours);
 
     PaintUtilSetSegmentSupportHeight(
-        session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_D0, direction), 0xFFFF, 0);
+        session,
+        PaintUtilRotateSegments(
+            EnumsToFlags(
+                PaintSegment::leftCorner, PaintSegment::topLeftSide, PaintSegment::centre, PaintSegment::bottomLeftSide),
+            direction),
+        0xFFFF, 0);
 
     const bool shouldDrawFence = MiniGolfPaintUtilShouldDrawFence(session, trackElement);
 
     switch (direction)
     {
         case 0:
-            PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
             if (!shouldDrawFence)
                 break;
 
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfQuarterTurn1TileFenceBackSwNw);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfQuarterTurn1TileFenceBackSwNw);
             PaintAddImageAsChild(session, imageId, { 0, 0, height }, { { 6, 2, height }, { 26, 24, 1 } });
 
             break;
@@ -749,26 +777,26 @@ static void PaintMiniGolfTrackLeftQuarterTurn1Tile(
             if (!shouldDrawFence)
                 break;
 
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfQuarterTurn1TileFenceBackNwNe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfQuarterTurn1TileFenceBackNwNe);
             PaintAddImageAsChild(session, imageId, { 0, 0, height }, { { 0, 0, height }, { 26, 26, 1 } });
             break;
 
         case 2:
-            PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
             if (!shouldDrawFence)
                 break;
 
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfQuarterTurn1TileFenceBackNeSe);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfQuarterTurn1TileFenceBackNeSe);
             PaintAddImageAsChild(session, imageId, { 0, 0, height }, { { 2, 6, height }, { 24, 26, 1 } });
             break;
 
         case 3:
-            PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
-            PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
+            PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
             if (!shouldDrawFence)
                 break;
 
-            imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfQuarterTurn1TileFenceBackSeSw);
+            imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfQuarterTurn1TileFenceBackSeSw);
             PaintAddImageAsChild(session, imageId, { 0, 0, height }, { { 6, 6, height }, { 24, 24, 1 } });
             break;
     }
@@ -777,23 +805,23 @@ static void PaintMiniGolfTrackLeftQuarterTurn1Tile(
     {
         // TODO: The back fence uses the same x/y offsets, but uses another paint function. See if this occurs more often.
         TrackPaintUtilLeftQuarterTurn1TilePaint(
-            session, 0, height, 24, direction, session.TrackColours[SCHEME_MISC],
+            session, 0, height, 24, direction, GetStationColourScheme(session, trackElement),
             MiniGolfTrackSpritesQuarterTurn1TileFenceFront);
 
         switch (direction)
         {
             case 0:
-                imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfQuarterTurn1TileFenceInsideSwNw);
+                imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfQuarterTurn1TileFenceInsideSwNw);
                 PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 24, 0, height + 2 }, { 5, 5, 5 } });
                 break;
             case 2:
-                imageId = session.TrackColours[SCHEME_MISC].WithIndex(SprMiniGolfQuarterTurn1TileFenceInsideNeSe);
+                imageId = GetStationColourScheme(session, trackElement).WithIndex(SprMiniGolfQuarterTurn1TileFenceInsideNeSe);
                 PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 0, 24, height + 2 }, { 5, 5, 5 } });
                 break;
         }
     }
 
-    PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
+    PaintUtilSetGeneralSupportHeight(session, height + kDefaultGeneralSupportHeight);
 }
 
 /** rct2: 0x0087F1BC */
@@ -810,18 +838,19 @@ static void PaintMiniGolfHoleAb(
     ImageId imageId;
     CoordsXY boundBox, boundBoxOffset;
 
-    bool drewSupports = WoodenASupportsPaintSetup(session, (direction & 1), 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+    bool drewSupports = WoodenASupportsPaintSetupRotated(
+        session, WoodenSupportType::Truss, WoodenSupportSubType::NeSw, direction, height, session.SupportColours);
 
-    PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, 0xFFFF, 0);
-    PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
+    PaintUtilSetSegmentSupportHeight(session, kSegmentsAll, 0xFFFF, 0);
+    PaintUtilSetGeneralSupportHeight(session, height + kDefaultGeneralSupportHeight);
 
     if ((direction == 0 && trackSequence == 0) || (direction == 2 && trackSequence == 1))
     {
-        PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+        PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
     }
     else if ((direction == 3 && trackSequence == 0) || (direction == 1 && trackSequence == 1))
     {
-        PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+        PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
     }
 
     if (direction & 1)
@@ -837,7 +866,7 @@ static void PaintMiniGolfHoleAb(
 
     auto bb = BoundBoxXYZ{ { boundBoxOffset, height + 24 }, { boundBox, 0 } };
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(sprites[direction][trackSequence][1]);
+    imageId = session.TrackColours.WithIndex(sprites[direction][trackSequence][1]);
     PaintAddImageAsParent(session, imageId, { 0, 0, height }, bb);
 
     bb.offset.z = height;
@@ -845,16 +874,15 @@ static void PaintMiniGolfHoleAb(
 
     if (drewSupports)
     {
-        imageId = session.TrackColours[SCHEME_SUPPORTS].WithIndex(
-            ((direction & 1) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
+        imageId = session.SupportColours.WithIndex(((direction & 1) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
         PaintAddImageAsParent(session, imageId, { 0, 0, height }, bb);
 
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(sprites[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(sprites[direction][trackSequence][0]);
         PaintAddImageAsChild(session, imageId, { 0, 0, height }, bb);
     }
     else
     {
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(sprites[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(sprites[direction][trackSequence][0]);
         PaintAddImageAsParent(session, imageId, { 0, 0, height }, bb);
     }
 }
@@ -883,18 +911,19 @@ static void PaintMiniGolfHoleC(
     ImageId imageId;
     CoordsXY boundBox, boundBoxOffset;
 
-    bool drewSupports = WoodenASupportsPaintSetup(session, (direction & 1), 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+    bool drewSupports = WoodenASupportsPaintSetupRotated(
+        session, WoodenSupportType::Truss, WoodenSupportSubType::NeSw, direction, height, session.SupportColours);
 
-    PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, 0xFFFF, 0);
-    PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
+    PaintUtilSetSegmentSupportHeight(session, kSegmentsAll, 0xFFFF, 0);
+    PaintUtilSetGeneralSupportHeight(session, height + kDefaultGeneralSupportHeight);
 
     if ((direction == 0 && trackSequence == 0) || (direction == 2 && trackSequence == 1))
     {
-        PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+        PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
     }
     else if ((direction == 3 && trackSequence == 0) || (direction == 1 && trackSequence == 1))
     {
-        PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+        PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
     }
 
     if (direction & 1)
@@ -908,7 +937,7 @@ static void PaintMiniGolfHoleC(
         boundBoxOffset = { 0, 3 };
     }
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleC[direction][trackSequence][1]);
+    imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleC[direction][trackSequence][1]);
 
     switch ((direction << 4) | trackSequence)
     {
@@ -930,16 +959,15 @@ static void PaintMiniGolfHoleC(
     auto bb = BoundBoxXYZ{ { boundBoxOffset, height }, { boundBox.x, boundBox.y, 1 } };
     if (drewSupports)
     {
-        imageId = session.TrackColours[SCHEME_SUPPORTS].WithIndex(
-            ((direction & 1) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
+        imageId = session.SupportColours.WithIndex(((direction & 1) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
         PaintAddImageAsParent(session, imageId, { 0, 0, height }, bb);
 
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleC[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleC[direction][trackSequence][0]);
         PaintAddImageAsChild(session, imageId, { 0, 0, height }, bb);
     }
     else
     {
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleC[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleC[direction][trackSequence][0]);
         PaintAddImageAsParent(session, imageId, { 0, 0, height }, bb);
     }
 }
@@ -952,28 +980,29 @@ static void PaintMiniGolfHoleD(
     ImageId imageId;
     CoordsXY boundBox, boundBoxOffset;
 
-    int32_t supportType = (direction & 1);
+    auto supportType = (direction & 1) ? WoodenSupportSubType::NwSe : WoodenSupportSubType::NeSw;
     if (trackSequence == 2)
-        supportType = 1 - supportType;
-    bool drewSupports = WoodenASupportsPaintSetup(session, supportType, 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+        supportType = (direction & 1) ? WoodenSupportSubType::NeSw : WoodenSupportSubType::NwSe;
+    bool drewSupports = WoodenASupportsPaintSetup(
+        session, WoodenSupportType::Truss, supportType, height, session.SupportColours);
 
-    PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, 0xFFFF, 0);
-    PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
+    PaintUtilSetSegmentSupportHeight(session, kSegmentsAll, 0xFFFF, 0);
+    PaintUtilSetGeneralSupportHeight(session, height + kDefaultGeneralSupportHeight);
 
     switch ((direction << 4) | trackSequence)
     {
         case 0x00:
         case 0x12:
-            PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
             break;
 
         case 0x02:
         case 0x30:
-            PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
             break;
     }
 
-    if (supportType & 1)
+    if (supportType == WoodenSupportSubType::NeSw)
     {
         boundBox = { 26, 32 };
         boundBoxOffset = { 3, 0 };
@@ -984,7 +1013,7 @@ static void PaintMiniGolfHoleD(
         boundBoxOffset = { 0, 3 };
     }
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleD[direction][trackSequence][1]);
+    imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleD[direction][trackSequence][1]);
 
     switch ((direction << 4) | trackSequence)
     {
@@ -1023,16 +1052,16 @@ static void PaintMiniGolfHoleD(
     auto offset = CoordsXYZ{ 0, 0, height };
     if (drewSupports)
     {
-        imageId = session.TrackColours[SCHEME_SUPPORTS].WithIndex(
-            ((supportType & 1) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
+        imageId = session.SupportColours.WithIndex(
+            ((supportType == WoodenSupportSubType::NeSw) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
         PaintAddImageAsParent(session, imageId, offset, bb);
 
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleD[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleD[direction][trackSequence][0]);
         PaintAddImageAsChild(session, imageId, offset, bb);
     }
     else
     {
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleD[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleD[direction][trackSequence][0]);
         PaintAddImageAsParent(session, imageId, offset, bb);
     }
 }
@@ -1045,28 +1074,29 @@ static void PaintMiniGolfHoleE(
     ImageId imageId;
     CoordsXY boundBox, boundBoxOffset;
 
-    int32_t supportType = (direction & 1);
+    auto supportType = (direction & 1) ? WoodenSupportSubType::NwSe : WoodenSupportSubType::NeSw;
     if (trackSequence == 2)
-        supportType = 1 - supportType;
-    bool drewSupports = WoodenASupportsPaintSetup(session, supportType, 0, height, session.TrackColours[SCHEME_SUPPORTS]);
+        supportType = (direction & 1) ? WoodenSupportSubType::NeSw : WoodenSupportSubType::NwSe;
+    bool drewSupports = WoodenASupportsPaintSetup(
+        session, WoodenSupportType::Truss, supportType, height, session.SupportColours);
 
-    PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, 0xFFFF, 0);
-    PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
+    PaintUtilSetSegmentSupportHeight(session, kSegmentsAll, 0xFFFF, 0);
+    PaintUtilSetGeneralSupportHeight(session, height + kDefaultGeneralSupportHeight);
 
     switch ((direction << 4) | trackSequence)
     {
         case (0 << 4 | 0):
         case (3 << 4 | 2):
-            PaintUtilPushTunnelLeft(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelLeft(session, height, TunnelType::PathAndMiniGolf);
             break;
 
         case (2 << 4 | 2):
         case (3 << 4 | 0):
-            PaintUtilPushTunnelRight(session, height, TUNNEL_PATH_AND_MINI_GOLF);
+            PaintUtilPushTunnelRight(session, height, TunnelType::PathAndMiniGolf);
             break;
     }
 
-    if (supportType & 1)
+    if (supportType == WoodenSupportSubType::NwSe)
     {
         boundBox = { 26, 32 };
         boundBoxOffset = { 3, 0 };
@@ -1077,7 +1107,7 @@ static void PaintMiniGolfHoleE(
         boundBoxOffset = { 0, 3 };
     }
 
-    imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleE[direction][trackSequence][1]);
+    imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleE[direction][trackSequence][1]);
 
     switch ((direction << 4) | trackSequence)
     {
@@ -1116,16 +1146,16 @@ static void PaintMiniGolfHoleE(
     auto offset = CoordsXYZ{ 0, 0, height };
     if (drewSupports)
     {
-        imageId = session.TrackColours[SCHEME_SUPPORTS].WithIndex(
-            ((supportType & 1) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
+        imageId = session.SupportColours.WithIndex(
+            ((supportType == WoodenSupportSubType::NwSe) ? SPR_FLOOR_PLANKS_90_DEG : SPR_FLOOR_PLANKS));
         PaintAddImageAsParent(session, imageId, offset, bb);
 
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleE[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleE[direction][trackSequence][0]);
         PaintAddImageAsChild(session, imageId, offset, bb);
     }
     else
     {
-        imageId = session.TrackColours[SCHEME_TRACK].WithIndex(MiniGolfTrackSpritesHoleE[direction][trackSequence][0]);
+        imageId = session.TrackColours.WithIndex(MiniGolfTrackSpritesHoleE[direction][trackSequence][0]);
         PaintAddImageAsParent(session, imageId, offset, bb);
     }
 }

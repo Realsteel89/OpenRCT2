@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,11 +10,15 @@
 #include "../../interface/Viewport.h"
 #include "../../object/StationObject.h"
 #include "../../paint/Paint.h"
-#include "../../paint/Supports.h"
+#include "../../paint/support/WoodenSupports.h"
+#include "../../paint/tile_element/Segment.h"
+#include "../../paint/track/Segment.h"
 #include "../../util/Util.h"
 #include "../Ride.h"
 #include "../Track.h"
 #include "../TrackPaint.h"
+
+using namespace OpenRCT2;
 
 enum
 {
@@ -36,7 +40,7 @@ static constexpr uint32_t DodgemsFenceSprites[] = {
 
 static void PaintDodgemsRoof(PaintSession& session, int32_t height, int32_t offset)
 {
-    auto imageId = session.TrackColours[SCHEME_TRACK].WithIndex((SprDodgemsRoofFrame + offset));
+    auto imageId = session.TrackColours.WithIndex((SprDodgemsRoofFrame + offset));
     PaintAddImageAsParent(session, imageId, { 0, 0, height }, { 32, 32, 2 });
 
     imageId = ImageId(SprDodgemsRoofGlass + offset).WithTransparency(FilterPaletteID::PaletteDarken3);
@@ -47,22 +51,24 @@ static void PaintDodgems(
     PaintSession& session, const Ride& ride, uint8_t trackSequence, uint8_t direction, int32_t height,
     const TrackElement& trackElement)
 {
-    uint8_t relativeTrackSequence = track_map_4x4[direction][trackSequence];
+    uint8_t relativeTrackSequence = kTrackMap4x4[direction][trackSequence];
 
-    int32_t edges = edges_4x4[relativeTrackSequence];
+    int32_t edges = kEdges4x4[relativeTrackSequence];
 
-    WoodenASupportsPaintSetup(session, direction & 1, 0, height, session.TrackColours[SCHEME_MISC]);
+    WoodenASupportsPaintSetupRotated(
+        session, WoodenSupportType::Truss, WoodenSupportSubType::NeSw, direction, height,
+        GetStationColourScheme(session, trackElement));
 
     const StationObject* stationObject = ride.GetStationObject();
 
     if (stationObject != nullptr && !(stationObject->Flags & STATION_OBJECT_FLAGS::NO_PLATFORMS))
     {
-        auto imageId = session.TrackColours[SCHEME_SUPPORTS].WithIndex(SprDodgemsFloor);
+        auto imageId = session.SupportColours.WithIndex(SprDodgemsFloor);
         PaintAddImageAsParent(session, imageId, { 0, 0, height }, { { 1, 1, height }, { 30, 30, 1 } });
 
         TrackPaintUtilPaintFences(
-            session, edges, session.MapPosition, trackElement, ride, session.TrackColours[SCHEME_SUPPORTS], height,
-            DodgemsFenceSprites, session.CurrentRotation);
+            session, edges, session.MapPosition, trackElement, ride, session.SupportColours, height, DodgemsFenceSprites,
+            session.CurrentRotation);
 
         switch (direction)
         {
@@ -96,8 +102,8 @@ static void PaintDodgems(
         }
     }
 
-    PaintUtilSetSegmentSupportHeight(session, SEGMENTS_ALL, height + 36, 0x20);
-    PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
+    PaintUtilSetSegmentSupportHeight(session, kSegmentsAll, height + 36, 0x20);
+    PaintUtilSetGeneralSupportHeight(session, height + 48);
 }
 
 /**

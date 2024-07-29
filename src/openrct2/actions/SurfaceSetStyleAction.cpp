@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,6 +10,8 @@
 #include "SurfaceSetStyleAction.h"
 
 #include "../Context.h"
+#include "../Diagnostic.h"
+#include "../GameState.h"
 #include "../OpenRCT2.h"
 #include "../management/Finance.h"
 #include "../object/ObjectManager.h"
@@ -18,6 +20,8 @@
 #include "../world/Park.h"
 #include "../world/Surface.h"
 #include "../world/TileElement.h"
+
+using namespace OpenRCT2;
 
 SurfaceSetStyleAction::SurfaceSetStyleAction(MapRange range, ObjectEntryIndex surfaceStyle, ObjectEntryIndex edgeStyle)
     : _range(range)
@@ -55,7 +59,7 @@ GameActions::Result SurfaceSetStyleAction::Query() const
 
         if (surfaceObj == nullptr)
         {
-            LOG_ERROR("Invalid surface style.");
+            LOG_ERROR("Invalid surface style %u", _surfaceStyle);
             return GameActions::Result(
                 GameActions::Status::InvalidParameters, STR_CANT_CHANGE_LAND_TYPE, STR_UNKNOWN_OBJECT_TYPE);
         }
@@ -67,7 +71,7 @@ GameActions::Result SurfaceSetStyleAction::Query() const
 
         if (edgeObj == nullptr)
         {
-            LOG_ERROR("Invalid edge style.");
+            LOG_ERROR("Invalid edge style %u", _edgeStyle);
             return GameActions::Result(
                 GameActions::Status::InvalidParameters, STR_CANT_CHANGE_LAND_TYPE, STR_UNKNOWN_OBJECT_TYPE);
         }
@@ -82,8 +86,8 @@ GameActions::Result SurfaceSetStyleAction::Query() const
     res.Position.z = heightMid;
 
     // Do nothing if not in editor, sandbox mode or landscaping is forbidden
-    if (!(gScreenFlags & SCREEN_FLAGS_SCENARIO_EDITOR) && !gCheatsSandboxMode
-        && (gParkFlags & PARK_FLAGS_FORBID_LANDSCAPE_CHANGES))
+    if (!(gScreenFlags & SCREEN_FLAGS_SCENARIO_EDITOR) && !GetGameState().Cheats.SandboxMode
+        && (GetGameState().Park.Flags & PARK_FLAGS_FORBID_LANDSCAPE_CHANGES))
     {
         return GameActions::Result(
             GameActions::Status::Disallowed, STR_CANT_CHANGE_LAND_TYPE, STR_FORBIDDEN_BY_THE_LOCAL_AUTHORITY);
@@ -92,14 +96,14 @@ GameActions::Result SurfaceSetStyleAction::Query() const
     money64 surfaceCost = 0;
     money64 edgeCost = 0;
     for (CoordsXY coords = { validRange.GetLeft(), validRange.GetTop() }; coords.x <= validRange.GetRight();
-         coords.x += COORDS_XY_STEP)
+         coords.x += kCoordsXYStep)
     {
-        for (coords.y = validRange.GetTop(); coords.y <= validRange.GetBottom(); coords.y += COORDS_XY_STEP)
+        for (coords.y = validRange.GetTop(); coords.y <= validRange.GetBottom(); coords.y += kCoordsXYStep)
         {
             if (!LocationValid(coords))
                 continue;
 
-            if (!(gScreenFlags & SCREEN_FLAGS_SCENARIO_EDITOR) && !gCheatsSandboxMode)
+            if (!(gScreenFlags & SCREEN_FLAGS_SCENARIO_EDITOR) && !GetGameState().Cheats.SandboxMode)
             {
                 if (!MapIsLocationInPark(coords))
                     continue;
@@ -113,7 +117,7 @@ GameActions::Result SurfaceSetStyleAction::Query() const
 
             if (_surfaceStyle != OBJECT_ENTRY_INDEX_NULL)
             {
-                uint8_t curSurfaceStyle = surfaceElement->GetSurfaceStyle();
+                uint8_t curSurfaceStyle = surfaceElement->GetSurfaceObjectIndex();
 
                 if (_surfaceStyle != curSurfaceStyle)
                 {
@@ -128,7 +132,7 @@ GameActions::Result SurfaceSetStyleAction::Query() const
 
             if (_edgeStyle != OBJECT_ENTRY_INDEX_NULL)
             {
-                uint8_t curEdgeStyle = surfaceElement->GetEdgeStyle();
+                uint8_t curEdgeStyle = surfaceElement->GetEdgeObjectIndex();
 
                 if (_edgeStyle != curEdgeStyle)
                 {
@@ -160,14 +164,14 @@ GameActions::Result SurfaceSetStyleAction::Execute() const
     money64 surfaceCost = 0;
     money64 edgeCost = 0;
     for (CoordsXY coords = { validRange.GetLeft(), validRange.GetTop() }; coords.x <= validRange.GetRight();
-         coords.x += COORDS_XY_STEP)
+         coords.x += kCoordsXYStep)
     {
-        for (coords.y = validRange.GetTop(); coords.y <= validRange.GetBottom(); coords.y += COORDS_XY_STEP)
+        for (coords.y = validRange.GetTop(); coords.y <= validRange.GetBottom(); coords.y += kCoordsXYStep)
         {
             if (!LocationValid(coords))
                 continue;
 
-            if (!(gScreenFlags & SCREEN_FLAGS_SCENARIO_EDITOR) && !gCheatsSandboxMode)
+            if (!(gScreenFlags & SCREEN_FLAGS_SCENARIO_EDITOR) && !GetGameState().Cheats.SandboxMode)
             {
                 if (!MapIsLocationInPark(coords))
                     continue;
@@ -181,7 +185,7 @@ GameActions::Result SurfaceSetStyleAction::Execute() const
 
             if (_surfaceStyle != OBJECT_ENTRY_INDEX_NULL)
             {
-                uint8_t curSurfaceStyle = surfaceElement->GetSurfaceStyle();
+                uint8_t curSurfaceStyle = surfaceElement->GetSurfaceObjectIndex();
 
                 if (_surfaceStyle != curSurfaceStyle)
                 {
@@ -192,7 +196,7 @@ GameActions::Result SurfaceSetStyleAction::Execute() const
                     {
                         surfaceCost += surfaceObject->Price;
 
-                        surfaceElement->SetSurfaceStyle(_surfaceStyle);
+                        surfaceElement->SetSurfaceObjectIndex(_surfaceStyle);
 
                         MapInvalidateTileFull(coords);
                         FootpathRemoveLitter({ coords, TileElementHeight(coords) });
@@ -202,13 +206,13 @@ GameActions::Result SurfaceSetStyleAction::Execute() const
 
             if (_edgeStyle != OBJECT_ENTRY_INDEX_NULL)
             {
-                uint8_t curEdgeStyle = surfaceElement->GetEdgeStyle();
+                uint8_t curEdgeStyle = surfaceElement->GetEdgeObjectIndex();
 
                 if (_edgeStyle != curEdgeStyle)
                 {
                     edgeCost += 100;
 
-                    surfaceElement->SetEdgeStyle(_edgeStyle);
+                    surfaceElement->SetEdgeObjectIndex(_edgeStyle);
                     MapInvalidateTileFull(coords);
                 }
             }

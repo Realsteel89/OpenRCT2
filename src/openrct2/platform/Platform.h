@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,8 +9,9 @@
 
 #pragma once
 
-#include "../common.h"
-#include "../config/Config.h"
+#include "../config/ConfigTypes.h"
+#include "../core/DateTime.h"
+#include "../core/String.hpp"
 
 #include <ctime>
 #include <string>
@@ -42,8 +43,9 @@ enum class SPECIAL_FOLDER
 
 struct RealWorldDate;
 struct RealWorldTime;
+struct TTFFontDescriptor;
 
-namespace Platform
+namespace OpenRCT2::Platform
 {
     std::string GetEnvironmentVariable(std::string_view name);
     std::string GetFolderPath(SPECIAL_FOLDER folder);
@@ -122,7 +124,10 @@ namespace Platform
     uint32_t GetTicks();
 
     void Sleep(uint32_t ms);
-} // namespace Platform
+
+    bool SSE41Available();
+    bool AVX2Available();
+} // namespace OpenRCT2::Platform
 
 #ifdef __ANDROID__
 class AndroidClassLoader
@@ -135,21 +140,3 @@ public:
 };
 
 #endif // __ANDROID__
-
-#ifdef _WIN32
-#    ifndef NOMINMAX
-#        define NOMINMAX
-#    endif
-#    ifndef WIN32_LEAN_AND_MEAN
-#        define WIN32_LEAN_AND_MEAN
-#    endif
-#    include <windows.h>
-#    undef CreateDirectory
-#    undef CreateWindow
-#    undef GetMessage
-
-// This function cannot be marked as 'static', even though it may seem to be,
-// as it requires external linkage, which 'static' prevents
-__declspec(dllexport) int32_t
-    StartOpenRCT2(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCommandLine, int32_t nCmdShow);
-#endif // _WIN32

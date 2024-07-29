@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -12,29 +12,29 @@
 
 TileElementType TileElementBase::GetType() const
 {
-    return static_cast<TileElementType>((this->Type & TILE_ELEMENT_TYPE_MASK) >> 2);
+    return static_cast<TileElementType>((this->Type & kTileElementTypeMask) >> 2);
 }
 
 void TileElementBase::SetType(TileElementType newType)
 {
-    this->Type &= ~TILE_ELEMENT_TYPE_MASK;
-    this->Type |= ((EnumValue(newType) << 2) & TILE_ELEMENT_TYPE_MASK);
+    this->Type &= ~kTileElementTypeMask;
+    this->Type |= ((EnumValue(newType) << 2) & kTileElementTypeMask);
 }
 
 Direction TileElementBase::GetDirection() const
 {
-    return this->Type & TILE_ELEMENT_DIRECTION_MASK;
+    return this->Type & kTileElementDirectionMask;
 }
 
 void TileElementBase::SetDirection(Direction direction)
 {
-    this->Type &= ~TILE_ELEMENT_DIRECTION_MASK;
-    this->Type |= (direction & TILE_ELEMENT_DIRECTION_MASK);
+    this->Type &= ~kTileElementDirectionMask;
+    this->Type |= (direction & kTileElementDirectionMask);
 }
 
 Direction TileElementBase::GetDirectionWithOffset(uint8_t offset) const
 {
-    return ((this->Type & TILE_ELEMENT_DIRECTION_MASK) + offset) & TILE_ELEMENT_DIRECTION_MASK;
+    return ((this->Type & kTileElementDirectionMask) + offset) & kTileElementDirectionMask;
 }
 
 bool TileElementBase::IsLastForTile() const
@@ -87,33 +87,33 @@ void TileElementBase::Remove()
 
 uint8_t TileElementBase::GetOccupiedQuadrants() const
 {
-    return Flags & TILE_ELEMENT_OCCUPIED_QUADRANTS_MASK;
+    return Flags & kTileElementOccupiedQuadrantsMask;
 }
 
 void TileElementBase::SetOccupiedQuadrants(uint8_t quadrants)
 {
-    Flags &= ~TILE_ELEMENT_OCCUPIED_QUADRANTS_MASK;
-    Flags |= (quadrants & TILE_ELEMENT_OCCUPIED_QUADRANTS_MASK);
+    Flags &= ~kTileElementOccupiedQuadrantsMask;
+    Flags |= (quadrants & kTileElementOccupiedQuadrantsMask);
 }
 
 int32_t TileElementBase::GetBaseZ() const
 {
-    return BaseHeight * COORDS_Z_STEP;
+    return BaseHeight * kCoordsZStep;
 }
 
 void TileElementBase::SetBaseZ(int32_t newZ)
 {
-    BaseHeight = (newZ / COORDS_Z_STEP);
+    BaseHeight = (newZ / kCoordsZStep);
 }
 
 int32_t TileElementBase::GetClearanceZ() const
 {
-    return ClearanceHeight * COORDS_Z_STEP;
+    return ClearanceHeight * kCoordsZStep;
 }
 
 void TileElementBase::SetClearanceZ(int32_t newZ)
 {
-    ClearanceHeight = (newZ / COORDS_Z_STEP);
+    ClearanceHeight = (newZ / kCoordsZStep);
 }
 
 uint8_t TileElementBase::GetOwner() const

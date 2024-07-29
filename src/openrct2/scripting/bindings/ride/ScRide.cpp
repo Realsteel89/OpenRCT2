@@ -12,7 +12,6 @@
 #    include "ScRide.hpp"
 
 #    include "../../../Context.h"
-#    include "../../../common.h"
 #    include "../../../ride/Ride.h"
 #    include "../../../ride/RideData.h"
 #    include "../../Duktape.hpp"
@@ -325,7 +324,7 @@ namespace OpenRCT2::Scripting
             auto numPrices = std::min(value.size(), ride->GetNumPrices());
             for (size_t i = 0; i < numPrices; i++)
             {
-                ride->price[i] = static_cast<money64>(value[i]);
+                ride->price[i] = std::clamp<money64>(value[i], kRideMinPrice, kRideMaxPrice);
             }
         }
     }
@@ -333,7 +332,7 @@ namespace OpenRCT2::Scripting
     int32_t ScRide::excitement_get() const
     {
         auto ride = GetRide();
-        return ride != nullptr ? ride->excitement : 0;
+        return ride != nullptr ? ride->ratings.excitement : 0;
     }
     void ScRide::excitement_set(int32_t value)
     {
@@ -341,14 +340,14 @@ namespace OpenRCT2::Scripting
         auto ride = GetRide();
         if (ride != nullptr)
         {
-            ride->excitement = value;
+            ride->ratings.excitement = value;
         }
     }
 
     int32_t ScRide::intensity_get() const
     {
         auto ride = GetRide();
-        return ride != nullptr ? ride->intensity : 0;
+        return ride != nullptr ? ride->ratings.intensity : 0;
     }
     void ScRide::intensity_set(int32_t value)
     {
@@ -356,14 +355,14 @@ namespace OpenRCT2::Scripting
         auto ride = GetRide();
         if (ride != nullptr)
         {
-            ride->intensity = value;
+            ride->ratings.intensity = value;
         }
     }
 
     int32_t ScRide::nausea_get() const
     {
         auto ride = GetRide();
-        return ride != nullptr ? ride->nausea : 0;
+        return ride != nullptr ? ride->ratings.nausea : 0;
     }
     void ScRide::nausea_set(int32_t value)
     {
@@ -371,7 +370,7 @@ namespace OpenRCT2::Scripting
         auto ride = GetRide();
         if (ride != nullptr)
         {
-            ride->nausea = value;
+            ride->ratings.nausea = value;
         }
     }
 
@@ -524,6 +523,12 @@ namespace OpenRCT2::Scripting
         return ride != nullptr ? ride->GetRideTypeDescriptor().LiftData.minimum_speed : 0;
     }
 
+    uint8_t ScRide::satisfaction_get() const
+    {
+        auto ride = GetRide();
+        return ride != nullptr ? ride->satisfaction * 5 : 0;
+    }
+
     void ScRide::Register(duk_context* ctx)
     {
         dukglue_register_property(ctx, &ScRide::id_get, nullptr, "id");
@@ -558,6 +563,7 @@ namespace OpenRCT2::Scripting
         dukglue_register_property(ctx, &ScRide::liftHillSpeed_get, &ScRide::lifthillSpeed_set, "liftHillSpeed");
         dukglue_register_property(ctx, &ScRide::maxLiftHillSpeed_get, nullptr, "maxLiftHillSpeed");
         dukglue_register_property(ctx, &ScRide::minLiftHillSpeed_get, nullptr, "minLiftHillSpeed");
+        dukglue_register_property(ctx, &ScRide::satisfaction_get, nullptr, "satisfaction");
     }
 
 } // namespace OpenRCT2::Scripting

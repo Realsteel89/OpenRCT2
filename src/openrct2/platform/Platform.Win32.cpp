@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,6 +10,12 @@
 #ifdef _WIN32
 
 // Windows.h needs to be included first
+#    ifndef WIN32_LEAN_AND_MEAN
+#        define WIN32_LEAN_AND_MEAN
+#    endif
+#    include "../Diagnostic.h"
+
+#    include <cassert>
 #    include <windows.h>
 
 // Then the rest
@@ -23,11 +29,10 @@
 
 #    include "../Date.h"
 #    include "../OpenRCT2.h"
-#    include "../common.h"
 #    include "../core/Path.hpp"
 #    include "../core/String.hpp"
-#    include "../localisation/Date.h"
 #    include "../localisation/Language.h"
+#    include "../localisation/Localisation.Date.h"
 #    include "Platform.h"
 
 #    include <cstring>
@@ -47,7 +52,7 @@ static constexpr wchar_t SINGLE_INSTANCE_MUTEX_NAME[] = L"RollerCoaster Tycoon 2
 #    define SOFTWARE_CLASSES L"Software\\Classes"
 #    define MUI_CACHE L"Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache"
 
-namespace Platform
+namespace OpenRCT2::Platform
 {
     static std::string WIN32_GetKnownFolderPath(REFKNOWNFOLDERID rfid);
     static std::string WIN32_GetModuleFileNameW(HMODULE hModule);
@@ -604,6 +609,7 @@ namespace Platform
             { L"fi", LANGUAGE_FINNISH },
             { L"sv", LANGUAGE_SWEDISH },
             { L"tr", LANGUAGE_TURKISH },
+            { L"uk", LANGUAGE_UKRAINIAN },
             { L"vi", LANGUAGE_VIETNAMESE },
         };
         static_assert(
@@ -882,6 +888,6 @@ namespace Platform
         return false;
     }
 
-} // namespace Platform
+} // namespace OpenRCT2::Platform
 
 #endif

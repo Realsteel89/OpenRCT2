@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,6 +9,9 @@
 
 #include "TileModifyAction.h"
 
+#include "../Context.h"
+#include "../Diagnostic.h"
+#include "../windows/Intent.h"
 #include "../world/TileInspector.h"
 
 using namespace OpenRCT2;
@@ -59,7 +62,7 @@ GameActions::Result TileModifyAction::QueryExecute(bool isExecuting) const
 {
     if (!LocationValid(_loc))
     {
-        return GameActions::Result(GameActions::Status::InvalidParameters, STR_LAND_NOT_OWNED_BY_PARK, STR_NONE);
+        return GameActions::Result(GameActions::Status::InvalidParameters, STR_CANT_CHANGE_THIS, STR_OFF_EDGE_OF_MAP);
     }
     auto res = GameActions::Result();
     switch (_setting)
@@ -227,14 +230,29 @@ GameActions::Result TileModifyAction::QueryExecute(bool isExecuting) const
             res = TileInspector::BannerToggleBlockingEdge(_loc, elementIndex, edgeIndex, isExecuting);
             break;
         }
+        case TileModifyType::WallSetAnimationIsBackwards:
+        {
+            const auto elementIndex = _value1;
+            const bool broken = _value2;
+            res = TileInspector::WallSetAnimationIsBackwards(_loc, elementIndex, broken, isExecuting);
+            break;
+        }
         default:
-            LOG_ERROR("invalid instruction");
-            return GameActions::Result(GameActions::Status::InvalidParameters, STR_NONE, STR_NONE);
+            LOG_ERROR("Invalid tile modification type %u", _setting);
+            return GameActions::Result(
+                GameActions::Status::InvalidParameters, STR_ERR_INVALID_PARAMETER, STR_ERR_VALUE_OUT_OF_RANGE);
     }
 
     res.Position.x = _loc.x;
     res.Position.y = _loc.y;
     res.Position.z = TileElementHeight(_loc);
+
+    if (isExecuting)
+    {
+        MapInvalidateTileFull(_loc);
+        auto intent = Intent(INTENT_ACTION_TILE_MODIFY);
+        ContextBroadcastIntent(&intent);
+    }
 
     return res;
 }

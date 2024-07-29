@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -12,13 +12,15 @@
 #include "../core/String.hpp"
 #include "../interface/FontFamilies.h"
 #include "../interface/Fonts.h"
+#include "../interface/Window.h"
 #include "../object/ObjectManager.h"
 #include "../platform/Platform.h"
 #include "LanguagePack.h"
-#include "Localisation.h"
 #include "LocalisationService.h"
 
 #include <stack>
+
+using namespace OpenRCT2;
 
 // clang-format off
 const LanguageDescriptor LanguagesDescriptors[LANGUAGE_COUNT] =
@@ -49,6 +51,7 @@ const LanguageDescriptor LanguagesDescriptors[LANGUAGE_COUNT] =
     { "fi-FI", "Finnish",               "Suomi",                 LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_FINNISH
     { "sv-SE", "Swedish",               "Svenska",               LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_SWEDISH
     { "tr-TR", "Turkish",               "Türkçe",                LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_TURKISH
+    { "uk-UA", "Ukrainian",             u8"Українська",          LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_UKRAINIAN
     { "vi-VN", "Vietnamese",            "Vietnamese",            LANGUAGE_UNDEFINED, FAMILY(&TTFFamilySansSerif),           false }, // LANGUAGE_VIETNAMESE
 };
 // clang-format on
@@ -83,6 +86,8 @@ bool LanguageOpen(int32_t id)
         localisationService.OpenLanguage(id);
         // Objects and their localised strings need to be refreshed
         objectManager.ResetObjects();
+        ScrollingTextInvalidate();
+        WindowNotifyLanguageChange();
         return true;
     }
     catch (const std::exception&)

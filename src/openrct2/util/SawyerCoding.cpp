@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -14,9 +14,11 @@
 #include "../scenario/Scenario.h"
 #include "Util.h"
 
-#include <algorithm>
+#include <cassert>
 #include <cstring>
 #include <stdexcept>
+
+using namespace OpenRCT2;
 
 static size_t DecodeChunkRLE(const uint8_t* src_buffer, uint8_t* dst_buffer, size_t length);
 static size_t DecodeChunkRLEWithSize(const uint8_t* src_buffer, uint8_t* dst_buffer, size_t length, size_t dstSize);
@@ -41,8 +43,6 @@ uint32_t SawyerCodingCalculateChecksum(const uint8_t* buffer, size_t length)
  */
 size_t SawyerCodingWriteChunkBuffer(uint8_t* dst_file, const uint8_t* buffer, SawyerCodingChunkHeader chunkHeader)
 {
-    uint8_t *encode_buffer, *encode_buffer2;
-
     switch (chunkHeader.encoding)
     {
         case CHUNK_ENCODING_NONE:
@@ -53,36 +53,36 @@ size_t SawyerCodingWriteChunkBuffer(uint8_t* dst_file, const uint8_t* buffer, Sa
             // fwrite(buffer, 1, chunkHeader.length, file);
             break;
         case CHUNK_ENCODING_RLE:
-            encode_buffer = static_cast<uint8_t*>(malloc(0x600000));
-            chunkHeader.length = static_cast<uint32_t>(EncodeChunkRLE(buffer, encode_buffer, chunkHeader.length));
+        {
+            auto encode_buffer = std::make_unique<uint8_t[]>(0x600000);
+            chunkHeader.length = static_cast<uint32_t>(EncodeChunkRLE(buffer, encode_buffer.get(), chunkHeader.length));
             std::memcpy(dst_file, &chunkHeader, sizeof(SawyerCodingChunkHeader));
             dst_file += sizeof(SawyerCodingChunkHeader);
-            std::memcpy(dst_file, encode_buffer, chunkHeader.length);
-
-            free(encode_buffer);
-            break;
+            std::memcpy(dst_file, encode_buffer.get(), chunkHeader.length);
+        }
+        break;
         case CHUNK_ENCODING_RLECOMPRESSED:
-            encode_buffer = static_cast<uint8_t*>(malloc(chunkHeader.length * 2));
-            encode_buffer2 = static_cast<uint8_t*>(malloc(0x600000));
-            chunkHeader.length = static_cast<uint32_t>(EncodeChunkRepeat(buffer, encode_buffer, chunkHeader.length));
-            chunkHeader.length = static_cast<uint32_t>(EncodeChunkRLE(encode_buffer, encode_buffer2, chunkHeader.length));
+        {
+            auto encode_buffer = std::make_unique<uint8_t[]>(chunkHeader.length * 2);
+            auto encode_buffer2 = std::make_unique<uint8_t[]>(0x600000);
+            chunkHeader.length = static_cast<uint32_t>(EncodeChunkRepeat(buffer, encode_buffer.get(), chunkHeader.length));
+            chunkHeader.length = static_cast<uint32_t>(
+                EncodeChunkRLE(encode_buffer.get(), encode_buffer2.get(), chunkHeader.length));
             std::memcpy(dst_file, &chunkHeader, sizeof(SawyerCodingChunkHeader));
             dst_file += sizeof(SawyerCodingChunkHeader);
-            std::memcpy(dst_file, encode_buffer2, chunkHeader.length);
-
-            free(encode_buffer2);
-            free(encode_buffer);
-            break;
+            std::memcpy(dst_file, encode_buffer2.get(), chunkHeader.length);
+        }
+        break;
         case CHUNK_ENCODING_ROTATE:
-            encode_buffer = static_cast<uint8_t*>(malloc(chunkHeader.length));
-            std::memcpy(encode_buffer, buffer, chunkHeader.length);
-            EncodeChunkRotate(encode_buffer, chunkHeader.length);
+        {
+            auto encode_buffer = std::make_unique<uint8_t[]>(chunkHeader.length);
+            std::memcpy(encode_buffer.get(), buffer, chunkHeader.length);
+            EncodeChunkRotate(encode_buffer.get(), chunkHeader.length);
             std::memcpy(dst_file, &chunkHeader, sizeof(SawyerCodingChunkHeader));
             dst_file += sizeof(SawyerCodingChunkHeader);
-            std::memcpy(dst_file, encode_buffer, chunkHeader.length);
-
-            free(encode_buffer);
-            break;
+            std::memcpy(dst_file, encode_buffer.get(), chunkHeader.length);
+        }
+        break;
     }
 
     return chunkHeader.length + sizeof(SawyerCodingChunkHeader);
@@ -222,8 +222,9 @@ static size_t DecodeChunkRLEWithSize(const uint8_t* src_buffer, uint8_t* dst_buf
 
     dst = dst_buffer;
 
-    assert(length > 0);
-    assert(dstSize > 0);
+    if (length <= 0 || dstSize <= 0)
+        throw std::out_of_range("Invalid RLE string!");
+
     for (size_t i = 0; i < length; i++)
     {
         rleCodeByte = src_buffer[i];
@@ -238,8 +239,8 @@ static size_t DecodeChunkRLEWithSize(const uint8_t* src_buffer, uint8_t* dst_buf
         }
         else
         {
-            assert(dst + rleCodeByte + 1 <= dst_buffer + dstSize);
-            assert(i + 1 < length);
+            if ((dst + rleCodeByte + 1 > dst_buffer + dstSize) || (i + 1 >= length))
+                throw std::out_of_range("Invalid RLE string!");
             std::memcpy(dst, src_buffer + i + 1, rleCodeByte + 1);
             dst = reinterpret_cast<uint8_t*>(reinterpret_cast<uintptr_t>(dst) + rleCodeByte + 1);
             i += rleCodeByte + 1;

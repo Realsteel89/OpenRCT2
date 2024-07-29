@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,12 +10,13 @@
 #include "EditorObjectSelectionSession.h"
 
 #include "Context.h"
+#include "Diagnostic.h"
 #include "Editor.h"
 #include "Game.h"
+#include "GameState.h"
 #include "OpenRCT2.h"
 #include "drawing/Drawing.h"
 #include "localisation/Formatter.h"
-#include "localisation/Localisation.h"
 #include "management/Research.h"
 #include "object/DefaultObjects.h"
 #include "object/FootpathEntry.h"
@@ -33,9 +34,11 @@
 #include <iterator>
 #include <vector>
 
+using namespace OpenRCT2;
+
 std::optional<StringId> _gSceneryGroupPartialSelectError;
 std::vector<uint8_t> _objectSelectionFlags;
-int32_t _numSelectedObjectsForType[EnumValue(ObjectType::Count)];
+uint32_t _numSelectedObjectsForType[EnumValue(ObjectType::Count)];
 static int32_t _numAvailableObjectsForType[EnumValue(ObjectType::Count)];
 
 static void SetupInUseSelectionFlags();
@@ -46,9 +49,7 @@ static void SelectDesignerObjects();
 static void ReplaceSelectedWaterPalette(const ObjectRepositoryItem* item);
 
 /**
- * Master objects are objects that are not
- * optional / required dependants of an
- * object.
+ * Master objects are objects that are not optional / required dependants of an object.
  */
 static constexpr ResultWithMessage ObjectSelectionError(bool isMasterObject, StringId message)
 {
@@ -126,9 +127,9 @@ void SetupInUseSelectionFlags()
 {
     auto& objectMgr = OpenRCT2::GetContext()->GetObjectManager();
 
-    for (auto objectType : TransientObjectTypes)
+    for (auto objectType : getTransientObjectTypes())
     {
-        for (int32_t i = 0; i < object_entry_group_counts[EnumValue(objectType)]; i++)
+        for (auto i = 0u; i < getObjectEntryGroupCount(objectType); i++)
         {
             Editor::ClearSelectedObject(static_cast<ObjectType>(objectType), i, ObjectSelectionFlags::AllFlags);
 
@@ -152,8 +153,8 @@ void SetupInUseSelectionFlags()
             case TileElementType::Surface:
             {
                 auto surfaceEl = iter.element->AsSurface();
-                auto surfaceIndex = surfaceEl->GetSurfaceStyle();
-                auto edgeIndex = surfaceEl->GetEdgeStyle();
+                auto surfaceIndex = surfaceEl->GetSurfaceObjectIndex();
+                auto edgeIndex = surfaceEl->GetEdgeObjectIndex();
 
                 Editor::SetSelectedObject(ObjectType::TerrainSurface, surfaceIndex, ObjectSelectionFlags::InUse);
                 Editor::SetSelectedObject(ObjectType::TerrainEdge, edgeIndex, ObjectSelectionFlags::InUse);
@@ -481,18 +482,27 @@ void ResetSelectedObjectCountAndSize()
 
 void FinishObjectSelection()
 {
+    auto& gameState = OpenRCT2::GetGameState();
     if (gScreenFlags & SCREEN_FLAGS_TRACK_DESIGNER)
     {
         SetEveryRideTypeInvented();
         SetEveryRideEntryInvented();
-        gEditorStep = EditorStep::RollercoasterDesigner;
+
+        auto& objManager = OpenRCT2::GetContext()->GetObjectManager();
+        gameState.LastEntranceStyle = objManager.GetLoadedObjectEntryIndex("rct2.station.plain");
+        if (gameState.LastEntranceStyle == OBJECT_ENTRY_INDEX_NULL)
+        {
+            gameState.LastEntranceStyle = 0;
+        }
+
+        gameState.EditorStep = EditorStep::RollercoasterDesigner;
         GfxInvalidateScreen();
     }
     else
     {
         SetAllSceneryItemsInvented();
         ScenerySetDefaultPlacementConfiguration();
-        gEditorStep = EditorStep::LandscapeEditor;
+        gameState.EditorStep = EditorStep::LandscapeEditor;
         GfxInvalidateScreen();
     }
 }
@@ -572,7 +582,7 @@ ResultWithMessage WindowEditorObjectSelectionSelectObject(
     }
 
     ObjectType objectType = item->Type;
-    uint16_t maxObjects = object_entry_group_counts[EnumValue(objectType)];
+    auto maxObjects = getObjectEntryGroupCount(objectType);
 
     if (maxObjects <= _numSelectedObjectsForType[EnumValue(objectType)])
     {

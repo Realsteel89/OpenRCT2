@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,6 +9,7 @@
 
 #include "GameStateSnapshots.h"
 
+#include "Diagnostic.h"
 #include "core/CircularBuffer.h"
 #include "entity/Balloon.h"
 #include "entity/Duck.h"
@@ -35,7 +36,7 @@ union EntitySnapshot
     {
     }
 };
-assert_struct_size(EntitySnapshot, 0x200);
+static_assert(sizeof(EntitySnapshot) == 0x200);
 #pragma pack(pop)
 
 struct GameStateSnapshot_t
@@ -356,7 +357,7 @@ struct GameStateSnapshots final : public IGameStateSnapshots
         COMPARE_FIELD(Guest, RejoinQueueTimeout);
         COMPARE_FIELD(Guest, PreviousRide);
         COMPARE_FIELD(Guest, PreviousRideTimeOut);
-        for (std::size_t i = 0; i < PEEP_MAX_THOUGHTS; i++)
+        for (std::size_t i = 0; i < kPeepMaxThoughts; i++)
         {
             COMPARE_FIELD(Guest, Thoughts[i].type);
             COMPARE_FIELD(Guest, Thoughts[i].item);

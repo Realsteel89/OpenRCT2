@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,7 +9,6 @@
 
 #pragma once
 
-#include "../common.h"
 #include "../object/Object.h"
 #include "../world/Map.h"
 #include "../world/TileElement.h"
@@ -22,26 +21,48 @@ constexpr uint8_t kRCT2DefaultBlockBrakeSpeed = 2;
 constexpr int32_t kBlockBrakeBaseSpeed = 0x20364;
 constexpr int32_t kBlockBrakeSpeedOffset = kBlockBrakeBaseSpeed - (kRCT2DefaultBlockBrakeSpeed << 16);
 
+constexpr uint8_t kMaximumTrackSpeed = 30;
+
 using track_type_t = uint16_t;
-using roll_type_t = uint8_t;
-using pitch_type_t = uint8_t;
 
 struct ResultWithMessage;
 
+enum class TrackRoll : uint8_t
+{
+    None = 0,
+    Left = 2,
+    Right = 4,
+    UpsideDown = 15,
+};
+
+enum class TrackPitch : uint8_t
+{
+    None = 0,
+    Up25 = 2,
+    Up60 = 4,
+    Down25 = 6,
+    Down60 = 8,
+    Up90 = 10,
+    Down90 = 18,
+
+    Tower = 10,
+    ReverseFreefall = 10
+};
+
 struct TrackDefinition
 {
-    track_type_t type;
-    pitch_type_t vangle_end;
-    pitch_type_t vangle_start;
-    roll_type_t bank_end;
-    roll_type_t bank_start;
-    int8_t preview_z_offset;
+    track_type_t Type;
+    TrackPitch PitchEnd;
+    TrackPitch PitchStart;
+    TrackRoll RollEnd;
+    TrackRoll RollStart;
+    int8_t PreviewZOffset;
 };
 
 struct PitchAndRoll
 {
-    pitch_type_t Pitch;
-    roll_type_t Roll;
+    TrackPitch Pitch;
+    TrackRoll Roll;
 };
 constexpr bool operator==(const PitchAndRoll& vb1, const PitchAndRoll& vb2)
 {
@@ -59,7 +80,7 @@ struct PreviewTrack
     int16_t x;     // 0x01
     int16_t y;     // 0x03
     int16_t z;     // 0x05
-    uint8_t var_07;
+    uint8_t ClearanceZ;
     QuarterTile var_08;
     uint8_t flags;
 };
@@ -84,12 +105,6 @@ enum
 
 enum
 {
-    TRACK_ELEMENT_FLAG_TERMINAL_STATION = 1 << 3,
-    TD6_TRACK_ELEMENT_FLAG_INVERTED = 1 << 6,
-};
-
-enum
-{
     TRACK_ELEMENT_FLAGS2_CHAIN_LIFT = 1 << 0,
     TRACK_ELEMENT_FLAGS2_INVERTED = 1 << 1,
     // Used for giga coaster
@@ -109,8 +124,8 @@ enum
     TRACK_ELEMENT_COLOUR_SEAT_ROTATION_MASK = 0b11110000,
 };
 
-#define MAX_STATION_PLATFORM_LENGTH 32
-constexpr uint16_t const MAX_TRACK_HEIGHT = 254 * COORDS_Z_STEP;
+constexpr int8_t kMaxStationPlatformLength = 32;
+constexpr uint16_t const MAX_TRACK_HEIGHT = 254 * kCoordsZStep;
 constexpr uint8_t const DEFAULT_SEAT_ROTATION = 4;
 
 // Vehicle sprite groups required by track groups are defined in ride_entry_get_supported_track_pieces
@@ -206,42 +221,23 @@ enum
     TRACK_SLOPE_CURVE_LARGE,
     TRACK_SLOPE_CURVE_LARGE_BANKED,
 
+    TRACK_DIAG_BRAKES,
+    TRACK_DIAG_BLOCK_BRAKES,
+
     TRACK_GROUP_COUNT,
 };
 
-enum
+enum class TrackCurve : uint8_t
 {
-    TRACK_CURVE_LEFT_VERY_SMALL = 5,
-    TRACK_CURVE_LEFT_SMALL = 3,
-    TRACK_CURVE_LEFT = 1,
-    TRACK_CURVE_LEFT_LARGE = 7,
-    TRACK_CURVE_NONE = 0,
-    TRACK_CURVE_RIGHT_LARGE = 8,
-    TRACK_CURVE_RIGHT = 2,
-    TRACK_CURVE_RIGHT_SMALL = 4,
-    TRACK_CURVE_RIGHT_VERY_SMALL = 6
-};
-
-enum
-{
-    TRACK_SLOPE_NONE = 0,
-    TRACK_SLOPE_UP_25 = 2,
-    TRACK_SLOPE_UP_60 = 4,
-    TRACK_SLOPE_DOWN_25 = 6,
-    TRACK_SLOPE_DOWN_60 = 8,
-    TRACK_SLOPE_UP_90 = 10,
-    TRACK_SLOPE_DOWN_90 = 18,
-
-    TRACK_VANGLE_TOWER = 10,
-    TRACK_VANGLE_REVERSE_FREEFALL = 10
-};
-
-enum
-{
-    TRACK_BANK_NONE = 0,
-    TRACK_BANK_LEFT = 2,
-    TRACK_BANK_RIGHT = 4,
-    TRACK_BANK_UPSIDE_DOWN = 15,
+    LeftVerySmall = 5,
+    LeftSmall = 3,
+    Left = 1,
+    LeftLarge = 7,
+    None = 0,
+    RightLarge = 8,
+    Right = 2,
+    RightSmall = 4,
+    RightVerySmall = 6
 };
 
 enum
@@ -264,9 +260,10 @@ enum
     TRACK_ELEM_FLAG_CURVE_ALLOWS_LIFT = (1 << 13),
     TRACK_ELEM_FLAG_INVERSION_TO_NORMAL = (1 << 14),
     TRACK_ELEM_FLAG_BANKED = (1 << 15), // Also set on Spinning Tunnel and Log Flume reverser, probably to save a flag.
+    TRACK_ELEM_FLAG_CAN_BE_PARTLY_UNDERGROUND = (1 << 16),
 };
 
-namespace TrackElemType
+namespace OpenRCT2::TrackElemType
 {
     constexpr track_type_t Flat = 0;
     constexpr track_type_t EndStation = 1;
@@ -631,14 +628,13 @@ namespace TrackElemType
     constexpr track_type_t LeftEighthBankToOrthogonalDown25 = 335;
     constexpr track_type_t RightEighthBankToOrthogonalDown25 = 336;
 
-    constexpr track_type_t CableLaunch = 337;
-    constexpr track_type_t MagneticBrakeDown25 = 338;
-    constexpr track_type_t MagneticBrakeDiagDown25 = 339;
+    constexpr track_type_t DiagBrakes = 337;
+    constexpr track_type_t DiagBlockBrakes = 338;
 
-    constexpr track_type_t Count = 340;
+    constexpr track_type_t Count = 339;
     constexpr track_type_t None = 65535;
 
-}; // namespace TrackElemType
+}; // namespace OpenRCT2::TrackElemType
 
 enum
 {
@@ -683,11 +679,18 @@ void TrackGetBack(const CoordsXYE& input, CoordsXYE* output);
 void TrackGetFront(const CoordsXYE& input, CoordsXYE* output);
 
 bool TrackElementIsCovered(track_type_t trackElementType);
+track_type_t UncoverTrackElement(track_type_t trackElementType);
 bool TrackTypeIsStation(track_type_t trackType);
+bool TrackTypeIsBrakes(track_type_t trackType);
+bool TrackTypeIsBlockBrakes(track_type_t trackType);
+bool TrackTypeIsBooster(track_type_t trackType);
 
-roll_type_t TrackGetActualBank(TileElement* tileElement, roll_type_t bank);
-roll_type_t TrackGetActualBank2(int32_t rideType, bool isInverted, roll_type_t bank);
-roll_type_t TrackGetActualBank3(bool useInvertedSprites, TileElement* tileElement);
+std::optional<CoordsXYZ> GetTrackElementOriginAndApplyChanges(
+    const CoordsXYZD& location, track_type_t type, uint16_t extra_params, TileElement** output_element, uint16_t flags);
+
+TrackRoll TrackGetActualBank(TileElement* tileElement, TrackRoll bank);
+TrackRoll TrackGetActualBank2(int32_t rideType, bool isInverted, TrackRoll bank);
+TrackRoll TrackGetActualBank3(bool useInvertedSprites, TileElement* tileElement);
 
 ResultWithMessage TrackAddStationElement(CoordsXYZD loc, RideId rideIndex, int32_t flags, bool fromTrackDesign);
 ResultWithMessage TrackRemoveStationElement(const CoordsXYZD& loc, RideId rideIndex, int32_t flags);

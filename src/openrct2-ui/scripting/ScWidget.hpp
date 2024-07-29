@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -19,7 +19,6 @@
 
 #    include <memory>
 #    include <openrct2/Context.h>
-#    include <openrct2/common.h>
 #    include <openrct2/scripting/Duktape.hpp>
 #    include <openrct2/scripting/IconNames.hpp>
 #    include <openrct2/scripting/ScriptEngine.h>
@@ -112,6 +111,8 @@ namespace OpenRCT2::Scripting
                         return "empty";
                     case WindowWidgetType::Placeholder:
                         return "placeholder";
+                    case WindowWidgetType::ProgressBar:
+                        return "progress_bar";
                     case WindowWidgetType::Custom:
                         return "custom";
                     case WindowWidgetType::Last:
@@ -146,22 +147,18 @@ namespace OpenRCT2::Scripting
                     auto buttonWidget = widget + 1;
                     buttonWidget->left += delta;
                     buttonWidget->right += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
                 }
                 else if (widget->type == WindowWidgetType::Spinner)
                 {
                     auto upWidget = widget + 1;
                     upWidget->left += delta;
                     upWidget->right += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
-
                     auto downWidget = widget + 2;
                     downWidget->left += delta;
                     downWidget->right += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 2);
                 }
 
-                Invalidate();
+                Invalidate(widget);
             }
         }
 
@@ -190,22 +187,18 @@ namespace OpenRCT2::Scripting
                     auto buttonWidget = widget + 1;
                     buttonWidget->top += delta;
                     buttonWidget->bottom += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
                 }
                 else if (widget->type == WindowWidgetType::Spinner)
                 {
                     auto upWidget = widget + 1;
                     upWidget->top += delta;
                     upWidget->bottom += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
-
                     auto downWidget = widget + 2;
                     downWidget->top += delta;
                     downWidget->bottom += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 2);
                 }
 
-                Invalidate();
+                Invalidate(widget);
             }
         }
 
@@ -233,22 +226,18 @@ namespace OpenRCT2::Scripting
                     auto buttonWidget = widget + 1;
                     buttonWidget->left += delta;
                     buttonWidget->right += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
                 }
                 else if (widget->type == WindowWidgetType::Spinner)
                 {
                     auto upWidget = widget + 1;
                     upWidget->left += delta;
                     upWidget->right += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
-
                     auto downWidget = widget + 2;
                     downWidget->left += delta;
                     downWidget->right += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 2);
                 }
 
-                Invalidate();
+                Invalidate(widget);
             }
         }
 
@@ -275,20 +264,16 @@ namespace OpenRCT2::Scripting
                 {
                     auto buttonWidget = widget + 1;
                     buttonWidget->bottom += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
                 }
                 else if (widget->type == WindowWidgetType::Spinner)
                 {
                     auto upWidget = widget + 1;
                     upWidget->bottom += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
-
                     auto downWidget = widget + 2;
                     downWidget->bottom += delta;
-                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 2);
                 }
 
-                Invalidate();
+                Invalidate(widget);
             }
         }
 
@@ -339,6 +324,7 @@ namespace OpenRCT2::Scripting
                         WidgetSetDisabled(*w, _widgetIndex + 2, value);
                     }
                 }
+                Invalidate(widget);
             }
         }
 
@@ -371,6 +357,7 @@ namespace OpenRCT2::Scripting
                         WidgetSetVisible(*w, _widgetIndex + 2, value);
                     }
                 }
+                Invalidate(widget);
             }
         }
 
@@ -427,6 +414,23 @@ namespace OpenRCT2::Scripting
                 return w->classification == WindowClass::Custom;
             }
             return false;
+        }
+
+        void Invalidate(const Widget* widget)
+        {
+            if (widget != nullptr)
+            {
+                if (widget->type == WindowWidgetType::DropdownMenu)
+                {
+                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
+                }
+                else if (widget->type == WindowWidgetType::Spinner)
+                {
+                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 1);
+                    WidgetInvalidateByNumber(_class, _number, _widgetIndex + 2);
+                }
+            }
+            Invalidate();
         }
 
         void Invalidate()
@@ -499,7 +503,7 @@ namespace OpenRCT2::Scripting
         uint32_t image_get() const
         {
             auto widget = GetWidget();
-            if (widget != nullptr && widget->type == WindowWidgetType::FlatBtn)
+            if (widget != nullptr && (widget->type == WindowWidgetType::FlatBtn || widget->type == WindowWidgetType::ImgBtn))
             {
                 if (GetTargetAPIVersion() <= API_VERSION_63_G2_REORDER)
                 {
@@ -513,7 +517,7 @@ namespace OpenRCT2::Scripting
         void image_set(DukValue value)
         {
             auto widget = GetWidget();
-            if (widget != nullptr && widget->type == WindowWidgetType::FlatBtn)
+            if (widget != nullptr && (widget->type == WindowWidgetType::FlatBtn || widget->type == WindowWidgetType::ImgBtn))
             {
                 widget->image = ImageId(ImageFromDuk(value));
                 Invalidate();
@@ -936,6 +940,7 @@ namespace OpenRCT2::Scripting
             // Explicit template due to text being a base method
             dukglue_register_property<ScTextBoxWidget, std::string, std::string>(
                 ctx, &ScTextBoxWidget::text_get, &ScTextBoxWidget::text_set, "text");
+            dukglue_register_method(ctx, &ScTextBoxWidget::focus, "focus");
         }
 
     private:
@@ -955,6 +960,15 @@ namespace OpenRCT2::Scripting
             if (w != nullptr && IsCustomWindow())
             {
                 OpenRCT2::Ui::Windows::SetWidgetMaxLength(w, _widgetIndex, value);
+            }
+        }
+
+        void focus()
+        {
+            auto w = GetWindow();
+            if (w != nullptr && IsCustomWindow())
+            {
+                WindowStartTextbox(*w, _widgetIndex, GetWidget()->string, Ui::Windows::GetWidgetMaxLength(w, _widgetIndex));
             }
         }
     };

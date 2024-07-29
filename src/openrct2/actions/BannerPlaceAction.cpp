@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,6 +9,7 @@
 
 #include "BannerPlaceAction.h"
 
+#include "../Diagnostic.h"
 #include "../management/Finance.h"
 #include "../object/BannerSceneryEntry.h"
 #include "../object/ObjectEntryManager.h"
@@ -57,7 +58,7 @@ GameActions::Result BannerPlaceAction::Query() const
 
     if (!LocationValid(_loc))
     {
-        return GameActions::Result(GameActions::Status::InvalidParameters, STR_CANT_POSITION_THIS_HERE, STR_NONE);
+        return GameActions::Result(GameActions::Status::InvalidParameters, STR_CANT_POSITION_THIS_HERE, STR_OFF_EDGE_OF_MAP);
     }
 
     if (!MapCheckCapacityAndReorganise(_loc))
@@ -98,11 +99,12 @@ GameActions::Result BannerPlaceAction::Query() const
     auto* bannerEntry = OpenRCT2::ObjectManager::GetObjectEntry<BannerSceneryEntry>(_bannerType);
     if (bannerEntry == nullptr)
     {
-        LOG_ERROR("Invalid banner object type. bannerType = ", _bannerType);
+        LOG_ERROR("Banner entry not found for bannerType %u", _bannerType);
         return GameActions::Result(
-            GameActions::Status::InvalidParameters, STR_CANT_POSITION_THIS_HERE, STR_UNKNOWN_OBJECT_TYPE);
+            GameActions::Status::InvalidParameters, STR_CANT_POSITION_THIS_HERE, STR_ERR_BANNER_ELEMENT_NOT_FOUND);
     }
     res.Cost = bannerEntry->price;
+    res.SetData(BannerPlaceActionResult{});
 
     return res;
 }
@@ -126,9 +128,9 @@ GameActions::Result BannerPlaceAction::Execute() const
     auto* bannerEntry = OpenRCT2::ObjectManager::GetObjectEntry<BannerSceneryEntry>(_bannerType);
     if (bannerEntry == nullptr)
     {
-        LOG_ERROR("Invalid banner object type. bannerType = ", _bannerType);
+        LOG_ERROR("Banner entry not found for bannerType %u", _bannerType);
         return GameActions::Result(
-            GameActions::Status::InvalidParameters, STR_CANT_POSITION_THIS_HERE, STR_UNKNOWN_OBJECT_TYPE);
+            GameActions::Status::InvalidParameters, STR_CANT_POSITION_THIS_HERE, STR_ERR_BANNER_ELEMENT_NOT_FOUND);
     }
 
     auto banner = CreateBanner();
@@ -146,7 +148,7 @@ GameActions::Result BannerPlaceAction::Execute() const
     banner->position = TileCoordsXY(_loc);
 
     res.SetData(BannerPlaceActionResult{ banner->id });
-    auto* bannerElement = TileElementInsert<BannerElement>({ _loc, _loc.z + (2 * COORDS_Z_STEP) }, 0b0000);
+    auto* bannerElement = TileElementInsert<BannerElement>({ _loc, _loc.z + (2 * kCoordsZStep) }, 0b0000);
     Guard::Assert(bannerElement != nullptr);
 
     bannerElement->SetClearanceZ(_loc.z + PATH_CLEARANCE);

@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,8 +9,7 @@
 
 #pragma once
 
-#include "../common.h"
-
+#include <cstdint>
 #include <string>
 
 enum class CursorID : uint8_t
@@ -47,7 +46,7 @@ enum class CursorID : uint8_t
     Undefined = 0xFF
 };
 
-namespace Cursor
+namespace OpenRCT2::Cursor
 {
     CursorID FromString(const std::string& s, CursorID defaultValue);
 }

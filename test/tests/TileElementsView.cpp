@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -117,9 +117,9 @@ template<typename T> bool CompareLists(const CoordsXY& pos)
 
 template<typename T> void CheckMapTiles()
 {
-    for (int y = 0; y < MAXIMUM_MAP_SIZE_TECHNICAL; ++y)
+    for (int y = 0; y < kMaximumMapSizeTechnical; ++y)
     {
-        for (int x = 0; x < MAXIMUM_MAP_SIZE_TECHNICAL; ++x)
+        for (int x = 0; x < kMaximumMapSizeTechnical; ++x)
         {
             auto pos = TileCoordsXY(x, y).ToCoordsXY();
 

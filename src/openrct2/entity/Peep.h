@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,28 +10,27 @@
 #pragma once
 
 #include "../Identifiers.h"
-#include "../common.h"
 #include "../entity/EntityBase.h"
+#include "../localisation/StringIdType.h"
 #include "../ride/RideTypes.h"
 #include "../ride/Station.h"
 #include "../util/Util.h"
 #include "../world/Location.hpp"
 
-#include <algorithm>
 #include <array>
 #include <optional>
 
-#define PEEP_MIN_ENERGY 32
-#define PEEP_MAX_ENERGY 128
-#define PEEP_MAX_ENERGY_TARGET 255 // Oddly, this differs from max energy!
+constexpr uint8_t kPeepMinEnergy = 32;
+constexpr uint8_t kPeepMaxEnergy = 128;
+constexpr uint8_t kPeepMaxEnergyTarget = 255; // Oddly, this differs from max energy!
 
-constexpr auto PEEP_CLEARANCE_HEIGHT = 4 * COORDS_Z_STEP;
+constexpr auto PEEP_CLEARANCE_HEIGHT = 4 * kCoordsZStep;
 
 class Formatter;
 struct TileElement;
 struct PaintSession;
 
-namespace GameActions
+namespace OpenRCT2::GameActions
 {
     class Result;
 }
@@ -199,7 +198,7 @@ enum PeepFlags : uint32_t
 {
     PEEP_FLAGS_LEAVING_PARK = (1 << 0),
     PEEP_FLAGS_SLOW_WALK = (1 << 1),
-    PEEP_FLAGS_2 = (1 << 2),
+    PEEP_FLAGS_DEBUG_PATHFINDING = (1 << 2), // Enables debug logging for path finding
     PEEP_FLAGS_TRACKING = (1 << 3),
     PEEP_FLAGS_WAVING = (1 << 4),                  // Makes the peep wave
     PEEP_FLAGS_HAS_PAID_FOR_PARK_ENTRY = (1 << 5), // Set on paying to enter park
@@ -228,6 +227,8 @@ enum PeepFlags : uint32_t
     PEEP_FLAGS_INTAMIN_DEPRECATED = (1 << 27),   // Used to make the peep think "I'm so excited - It's an Intamin ride!" while
                                                  // riding on a Intamin ride.
     PEEP_FLAGS_HERE_WE_ARE = (1 << 28),          // Makes the peep think  "...and here we are on X!" while riding a ride
+    PEEP_FLAGS_POSITION_FROZEN = (1 << 29),      // Prevents the peep from moving around, thus keeping them in place
+    PEEP_FLAGS_ANIMATION_FROZEN = (1 << 30),     // Prevents the peep sprite from updating
     PEEP_FLAGS_TWITCH_DEPRECATED = (1u << 31),   // Formerly used for twitch integration
 };
 
@@ -376,9 +377,14 @@ public: // Peep
     void Update();
     std::optional<CoordsXY> UpdateAction(int16_t& xy_distance);
     std::optional<CoordsXY> UpdateAction();
+    bool UpdateActionAnimation();
+    std::optional<CoordsXY> UpdateWalkingAction(const CoordsXY& differenceLoc, int16_t& xy_distance);
+    void UpdateWalkingAnimation();
+    void ThrowUp();
     void SetState(PeepState new_state);
     void Remove();
     void UpdateCurrentActionSpriteType();
+    void UpdateSpriteBoundingBox();
     void SwitchToSpecialSprite(uint8_t special_sprite_id);
     void StateReset();
     [[nodiscard]] uint8_t GetNextDirection() const;
@@ -388,7 +394,7 @@ public: // Peep
     bool CanBePickedUp() const;
     void Pickup();
     void PickupAbort(int32_t old_x);
-    [[nodiscard]] GameActions::Result Place(const TileCoordsXYZ& location, bool apply);
+    [[nodiscard]] OpenRCT2::GameActions::Result Place(const TileCoordsXYZ& location, bool apply);
     void RemoveFromRide();
     void FormatActionTo(Formatter&) const;
     void FormatNameTo(Formatter&) const;
@@ -427,26 +433,6 @@ private:
     void UpdatePicked();
 };
 
-struct SpriteBounds
-{
-    uint8_t sprite_width;           // 0x00
-    uint8_t sprite_height_negative; // 0x01
-    uint8_t sprite_height_positive; // 0x02
-};
-
-struct PeepAnimation
-{
-    uint32_t base_image; // 0x00
-    size_t num_frames;
-    const uint8_t* frame_offsets;
-};
-
-struct PeepAnimationEntry
-{
-    const PeepAnimation* sprite_animation; // 0x00
-    const SpriteBounds* sprite_bounds;     // 0x04
-};
-
 enum
 {
     PATHING_DESTINATION_REACHED = 1 << 0,
@@ -455,11 +441,7 @@ enum
     PATHING_RIDE_ENTRANCE = 1 << 3,
 };
 
-// rct2: 0x00982708
-extern const PeepAnimationEntry g_peep_animation_entries[EnumValue(PeepSpriteType::Count)];
 extern const bool gSpriteTypeToSlowWalkMap[48];
-
-extern uint8_t gPeepWarningThrottle[16];
 
 int32_t PeepGetStaffCount();
 void PeepUpdateAll();
@@ -481,15 +463,3 @@ int32_t PeepCompare(const EntityId sprite_index_a, const EntityId sprite_index_b
 void PeepUpdateNames(bool realNames);
 
 StringId GetRealNameStringIDFromPeepID(uint32_t id);
-
-inline const PeepAnimation& GetPeepAnimation(
-    PeepSpriteType spriteType, PeepActionSpriteType actionSpriteType = PeepActionSpriteType::None)
-{
-    return g_peep_animation_entries[EnumValue(spriteType)].sprite_animation[EnumValue(actionSpriteType)];
-};
-
-inline const SpriteBounds& GetSpriteBounds(
-    PeepSpriteType spriteType, PeepActionSpriteType actionSpriteType = PeepActionSpriteType::None)
-{
-    return g_peep_animation_entries[EnumValue(spriteType)].sprite_bounds[EnumValue(actionSpriteType)];
-};

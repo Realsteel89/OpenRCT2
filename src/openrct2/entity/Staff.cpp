@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,16 +10,16 @@
 #include "Staff.h"
 
 #include "../Context.h"
+#include "../Diagnostic.h"
 #include "../Game.h"
+#include "../GameState.h"
 #include "../Input.h"
 #include "../actions/StaffSetOrdersAction.h"
 #include "../audio/audio.h"
-#include "../config/Config.h"
 #include "../core/DataSerialiser.h"
 #include "../entity/EntityRegistry.h"
 #include "../interface/Viewport.h"
-#include "../localisation/Date.h"
-#include "../localisation/Localisation.h"
+#include "../localisation/Localisation.Date.h"
 #include "../localisation/StringIds.h"
 #include "../management/Finance.h"
 #include "../network/network.h"
@@ -43,11 +43,14 @@
 #include "../world/Footpath.h"
 #include "../world/Scenery.h"
 #include "../world/Surface.h"
+#include "../world/tile_element/Slope.h"
 #include "PatrolArea.h"
 #include "Peep.h"
 
-#include <algorithm>
+#include <cassert>
 #include <iterator>
+
+using namespace OpenRCT2;
 
 // clang-format off
 const StringId StaffCostumeNames[] = {
@@ -65,12 +68,8 @@ const StringId StaffCostumeNames[] = {
 };
 // clang-format on
 
-colour_t gStaffHandymanColour;
-colour_t gStaffMechanicColour;
-colour_t gStaffSecurityColour;
-
 // Maximum manhattan distance that litter can be for a handyman to seek to it
-const uint16_t MAX_LITTER_DISTANCE = 3 * COORDS_XY_STEP;
+const uint16_t MAX_LITTER_DISTANCE = 3 * kCoordsXYStep;
 
 template<> bool EntityBase::Is<Staff>() const
 {
@@ -184,7 +183,7 @@ bool Staff::CanIgnoreWideFlag(const CoordsXYZ& staffPos, TileElement* path) cons
             }
 
             /* test_element is a path */
-            if (!GuestPathfinding::IsValidPathZAndDirection(test_element, adjacPos.z / COORDS_Z_STEP, adjac_dir))
+            if (!PathFinding::IsValidPathZAndDirection(test_element, adjacPos.z / kCoordsZStep, adjac_dir))
                 continue;
 
             /* test_element is a connected path */
@@ -229,22 +228,22 @@ uint8_t Staff::GetValidPatrolDirections(const CoordsXY& loc) const
 {
     uint8_t directions = 0;
 
-    if (IsLocationInPatrol({ loc.x - COORDS_XY_STEP, loc.y }))
+    if (IsLocationInPatrol({ loc.x - kCoordsXYStep, loc.y }))
     {
         directions |= (1 << 0);
     }
 
-    if (IsLocationInPatrol({ loc.x, loc.y + COORDS_XY_STEP }))
+    if (IsLocationInPatrol({ loc.x, loc.y + kCoordsXYStep }))
     {
         directions |= (1 << 1);
     }
 
-    if (IsLocationInPatrol({ loc.x + COORDS_XY_STEP, loc.y }))
+    if (IsLocationInPatrol({ loc.x + kCoordsXYStep, loc.y }))
     {
         directions |= (1 << 2);
     }
 
-    if (IsLocationInPatrol({ loc.x, loc.y - COORDS_XY_STEP }))
+    if (IsLocationInPatrol({ loc.x, loc.y - kCoordsXYStep }))
     {
         directions |= (1 << 3);
     }
@@ -304,9 +303,9 @@ void Staff::SetPatrolArea(const CoordsXY& coords, bool value)
 
 void Staff::SetPatrolArea(const MapRange& range, bool value)
 {
-    for (int32_t yy = range.GetTop(); yy <= range.GetBottom(); yy += COORDS_XY_STEP)
+    for (int32_t yy = range.GetTop(); yy <= range.GetBottom(); yy += kCoordsXYStep)
     {
-        for (int32_t xx = range.GetLeft(); xx <= range.GetRight(); xx += COORDS_XY_STEP)
+        for (int32_t xx = range.GetLeft(); xx <= range.GetRight(); xx += kCoordsXYStep)
         {
             SetPatrolArea({ xx, yy }, value);
         }
@@ -361,7 +360,7 @@ Direction Staff::HandymanDirectionToNearestLitter() const
 
     CoordsXY nextTile = litterTile.ToTileStart() - CoordsDirectionDelta[nextDirection];
 
-    int16_t nextZ = ((z + COORDS_Z_STEP) & 0xFFF0) / COORDS_Z_STEP;
+    int16_t nextZ = ((z + kCoordsZStep) & 0xFFF0) / kCoordsZStep;
 
     TileElement* tileElement = MapGetFirstElementAt(nextTile);
     if (tileElement == nullptr)
@@ -415,7 +414,7 @@ uint8_t Staff::HandymanDirectionToUncutGrass(uint8_t valid_directions) const
             if (surfaceElement->GetSlope() != PathSlopeToLandSlope[GetNextDirection()])
                 return INVALID_DIRECTION;
         }
-        else if (surfaceElement->GetSlope() != TILE_ELEMENT_SLOPE_FLAT)
+        else if (surfaceElement->GetSlope() != kTileSlopeFlat)
             return INVALID_DIRECTION;
     }
 
@@ -437,7 +436,7 @@ uint8_t Staff::HandymanDirectionToUncutGrass(uint8_t valid_directions) const
         auto surfaceElement = MapGetSurfaceElementAt(chosenTile);
         if (surfaceElement != nullptr)
         {
-            if (std::abs(surfaceElement->GetBaseZ() - NextLoc.z) <= 2 * COORDS_Z_STEP)
+            if (std::abs(surfaceElement->GetBaseZ() - NextLoc.z) <= 2 * kCoordsZStep)
             {
                 if (surfaceElement->CanGrassGrow() && (surfaceElement->GetGrassLength() & 0x7) >= GRASS_LENGTH_CLEAR_1)
                 {
@@ -455,10 +454,10 @@ uint8_t Staff::HandymanDirectionToUncutGrass(uint8_t valid_directions) const
  */
 Direction Staff::HandymanDirectionRandSurface(uint8_t validDirections) const
 {
-    Direction newDirection = ScenarioRand() % NumOrthogonalDirections;
-    for (int32_t i = 0; i < NumOrthogonalDirections; ++i, ++newDirection)
+    Direction newDirection = ScenarioRand() % kNumOrthogonalDirections;
+    for (int32_t i = 0; i < kNumOrthogonalDirections; ++i, ++newDirection)
     {
-        newDirection %= NumOrthogonalDirections;
+        newDirection %= kNumOrthogonalDirections;
         if (!(validDirections & (1 << newDirection)))
             continue;
 
@@ -472,7 +471,7 @@ Direction Staff::HandymanDirectionRandSurface(uint8_t validDirections) const
     // If it tries all directions this is required
     // to make it back to the first direction and
     // override validDirections
-    newDirection %= NumOrthogonalDirections;
+    newDirection %= kNumOrthogonalDirections;
     return newDirection;
 }
 
@@ -487,7 +486,7 @@ bool Staff::DoHandymanPathFinding()
     Direction litterDirection = INVALID_DIRECTION;
     uint8_t validDirections = GetValidPatrolDirections(NextLoc);
 
-    if ((StaffOrders & STAFF_ORDERS_SWEEPING) && ((gCurrentTicks + Id.ToUnderlying()) & 0xFFF) > 110)
+    if ((StaffOrders & STAFF_ORDERS_SWEEPING) && ((GetGameState().CurrentTicks + Id.ToUnderlying()) & 0xFFF) > 110)
     {
         litterDirection = HandymanDirectionToNearestLitter();
     }
@@ -663,7 +662,7 @@ Direction Staff::MechanicDirectionPathRand(uint8_t pathDirections) const
  */
 Direction Staff::MechanicDirectionPath(uint8_t validDirections, PathElement* pathElement)
 {
-    uint8_t pathDirections = pathElement->GetEdges();
+    uint32_t pathDirections = pathElement->GetEdges();
     pathDirections &= validDirections;
 
     if (pathDirections == 0)
@@ -714,23 +713,11 @@ Direction Staff::MechanicDirectionPath(uint8_t validDirections, PathElement* pat
             }
         }
 
-        gPeepPathFindGoalPosition.x = location.x;
-        gPeepPathFindGoalPosition.y = location.y;
-        gPeepPathFindGoalPosition.z = location.z;
-
         gPeepPathFindIgnoreForeignQueues = false;
         gPeepPathFindQueueRideIndex = RideId::GetNull();
 
-#if defined(DEBUG_LEVEL_1) && DEBUG_LEVEL_1
-        PathfindLoggingEnable(*this);
-#endif // defined(DEBUG_LEVEL_1) && DEBUG_LEVEL_1
-
-        Direction pathfindDirection = gGuestPathfinder->ChooseDirection(TileCoordsXYZ{ NextLoc }, *this);
-
-#if defined(DEBUG_LEVEL_1) && DEBUG_LEVEL_1
-        PathfindLoggingDisable();
-#endif // defined(DEBUG_LEVEL_1) && DEBUG_LEVEL_1
-
+        const auto goalPos = TileCoordsXYZ{ location };
+        Direction pathfindDirection = PathFinding::ChooseDirection(TileCoordsXYZ{ NextLoc }, goalPos, *this);
         if (pathfindDirection == INVALID_DIRECTION)
         {
             /* Heuristic search failed for all directions.
@@ -793,7 +780,7 @@ bool Staff::DoMechanicPathFinding()
  */
 Direction Staff::DirectionPath(uint8_t validDirections, PathElement* pathElement) const
 {
-    uint8_t pathDirections = pathElement->GetEdges();
+    uint32_t pathDirections = pathElement->GetEdges();
     if (State != PeepState::Answering && State != PeepState::HeadingToInspection)
     {
         pathDirections &= validDirections;
@@ -804,23 +791,23 @@ Direction Staff::DirectionPath(uint8_t validDirections, PathElement* pathElement
         return DirectionSurface(ScenarioRand() & 3);
     }
 
-    pathDirections &= ~(1 << DirectionReverse(PeepDirection));
+    pathDirections &= ~(1u << DirectionReverse(PeepDirection));
     if (pathDirections == 0)
     {
-        pathDirections |= (1 << DirectionReverse(PeepDirection));
+        pathDirections |= (1u << DirectionReverse(PeepDirection));
     }
 
     Direction direction = UtilBitScanForward(pathDirections);
     // If this is the only direction they can go, then go
-    if (pathDirections == (1 << direction))
+    if (pathDirections == (1u << direction))
     {
         return direction;
     }
 
     direction = ScenarioRand() & 3;
-    for (uint8_t i = 0; i < NumOrthogonalDirections; ++i, direction = DirectionNext(direction))
+    for (uint8_t i = 0; i < kNumOrthogonalDirections; ++i, direction = DirectionNext(direction))
     {
-        if (pathDirections & (1 << direction))
+        if (pathDirections & (1u << direction))
             return direction;
     }
 
@@ -891,7 +878,7 @@ void Staff::EntertainerUpdateNearbyPeeps() const
 {
     for (auto guest : EntityList<Guest>())
     {
-        if (guest->x == LOCATION_NULL)
+        if (guest->x == kLocationNull)
             continue;
 
         int16_t z_dist = abs(z - guest->z);
@@ -909,12 +896,12 @@ void Staff::EntertainerUpdateNearbyPeeps() const
 
         if (guest->State == PeepState::Walking)
         {
-            guest->HappinessTarget = std::min(guest->HappinessTarget + 4, PEEP_MAX_HAPPINESS);
+            guest->HappinessTarget = std::min(guest->HappinessTarget + 4, kPeepMaxHappiness);
         }
         else if (guest->State == PeepState::Queuing)
         {
             guest->TimeInQueue = std::max(0, guest->TimeInQueue - 200);
-            guest->HappinessTarget = std::min(guest->HappinessTarget + 3, PEEP_MAX_HAPPINESS);
+            guest->HappinessTarget = std::min(guest->HappinessTarget + 3, kPeepMaxHappiness);
         }
     }
 }
@@ -961,17 +948,6 @@ bool Staff::DoPathFinding()
     }
 }
 
-uint8_t Staff::GetCostume() const
-{
-    return EnumValue(SpriteType) - EnumValue(PeepSpriteType::EntertainerPanda);
-}
-
-void Staff::SetCostume(uint8_t value)
-{
-    auto costume = static_cast<EntertainerCostume>(value);
-    SpriteType = EntertainerCostumeToSprite(costume);
-}
-
 void Staff::SetHireDate(int32_t hireDate)
 {
     HireDate = hireDate;
@@ -991,14 +967,15 @@ PeepSpriteType EntertainerCostumeToSprite(EntertainerCostume entertainerType)
 
 colour_t StaffGetColour(StaffType staffType)
 {
+    const auto& gameState = GetGameState();
     switch (staffType)
     {
         case StaffType::Handyman:
-            return gStaffHandymanColour;
+            return gameState.StaffHandymanColour;
         case StaffType::Mechanic:
-            return gStaffMechanicColour;
+            return gameState.StaffMechanicColour;
         case StaffType::Security:
-            return gStaffSecurityColour;
+            return gameState.StaffSecurityColour;
         case StaffType::Entertainer:
             return 0;
         default:
@@ -1007,23 +984,25 @@ colour_t StaffGetColour(StaffType staffType)
     }
 }
 
-bool StaffSetColour(StaffType staffType, colour_t value)
+GameActions::Result StaffSetColour(StaffType staffType, colour_t value)
 {
+    auto& gameState = GetGameState();
     switch (staffType)
     {
         case StaffType::Handyman:
-            gStaffHandymanColour = value;
+            gameState.StaffHandymanColour = value;
             break;
         case StaffType::Mechanic:
-            gStaffMechanicColour = value;
+            gameState.StaffMechanicColour = value;
             break;
         case StaffType::Security:
-            gStaffSecurityColour = value;
+            gameState.StaffSecurityColour = value;
             break;
         default:
-            return false;
+            return GameActions::Result(
+                GameActions::Status::InvalidParameters, STR_ERR_INVALID_PARAMETER, STR_ERR_ACTION_INVALID_FOR_THAT_STAFF_TYPE);
     }
-    return true;
+    return GameActions::Result();
 }
 
 uint32_t StaffGetAvailableEntertainerCostumes()
@@ -1160,7 +1139,7 @@ void Staff::UpdateWatering()
             if (tile_element->GetType() != TileElementType::SmallScenery)
                 continue;
 
-            if (abs(NextLoc.z - tile_element->GetBaseZ()) > 4 * COORDS_Z_STEP)
+            if (abs(NextLoc.z - tile_element->GetBaseZ()) > 4 * kCoordsZStep)
                 continue;
 
             const auto* sceneryEntry = tile_element->AsSmallScenery()->GetEntry();
@@ -1547,7 +1526,7 @@ bool Staff::UpdatePatrollingFindWatering()
 
             auto z_diff = abs(NextLoc.z - tile_element->GetBaseZ());
 
-            if (z_diff >= 4 * COORDS_Z_STEP)
+            if (z_diff >= 4 * kCoordsZStep)
             {
                 continue;
             }
@@ -1559,14 +1538,14 @@ bool Staff::UpdatePatrollingFindWatering()
                 continue;
             }
 
-            if (tile_element->AsSmallScenery()->GetAge() < SCENERY_WITHER_AGE_THRESHOLD_2)
+            if (tile_element->AsSmallScenery()->GetAge() < kSceneryWitherAgeThreshold2)
             {
                 if (chosen_position >= 4)
                 {
                     continue;
                 }
 
-                if (tile_element->AsSmallScenery()->GetAge() < SCENERY_WITHER_AGE_THRESHOLD_1)
+                if (tile_element->AsSmallScenery()->GetAge() < kSceneryWitherAgeThreshold1)
                 {
                     continue;
                 }

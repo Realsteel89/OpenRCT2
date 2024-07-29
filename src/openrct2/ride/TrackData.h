@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,9 +9,7 @@
 
 #pragma once
 
-#include "../common.h"
 #include "Track.h"
-#include "TrackPaint.h"
 
 constexpr uint8_t MaxSequencesPerPiece = 16;
 
@@ -26,11 +24,11 @@ struct TrackCurveChain
 struct TrackDescriptor
 {
     bool starts_diagonal;
-    uint8_t slope_start;
-    uint8_t bank_start;
-    uint8_t track_curve;
-    uint8_t slope_end;
-    uint8_t bank_end;
+    TrackPitch slope_start;
+    TrackRoll RollStart;
+    TrackCurve track_curve;
+    TrackPitch slope_end;
+    TrackRoll RollEnd;
     track_type_t track_element;
 };
 
@@ -63,11 +61,11 @@ struct DodgemsTrackSize
 
 constexpr DodgemsTrackSize GetDodgemsTrackSize(track_type_t type)
 {
-    if (type == TrackElemType::FlatTrack2x2)
+    if (type == OpenRCT2::TrackElemType::FlatTrack2x2)
         return { 4, 4, 59, 59 };
-    if (type == TrackElemType::FlatTrack4x4)
+    if (type == OpenRCT2::TrackElemType::FlatTrack4x4)
         return { 4, 4, 123, 123 };
-    if (type == TrackElemType::FlatTrack2x4)
+    if (type == OpenRCT2::TrackElemType::FlatTrack2x4)
         return { 4, 4, 59, 123 };
     return { 0, 0, 0, 0 };
 }
@@ -87,7 +85,7 @@ struct TrackElementDescriptor
     uint32_t PriceModifier;
     track_type_t MirrorElement;
     uint32_t HeightMarkerPositions;
-    uint16_t Flags;
+    uint32_t Flags;
 
     std::array<uint8_t, MaxSequencesPerPiece> SequenceElementAllowedWallEdges;
     std::array<uint8_t, MaxSequencesPerPiece> SequenceProperties;

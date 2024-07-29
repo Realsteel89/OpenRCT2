@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -12,6 +12,9 @@
 #include "../../drawing/ImageId.hpp"
 #include "../../paint/Boundbox.h"
 #include "../../paint/Paint.h"
+#include "../../paint/support/WoodenSupports.h"
+#include "../../paint/tile_element/Segment.h"
+#include "../../paint/track/Segment.h"
 #include "../../world/Location.hpp"
 #include "../TrackPaint.h"
 
@@ -25,14 +28,24 @@ struct SpriteBoundBox2
     ::BoundBoxXYZ BoundBox;
 };
 
+// Magic number 4 refers to the number of track blocks in a diagonal track element
+static constexpr const WoodenSupportSubType WoodenRCDiagonalSupports[4][kNumOrthogonalDirections] = {
+    { WoodenSupportSubType::Null, WoodenSupportSubType::Null, WoodenSupportSubType::Null,
+      WoodenSupportSubType::Null }, // sequence 0
+    { WoodenSupportSubType::Corner0, WoodenSupportSubType::Corner1, WoodenSupportSubType::Corner2,
+      WoodenSupportSubType::Corner3 }, // sequence 1
+    { WoodenSupportSubType::Corner2, WoodenSupportSubType::Corner3, WoodenSupportSubType::Corner0,
+      WoodenSupportSubType::Corner1 }, // sequence 2
+    { WoodenSupportSubType::Null, WoodenSupportSubType::Null, WoodenSupportSubType::Null,
+      WoodenSupportSubType::Null } // sequence 3
+};
+
 template<bool isClassic> ImageId WoodenRCGetTrackColour(const PaintSession& session)
 {
     if (isClassic)
-        return session.TrackColours[SCHEME_TRACK];
+        return session.TrackColours;
     else
-        return session.TrackColours[SCHEME_TRACK].IsRemap()
-            ? session.TrackColours[SCHEME_TRACK]
-            : session.TrackColours[SCHEME_TRACK].WithPrimary(session.TrackColours[SCHEME_SUPPORTS].GetPrimary());
+        return session.SupportColours;
 }
 
 ImageId WoodenRCGetRailsColour(PaintSession& session);

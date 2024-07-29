@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,10 +9,9 @@
 
 #pragma once
 
-#include "../common.h"
-
 #include <cstdarg>
 #include <cstddef>
+#include <cstdint>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -39,7 +38,7 @@ namespace OpenRCT2
     };
 }
 
-namespace String
+namespace OpenRCT2::String
 {
     constexpr const utf8* Empty = "";
 
@@ -179,9 +178,15 @@ namespace String
      */
     std::string_view UTF8Truncate(std::string_view v, size_t size);
 
+    /**
+     * Truncates a string to at most `size` codepoints,
+     * making sure not to cut in the middle of a sequence.
+     */
+    std::string_view UTF8TruncateCodePoints(std::string_view v, size_t size);
+
     // Escapes special characters in a string to the percentage equivalent that can be used in URLs.
     std::string URLEncode(std::string_view value);
-} // namespace String
+} // namespace OpenRCT2::String
 
 class CodepointView
 {
@@ -220,7 +225,7 @@ public:
             {
                 const utf8* nextch;
                 GetNextCodepoint(&_str[_index], &nextch);
-                _index = nextch - _str.data();
+                _index = std::min<size_t>(nextch - _str.data(), _str.size());
             }
             return *this;
         }
@@ -231,7 +236,7 @@ public:
             {
                 const utf8* nextch;
                 GetNextCodepoint(&_str[_index], &nextch);
-                _index = nextch - _str.data();
+                _index = std::min<size_t>(nextch - _str.data(), _str.size());
             }
             return result;
         }
@@ -245,7 +250,7 @@ public:
     };
 
     CodepointView(std::string_view str)
-        : _str(str)
+        : _str(OpenRCT2::String::UTF8Truncate(str, str.size()))
     {
     }
 

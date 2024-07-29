@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -27,11 +27,12 @@ namespace OpenRCT2::Ui
         {
             return nullptr;
         }
-        WindowBase* ShowError(StringId /*title*/, StringId /*message*/, const Formatter& /*formatter*/) override
+        WindowBase* ShowError(
+            StringId /*title*/, StringId /*message*/, const Formatter& /*formatter*/, bool /*autoClose*/) override
         {
             return nullptr;
         }
-        WindowBase* ShowError(std::string_view /*title*/, std::string_view /*message*/) override
+        WindowBase* ShowError(std::string_view /*title*/, std::string_view /*message*/, bool /*autoClose*/) override
         {
             return nullptr;
         }

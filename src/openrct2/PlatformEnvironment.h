@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "common.h"
+#include "Diagnostic.h"
 #include "core/String.hpp"
 
 #include <memory>
@@ -80,12 +80,12 @@ namespace OpenRCT2
     {
         virtual ~IPlatformEnvironment() = default;
 
-        virtual u8string GetDirectoryPath(DIRBASE base) const abstract;
-        virtual u8string GetDirectoryPath(DIRBASE base, DIRID did) const abstract;
-        virtual u8string GetFilePath(PATHID pathid) const abstract;
-        virtual u8string FindFile(DIRBASE base, DIRID did, u8string_view fileName) const abstract;
-        virtual void SetBasePath(DIRBASE base, u8string_view path) abstract;
-        virtual bool IsUsingClassic() const abstract;
+        virtual u8string GetDirectoryPath(DIRBASE base) const = 0;
+        virtual u8string GetDirectoryPath(DIRBASE base, DIRID did) const = 0;
+        virtual u8string GetFilePath(PATHID pathid) const = 0;
+        virtual u8string FindFile(DIRBASE base, DIRID did, u8string_view fileName) const = 0;
+        virtual void SetBasePath(DIRBASE base, u8string_view path) = 0;
+        virtual bool IsUsingClassic() const = 0;
     };
 
     [[nodiscard]] std::unique_ptr<IPlatformEnvironment> CreatePlatformEnvironment(DIRBASE_VALUES basePaths);

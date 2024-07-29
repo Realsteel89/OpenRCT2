@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -10,7 +10,6 @@
 #include "CursorRepository.h"
 
 #include <cmath>
-#include <openrct2/common.h>
 #include <openrct2/config/Config.h>
 #include <openrct2/core/Guard.hpp>
 #include <openrct2/interface/Cursors.h>
@@ -27,7 +26,7 @@ CursorRepository::~CursorRepository()
 
 void CursorRepository::LoadCursors()
 {
-    SetCursorScale(static_cast<uint8_t>(round(gConfigGeneral.WindowScale)));
+    SetCursorScale(static_cast<uint8_t>(round(Config::Get().general.WindowScale)));
     SetCurrentCursor(CursorID::Arrow);
 }
 

@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2014-2023 OpenRCT2 developers
+ * Copyright (c) 2014-2024 OpenRCT2 developers
  *
  * For a complete list of all authors, please refer to contributors.md
  * Interested in contributing? Visit https://github.com/OpenRCT2/OpenRCT2
@@ -86,9 +86,9 @@ namespace OpenRCT2::Scripting
         {
             auto str = CursorNames[value];
             duk_push_lstring(ctx, str.data(), str.size());
-            DukValue::take_from_stack(ctx);
+            return DukValue::take_from_stack(ctx);
         }
-        return {};
+        return ToDuk(ctx, undefined);
     }
 
     template<> CursorID FromDuk(const DukValue& s)
