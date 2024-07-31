@@ -90,7 +90,7 @@ namespace HydraulicLaunchedRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -122,7 +122,7 @@ namespace HydraulicLaunchedRC
                 { { 0, 6, height + 3 }, { 32, 20, 1 } });
         }
         PaintAddImageAsParentRotated(
-            session, direction, session.TrackColours[SCHEME_MISC].WithIndex(imageIds[direction][2]), { 0, 0, height - 2 },
+            session, direction, session.TrackColours.WithIndex(imageIds[direction][2]), { 0, 0, height - 2 },
             { { 0, 2, height }, { 32, 28, 2 } });
         TrackPaintUtilDrawStationMetalSupports2(
             session, direction, height, session.TrackColours[SCHEME_SUPPORTS], MetalSupportType::Tubes);
@@ -213,7 +213,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -300,7 +300,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 56, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
     }
 
@@ -385,7 +385,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -488,7 +488,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
     }
 
@@ -591,7 +591,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
     }
 
@@ -676,7 +676,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -758,7 +758,7 @@ namespace HydraulicLaunchedRC
                 }
                 PaintUtilSetVerticalTunnel(session, height + 32);
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -818,7 +818,7 @@ namespace HydraulicLaunchedRC
                 }
                 PaintUtilSetVerticalTunnel(session, height + 56);
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -874,7 +874,7 @@ namespace HydraulicLaunchedRC
                 break;
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
     }
 
@@ -917,7 +917,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height + 48, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
                 break;
             case 1:
@@ -965,7 +965,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1000,7 +1000,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -1042,7 +1042,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -1096,7 +1096,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1133,7 +1133,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1166,7 +1166,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -1203,7 +1203,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1246,7 +1246,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -1300,7 +1300,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1334,7 +1334,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1367,13 +1367,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -1415,7 +1415,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1462,7 +1462,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1496,7 +1496,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1529,13 +1529,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -1577,7 +1577,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1634,7 +1634,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1665,7 +1665,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -1696,7 +1696,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -1755,7 +1755,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -1795,7 +1795,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -1826,7 +1826,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -1857,7 +1857,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -1916,7 +1916,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -1956,7 +1956,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -1987,7 +1987,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -2018,7 +2018,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -2077,7 +2077,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -2117,7 +2117,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -2148,7 +2148,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -2179,7 +2179,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -2238,7 +2238,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -2278,7 +2278,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -2309,7 +2309,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -2340,7 +2340,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -2399,7 +2399,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -2439,7 +2439,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 1:
                 if (trackElement.HasChain())
@@ -2469,7 +2469,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 break;
             case 2:
                 if (trackElement.HasChain())
@@ -2499,7 +2499,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 3:
                 if (trackElement.HasChain())
@@ -2557,7 +2557,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 break;
         }
 
@@ -2598,7 +2598,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -2629,7 +2629,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -2660,7 +2660,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -2719,7 +2719,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -2759,7 +2759,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 1:
@@ -2790,7 +2790,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 2:
@@ -2821,7 +2821,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 3:
@@ -2880,7 +2880,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
         }
@@ -2920,7 +2920,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -2951,7 +2951,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -2982,7 +2982,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -3041,7 +3041,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -3081,7 +3081,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -3112,7 +3112,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -3143,7 +3143,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -3202,7 +3202,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -3242,7 +3242,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 1:
@@ -3273,7 +3273,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 2:
@@ -3304,7 +3304,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 3:
@@ -3363,7 +3363,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
         }
@@ -3403,7 +3403,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -3434,7 +3434,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -3465,7 +3465,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -3524,7 +3524,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -3564,7 +3564,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -3595,7 +3595,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -3626,7 +3626,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -3685,7 +3685,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -3736,7 +3736,7 @@ namespace HydraulicLaunchedRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -3785,7 +3785,7 @@ namespace HydraulicLaunchedRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -3855,7 +3855,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -3911,7 +3911,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -3967,7 +3967,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -4023,7 +4023,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -4092,7 +4092,7 @@ namespace HydraulicLaunchedRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -4121,7 +4121,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4141,7 +4141,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4156,7 +4156,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -4185,7 +4185,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4209,7 +4209,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4224,7 +4224,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4244,7 +4244,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -4273,7 +4273,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4297,7 +4297,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4317,7 +4317,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4332,7 +4332,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -4361,7 +4361,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4385,7 +4385,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4400,7 +4400,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4420,7 +4420,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -4449,7 +4449,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4473,7 +4473,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -4493,7 +4493,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -4508,7 +4508,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -4537,7 +4537,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -4561,7 +4561,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -4576,7 +4576,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -4596,7 +4596,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -4625,7 +4625,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -4649,7 +4649,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -4669,7 +4669,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -4684,7 +4684,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -4713,7 +4713,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -4737,7 +4737,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -4752,7 +4752,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -4772,7 +4772,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -4801,7 +4801,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -4825,7 +4825,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 1:
                 switch (direction)
@@ -4844,7 +4844,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 break;
             case 2:
                 switch (direction)
@@ -4858,7 +4858,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 3:
                 switch (direction)
@@ -4886,7 +4886,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 break;
         }
 
@@ -4911,7 +4911,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 1:
                 switch (direction)
@@ -4925,7 +4925,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 break;
             case 2:
                 switch (direction)
@@ -4944,7 +4944,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 3:
                 switch (direction)
@@ -4972,7 +4972,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 break;
         }
 
@@ -4997,7 +4997,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -5017,7 +5017,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -5032,7 +5032,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -5061,7 +5061,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -5085,7 +5085,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -5100,7 +5100,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -5120,7 +5120,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -5149,7 +5149,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -5173,7 +5173,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5188,7 +5188,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -5203,7 +5203,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -5232,7 +5232,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -5256,7 +5256,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5271,7 +5271,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -5286,7 +5286,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -5315,7 +5315,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -5370,7 +5370,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5409,7 +5409,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -5460,7 +5460,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -5523,7 +5523,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5564,7 +5564,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5601,7 +5601,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -5642,7 +5642,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5694,7 +5694,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -5752,7 +5752,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5790,7 +5790,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5827,13 +5827,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -5879,7 +5879,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5930,7 +5930,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5968,7 +5968,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -6005,13 +6005,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -6057,7 +6057,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -6124,7 +6124,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -6176,7 +6176,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -6226,7 +6226,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -6285,7 +6285,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -6351,7 +6351,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -6392,7 +6392,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6429,7 +6429,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -6470,7 +6470,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6517,7 +6517,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -6567,7 +6567,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -6608,7 +6608,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6645,7 +6645,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -6686,7 +6686,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6733,7 +6733,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -6917,7 +6917,7 @@ namespace HydraulicLaunchedRC
                 }
                 PaintUtilSetVerticalTunnel(session, height + 96);
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 96, 0x20);
                 break;
             case 1:
@@ -6969,7 +6969,7 @@ namespace HydraulicLaunchedRC
                 }
                 PaintUtilSetVerticalTunnel(session, height + 96);
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 96, 0x20);
                 break;
             case 1:
@@ -7039,7 +7039,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7091,7 +7091,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7143,7 +7143,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7195,7 +7195,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7271,7 +7271,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -7319,7 +7319,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -7367,7 +7367,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -7415,7 +7415,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -7491,7 +7491,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7539,7 +7539,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7605,7 +7605,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -7657,7 +7657,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -7709,7 +7709,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -7761,7 +7761,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -7837,7 +7837,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -7889,7 +7889,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -7939,7 +7939,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -7998,7 +7998,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -8064,7 +8064,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -8105,7 +8105,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -8142,7 +8142,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -8183,7 +8183,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -8230,7 +8230,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -8280,7 +8280,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -8321,7 +8321,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -8358,7 +8358,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -8399,7 +8399,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -8446,7 +8446,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -8508,7 +8508,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -8546,7 +8546,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8585,7 +8585,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8628,7 +8628,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -8674,7 +8674,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -8712,7 +8712,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8751,7 +8751,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8794,7 +8794,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -8844,7 +8844,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8880,7 +8880,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -8926,7 +8926,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8973,7 +8973,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9009,7 +9009,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 7:
@@ -9050,7 +9050,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9101,7 +9101,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9137,7 +9137,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -9183,7 +9183,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9230,7 +9230,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9266,7 +9266,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 7:
@@ -9307,7 +9307,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9384,7 +9384,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9422,7 +9422,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9455,7 +9455,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -9492,7 +9492,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9539,7 +9539,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9586,7 +9586,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9624,7 +9624,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9657,7 +9657,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 11:
@@ -9694,7 +9694,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9736,7 +9736,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9786,7 +9786,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9824,7 +9824,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9857,7 +9857,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -9894,7 +9894,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9948,7 +9948,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9995,7 +9995,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -10033,7 +10033,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -10066,7 +10066,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 11:
@@ -10103,7 +10103,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -10152,7 +10152,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -10248,7 +10248,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -10299,7 +10299,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -10357,7 +10357,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -10427,7 +10427,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -10478,7 +10478,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -10536,7 +10536,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -10597,7 +10597,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -10670,7 +10670,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 168, 0x20);
                 break;
@@ -10707,7 +10707,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -10747,7 +10747,7 @@ namespace HydraulicLaunchedRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -10848,7 +10848,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -10885,7 +10885,7 @@ namespace HydraulicLaunchedRC
                         session, MetalSupportType::Tubes, 4, 9, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -10922,7 +10922,7 @@ namespace HydraulicLaunchedRC
                         session, MetalSupportType::Tubes, 4, 10, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 3:
@@ -10968,7 +10968,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
                 break;
         }
@@ -11017,7 +11017,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
                 break;
             case 1:
@@ -11054,7 +11054,7 @@ namespace HydraulicLaunchedRC
                         session, MetalSupportType::Tubes, 4, 18, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
                 break;
             case 2:
@@ -11091,7 +11091,7 @@ namespace HydraulicLaunchedRC
                         session, MetalSupportType::Tubes, 4, 13, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -11137,7 +11137,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
         }
@@ -11184,7 +11184,7 @@ namespace HydraulicLaunchedRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -11230,7 +11230,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -11295,7 +11295,7 @@ namespace HydraulicLaunchedRC
                 }
 
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 MetalASupportsPaintSetup(
                     session, MetalSupportType::Tubes, 4, 0, height + 33, session.TrackColours[SCHEME_SUPPORTS]);
@@ -11354,7 +11354,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -11419,7 +11419,7 @@ namespace HydraulicLaunchedRC
                 }
 
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 MetalASupportsPaintSetup(
                     session, MetalSupportType::Tubes, 4, 0, height + 33, session.TrackColours[SCHEME_SUPPORTS]);
@@ -11496,7 +11496,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
@@ -11541,7 +11541,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
@@ -11576,7 +11576,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -11586,7 +11586,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | PaintSegment::centre, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 switch (direction)
                 {
@@ -11662,7 +11662,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | PaintSegment::centre, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 switch (direction)
                 {
@@ -11724,7 +11724,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_D4 | SEGMENT_C4 | SEGMENT_BC | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_D4 | PaintSegment::centre, SEGMENT_BC |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
@@ -11771,7 +11771,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D4 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre, SEGMENT_D4 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
@@ -11808,7 +11808,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D4 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D4 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -11818,7 +11818,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | PaintSegment::centre, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 switch (direction)
                 {
@@ -11897,7 +11897,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_C8 | PaintSegment::centre, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 switch (direction)
                 {
@@ -11973,7 +11973,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -12012,7 +12012,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_B4, direction),
+                        SEGMENT_B8 | SEGMENT_C8 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_B4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -12057,7 +12057,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C8 | PaintSegment::centre,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 144, 0x20);
                 break;
             case 3:
@@ -12093,7 +12093,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_D4 | SEGMENT_C4 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_D4 | PaintSegment::centre,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 144, 0x20);
                 break;
             case 4:
@@ -12132,7 +12132,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_CC | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC, direction),
+                       PaintSegment::topRightSide, PaintSegment::centre, SEGMENT_D0 | SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC, direction),
                     0xFFFF, 0);
 
                 if (direction == 0 || direction == 3)
@@ -12190,7 +12190,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -12229,7 +12229,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_CC | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC, direction),
+                       PaintSegment::topRightSide, PaintSegment::centre, SEGMENT_D0 | SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -12274,7 +12274,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_D4 | SEGMENT_C4 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_D4 | PaintSegment::centre,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 144, 0x20);
                 break;
             case 3:
@@ -12311,7 +12311,7 @@ namespace HydraulicLaunchedRC
                 }
 
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 144, 0x20);
                 break;
             case 4:
@@ -12350,7 +12350,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_B4, direction),
+                        SEGMENT_B8 | SEGMENT_C8 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_B4, direction),
                     0xFFFF, 0);
                 if (direction == 0 || direction == 3)
                 {
@@ -12431,7 +12431,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
             case 1:
@@ -12465,7 +12465,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction),
+                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | PaintSegment::centre, SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -12517,7 +12517,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction),
+                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | PaintSegment::centre, SEGMENT_CC, direction),
                     0xFFFF, 0);
                 MetalASupportsPaintSetup(
                     session, MetalSupportType::Tubes, 4, 0, height + 38, session.TrackColours[SCHEME_SUPPORTS]);
@@ -12581,7 +12581,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
             case 1:
@@ -12615,7 +12615,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC | SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction),
+                        SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC | SEGMENT_D0 | PaintSegment::centre, SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
@@ -12667,7 +12667,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC | SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction),
+                        SEGMENT_C0 | SEGMENT_D4 | SEGMENT_BC | SEGMENT_D0 | PaintSegment::centre, SEGMENT_CC, direction),
                     0xFFFF, 0);
                 MetalASupportsPaintSetup(
                     session, MetalSupportType::Tubes, 4, 0, height + 38, session.TrackColours[SCHEME_SUPPORTS]);
@@ -12740,7 +12740,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 88, 0x20);
                 break;
             case 1:
@@ -12781,7 +12781,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -12824,7 +12824,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction),
+                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | PaintSegment::centre, SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
@@ -12832,7 +12832,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | SEGMENT_C4 | SEGMENT_CC, direction),
+                        SEGMENT_B8 | SEGMENT_C8 | SEGMENT_B4 | SEGMENT_D0 | PaintSegment::centre, SEGMENT_CC, direction),
                     0xFFFF, 0);
                 switch (direction)
                 {
@@ -12942,7 +12942,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 88, 0x20);
                 break;
             case 1:
@@ -12983,7 +12983,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -13027,7 +13027,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
@@ -13035,7 +13035,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 switch (direction)
                 {
@@ -13144,7 +13144,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 88, 0x20);
                 break;
             case 1:
@@ -13176,7 +13176,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 2:
@@ -13212,7 +13212,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -13274,7 +13274,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -13327,7 +13327,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -13382,7 +13382,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -13435,7 +13435,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -13486,7 +13486,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -13543,7 +13543,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -13594,7 +13594,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -13651,7 +13651,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -13699,7 +13699,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -13741,7 +13741,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -13777,7 +13777,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 88, 0x20);
                 break;
@@ -13823,7 +13823,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 224, 0x20);
                 break;
@@ -13859,7 +13859,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 128, 0x20);
                 break;
             case 5:
@@ -13896,7 +13896,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 224, 0x20);
                 break;
@@ -13938,7 +13938,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
@@ -13989,7 +13989,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -14033,7 +14033,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -14071,7 +14071,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 88, 0x20);
                 break;
@@ -14118,7 +14118,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 224, 0x20);
                 break;
@@ -14155,7 +14155,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 128, 0x20);
                 break;
             case 5:
@@ -14193,7 +14193,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 224, 0x20);
                 break;
@@ -14236,7 +14236,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
@@ -14368,7 +14368,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
     }
 
@@ -14471,7 +14471,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_0);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
     }
 
@@ -14523,7 +14523,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -14554,7 +14554,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 2:
@@ -14585,7 +14585,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 3:
@@ -14644,7 +14644,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -14684,7 +14684,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -14715,7 +14715,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -14746,7 +14746,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -14805,7 +14805,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -14845,7 +14845,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -14876,7 +14876,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -14907,7 +14907,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -14966,7 +14966,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -15006,7 +15006,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -15037,7 +15037,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 2:
@@ -15068,7 +15068,7 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 3:
@@ -15127,13 +15127,13 @@ namespace HydraulicLaunchedRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
     }
 
-    // SEGMENT_B4 | SEGMENT_B8 | SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4;
+    // SEGMENT_B4 | SEGMENT_B8 | SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4;
     //     b4
     //   c8  cc
     // b8  c4  bc
@@ -15193,7 +15193,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -15231,7 +15231,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15268,13 +15268,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -15320,7 +15320,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15371,7 +15371,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -15409,7 +15409,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15446,13 +15446,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -15498,7 +15498,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15554,7 +15554,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15591,13 +15591,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -15635,7 +15635,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15679,7 +15679,7 @@ namespace HydraulicLaunchedRC
                 }
 
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -15734,7 +15734,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15771,13 +15771,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -15815,7 +15815,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -15857,7 +15857,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction + 1, height + 8, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -15915,7 +15915,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -15935,7 +15935,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -15950,7 +15950,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -15979,7 +15979,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -16003,7 +16003,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -16018,7 +16018,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -16038,7 +16038,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -16067,7 +16067,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -16091,7 +16091,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -16111,7 +16111,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -16126,7 +16126,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -16155,7 +16155,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -16179,7 +16179,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -16194,7 +16194,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -16214,7 +16214,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -16243,7 +16243,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -16295,7 +16295,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -16310,7 +16310,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -16325,7 +16325,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -16354,7 +16354,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -16378,7 +16378,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -16393,7 +16393,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -16408,7 +16408,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -16437,7 +16437,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -16461,7 +16461,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -16476,7 +16476,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -16491,7 +16491,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -16520,7 +16520,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -16544,7 +16544,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -16559,7 +16559,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -16574,7 +16574,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -16603,7 +16603,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -16655,7 +16655,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -16670,7 +16670,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -16685,7 +16685,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -16714,7 +16714,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -16738,7 +16738,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -16753,7 +16753,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -16768,7 +16768,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -16797,7 +16797,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -16835,7 +16835,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -16855,7 +16855,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -16870,7 +16870,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -16899,7 +16899,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -16923,7 +16923,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -16938,7 +16938,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -16958,7 +16958,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -16987,7 +16987,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -17011,7 +17011,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -17031,7 +17031,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -17046,7 +17046,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -17075,7 +17075,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -17099,7 +17099,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -17114,7 +17114,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -17134,7 +17134,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -17163,7 +17163,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -17241,7 +17241,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -17279,7 +17279,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17316,13 +17316,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -17368,7 +17368,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17419,7 +17419,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -17457,7 +17457,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17494,13 +17494,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -17546,7 +17546,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17602,7 +17602,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17639,13 +17639,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -17683,7 +17683,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17725,7 +17725,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -17780,7 +17780,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17817,13 +17817,13 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -17861,7 +17861,7 @@ namespace HydraulicLaunchedRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -17903,7 +17903,7 @@ namespace HydraulicLaunchedRC
                     PaintUtilPushTunnelRotated(session, direction + 1, height + 8, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -17970,7 +17970,7 @@ namespace HydraulicLaunchedRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -18018,7 +18018,7 @@ namespace HydraulicLaunchedRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -18040,7 +18040,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -18055,7 +18055,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -18070,7 +18070,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -18099,7 +18099,7 @@ namespace HydraulicLaunchedRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }

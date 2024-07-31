@@ -487,7 +487,7 @@ void TrackPaintUtilSpinningTunnelPaint(PaintSession& session, int8_t thickness, 
  * @param supportType
  */
 void TrackPaintUtilOnridePhotoPlatformPaint(
-    PaintSession& session, Direction direction, int32_t height, MetalSupportType supportType);
+    PaintSession& session, Direction direction, int32_t height, kSupportType, MetalSupportPlace supportType);
 
 void TrackPaintUtilOnridePhotoSmallPaint(
     PaintSession& session, Direction direction, int32_t height, const TrackElement& trackElement);
@@ -521,7 +521,7 @@ inline void TrackPaintUtilDiagTilesPaint(
 
 void TrackPaintUtilDiagTilesPaintExtra(
     PaintSession& session, int8_t thickness, int16_t height, Direction direction, uint8_t trackSequence,
-    const uint32_t sprites[4], MetalSupportType supportType);
+    const uint32_t sprites[4], kSupportType, MetalSupportPlace supportType);
 
 void TrackPaintUtilRightVerticalLoopSegments(PaintSession& session, Direction direction, uint8_t trackSequence);
 
@@ -616,3 +616,15 @@ namespace OpenRCT2::AlpineRC
 }
 TRACK_PAINT_FUNCTION GetTrackPaintFunctionClassicWoodenRC(int32_t trackType);
 TRACK_PAINT_FUNCTION GetTrackPaintFunctionClassicStandUpRC(int32_t trackType);
+namespace TRexRC
+{
+    TRACK_PAINT_FUNCTION GetTrackPaintFunctionTRexRC(int32_t trackType);
+}
+namespace SpinningRC
+{
+    TRACK_PAINT_FUNCTION GetTrackPaintFunctionSpinningRC(int32_t trackType);
+}
+namespace VekomaMinexRC
+{
+    TRACK_PAINT_FUNCTION GetTrackPaintFunctionVekomaMineRC(int32_t trackType);
+}

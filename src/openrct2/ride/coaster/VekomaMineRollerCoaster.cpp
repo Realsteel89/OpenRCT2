@@ -88,7 +88,7 @@ namespace VekomamineRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -116,7 +116,7 @@ namespace VekomamineRC
                 { { 0, 6, height + 3 }, { 32, 20, 1 } });
         }
         PaintAddImageAsParentRotated(
-            session, direction, session.TrackColours[SCHEME_MISC].WithIndex(imageIds[direction][2]), { 0, 0, height - 2 },
+            session, direction, session.TrackColours.WithIndex(imageIds[direction][2]), { 0, 0, height - 2 },
             { { 0, 2, height }, { 32, 28, 2 } });
         TrackPaintUtilDrawStationMetalSupports2( session, direction, height, session.TrackColours[SCHEME_SUPPORTS], MetalSupportType::Tubes);
         TrackPaintUtilDrawStation2(session, ride, direction, height, trackElement, 4, 7);
@@ -204,7 +204,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -285,7 +285,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 56, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
     }
 
@@ -366,7 +366,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -461,7 +461,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
     }
 
@@ -556,7 +556,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
     }
 
@@ -637,7 +637,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -724,7 +724,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -759,7 +759,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -801,7 +801,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -855,7 +855,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -892,7 +892,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -925,7 +925,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -962,7 +962,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1005,7 +1005,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -1059,7 +1059,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1093,7 +1093,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1126,13 +1126,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -1174,7 +1174,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1221,7 +1221,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1255,7 +1255,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1288,13 +1288,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -1336,7 +1336,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -1391,7 +1391,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -1420,7 +1420,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -1449,7 +1449,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -1506,7 +1506,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -1545,7 +1545,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -1575,7 +1575,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -1605,7 +1605,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -1663,7 +1663,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -1702,7 +1702,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -1732,7 +1732,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -1762,7 +1762,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -1820,7 +1820,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -1859,7 +1859,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -1889,7 +1889,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -1919,7 +1919,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -1977,7 +1977,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -2016,7 +2016,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -2046,7 +2046,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -2076,7 +2076,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -2134,7 +2134,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -2173,7 +2173,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 1:
                 if (trackElement.HasChain())
@@ -2202,7 +2202,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 break;
             case 2:
                 if (trackElement.HasChain())
@@ -2231,7 +2231,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 3:
                 if (trackElement.HasChain())
@@ -2288,7 +2288,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 break;
         }
 
@@ -2328,7 +2328,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -2358,7 +2358,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -2388,7 +2388,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -2446,7 +2446,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -2485,7 +2485,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 1:
@@ -2515,7 +2515,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 2:
@@ -2545,7 +2545,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 3:
@@ -2603,7 +2603,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
         }
@@ -2642,7 +2642,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -2672,7 +2672,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -2702,7 +2702,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -2760,7 +2760,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -2799,7 +2799,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -2829,7 +2829,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -2859,7 +2859,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -2917,7 +2917,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -2956,7 +2956,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 1:
@@ -2986,7 +2986,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 2:
@@ -3016,7 +3016,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
             case 3:
@@ -3074,7 +3074,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 104, 0x20);
                 break;
         }
@@ -3113,7 +3113,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -3143,7 +3143,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -3173,7 +3173,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -3231,7 +3231,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -3270,7 +3270,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -3300,7 +3300,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -3330,7 +3330,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -3388,7 +3388,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -3439,7 +3439,7 @@ namespace VekomamineRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -3488,7 +3488,7 @@ namespace VekomamineRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -3558,7 +3558,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -3614,7 +3614,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -3670,7 +3670,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -3726,7 +3726,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -3795,7 +3795,7 @@ namespace VekomamineRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -3824,7 +3824,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -3844,7 +3844,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -3859,7 +3859,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -3888,7 +3888,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -3912,7 +3912,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -3927,7 +3927,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -3947,7 +3947,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -3976,7 +3976,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4000,7 +4000,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4020,7 +4020,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4035,7 +4035,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -4064,7 +4064,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4088,7 +4088,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4103,7 +4103,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4123,7 +4123,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -4152,7 +4152,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4176,7 +4176,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -4196,7 +4196,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -4211,7 +4211,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -4240,7 +4240,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -4264,7 +4264,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -4279,7 +4279,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -4299,7 +4299,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -4328,7 +4328,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -4352,7 +4352,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -4372,7 +4372,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -4387,7 +4387,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -4416,7 +4416,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -4440,7 +4440,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -4455,7 +4455,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -4475,7 +4475,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -4504,7 +4504,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -4528,7 +4528,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 1:
                 switch (direction)
@@ -4547,7 +4547,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 break;
             case 2:
                 switch (direction)
@@ -4561,7 +4561,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 3:
                 switch (direction)
@@ -4589,7 +4589,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 break;
         }
 
@@ -4614,7 +4614,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 1:
                 switch (direction)
@@ -4628,7 +4628,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 break;
             case 2:
                 switch (direction)
@@ -4647,7 +4647,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 break;
             case 3:
                 switch (direction)
@@ -4675,7 +4675,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 break;
         }
 
@@ -4700,7 +4700,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -4720,7 +4720,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -4735,7 +4735,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -4764,7 +4764,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -4788,7 +4788,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -4803,7 +4803,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -4823,7 +4823,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -4852,7 +4852,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -4876,7 +4876,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4891,7 +4891,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4906,7 +4906,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -4935,7 +4935,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -4959,7 +4959,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -4974,7 +4974,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 2:
@@ -4989,7 +4989,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -5018,7 +5018,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -5068,7 +5068,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5103,7 +5103,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -5149,7 +5149,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -5207,7 +5207,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5244,7 +5244,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5277,7 +5277,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -5314,7 +5314,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5361,7 +5361,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -5415,7 +5415,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5449,7 +5449,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5482,13 +5482,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -5530,7 +5530,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5577,7 +5577,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -5611,7 +5611,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5644,13 +5644,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -5692,7 +5692,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -5755,7 +5755,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -5803,7 +5803,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -5849,7 +5849,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -5904,7 +5904,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -5966,7 +5966,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -6003,7 +6003,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6036,7 +6036,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -6073,7 +6073,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6116,7 +6116,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -6162,7 +6162,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -6199,7 +6199,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6232,7 +6232,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -6269,7 +6269,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -6312,7 +6312,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -6500,7 +6500,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -6552,7 +6552,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -6604,7 +6604,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -6656,7 +6656,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -6732,7 +6732,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -6780,7 +6780,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -6828,7 +6828,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -6876,7 +6876,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -6952,7 +6952,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7000,7 +7000,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
     }
 
@@ -7066,7 +7066,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -7118,7 +7118,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
     }
 
@@ -7170,7 +7170,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -7222,7 +7222,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_14);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
     }
 
@@ -7298,7 +7298,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -7350,7 +7350,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -7400,7 +7400,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -7459,7 +7459,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -7525,7 +7525,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -7566,7 +7566,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -7603,7 +7603,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -7644,7 +7644,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -7691,7 +7691,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -7741,7 +7741,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -7782,7 +7782,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -7819,7 +7819,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 4:
@@ -7860,7 +7860,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -7907,7 +7907,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -7969,7 +7969,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -8007,7 +8007,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8046,7 +8046,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8089,7 +8089,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -8135,7 +8135,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 1:
@@ -8173,7 +8173,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8212,7 +8212,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8255,7 +8255,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
         }
@@ -8305,7 +8305,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8341,7 +8341,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -8387,7 +8387,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8434,7 +8434,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8470,7 +8470,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 7:
@@ -8511,7 +8511,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8562,7 +8562,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8598,7 +8598,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 3:
@@ -8644,7 +8644,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8691,7 +8691,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8727,7 +8727,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 7:
@@ -8768,7 +8768,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8845,7 +8845,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8883,7 +8883,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -8916,7 +8916,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -8953,7 +8953,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9000,7 +9000,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9047,7 +9047,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9085,7 +9085,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9118,7 +9118,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 11:
@@ -9155,7 +9155,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9197,7 +9197,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9247,7 +9247,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9285,7 +9285,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9318,7 +9318,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 4:
@@ -9355,7 +9355,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9409,7 +9409,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9456,7 +9456,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9494,7 +9494,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9527,7 +9527,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
             case 11:
@@ -9564,7 +9564,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9613,7 +9613,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
                 break;
@@ -9673,7 +9673,7 @@ namespace VekomamineRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -9770,7 +9770,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -9807,7 +9807,7 @@ namespace VekomamineRC
                         session, MetalSupportType::Tubes, 4, 9, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -9844,7 +9844,7 @@ namespace VekomamineRC
                         session, MetalSupportType::Tubes, 4, 10, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 3:
@@ -9890,7 +9890,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
                 break;
         }
@@ -9939,7 +9939,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
                 break;
             case 1:
@@ -9976,7 +9976,7 @@ namespace VekomamineRC
                         session, MetalSupportType::Tubes, 4, 18, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 80, 0x20);
                 break;
             case 2:
@@ -10013,7 +10013,7 @@ namespace VekomamineRC
                         session, MetalSupportType::Tubes, 4, 13, height, session.TrackColours[SCHEME_SUPPORTS]);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -10059,7 +10059,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 40, 0x20);
                 break;
         }
@@ -10106,7 +10106,7 @@ namespace VekomamineRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
 
@@ -10157,7 +10157,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -10206,7 +10206,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -10256,7 +10256,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_0);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -10305,7 +10305,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -10352,7 +10352,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -10404,7 +10404,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -10451,7 +10451,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -10503,7 +10503,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -10616,7 +10616,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_2);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
     }
 
@@ -10711,7 +10711,7 @@ namespace VekomamineRC
             PaintUtilPushTunnelRotated(session, direction, height + 24, TUNNEL_0);
         }
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
     }
 
@@ -10763,7 +10763,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -10794,7 +10794,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 2:
@@ -10825,7 +10825,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 3:
@@ -10884,7 +10884,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
@@ -10924,7 +10924,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -10955,7 +10955,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -10986,7 +10986,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -11045,7 +11045,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -11085,7 +11085,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -11116,7 +11116,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -11147,7 +11147,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -11206,7 +11206,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -11246,7 +11246,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 1:
@@ -11277,7 +11277,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 2:
@@ -11308,7 +11308,7 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
             case 3:
@@ -11367,13 +11367,13 @@ namespace VekomamineRC
                     }
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 64, 0x20);
                 break;
         }
     }
 
-    // SEGMENT_B4 | SEGMENT_B8 | SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4;
+    // SEGMENT_B4 | SEGMENT_B8 | SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4;
     //     b4
     //   c8  cc
     // b8  c4  bc
@@ -11429,7 +11429,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -11463,7 +11463,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -11496,13 +11496,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -11544,7 +11544,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -11591,7 +11591,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -11625,7 +11625,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -11658,13 +11658,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -11706,7 +11706,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -11758,7 +11758,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -11791,13 +11791,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -11831,7 +11831,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -11871,7 +11871,7 @@ namespace VekomamineRC
                 }
 
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -11922,7 +11922,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -11955,13 +11955,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -11995,7 +11995,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -12033,7 +12033,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction + 1, height + 8, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -12091,7 +12091,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -12111,7 +12111,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -12126,7 +12126,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -12155,7 +12155,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -12179,7 +12179,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -12194,7 +12194,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
@@ -12214,7 +12214,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -12243,7 +12243,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -12267,7 +12267,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -12287,7 +12287,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -12302,7 +12302,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -12331,7 +12331,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -12355,7 +12355,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -12370,7 +12370,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -12390,7 +12390,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -12419,7 +12419,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -12471,7 +12471,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -12486,7 +12486,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -12501,7 +12501,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -12530,7 +12530,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -12554,7 +12554,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -12569,7 +12569,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -12584,7 +12584,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -12613,7 +12613,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -12637,7 +12637,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -12652,7 +12652,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -12667,7 +12667,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -12696,7 +12696,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -12720,7 +12720,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -12735,7 +12735,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -12750,7 +12750,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -12779,7 +12779,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -12831,7 +12831,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -12846,7 +12846,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -12861,7 +12861,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -12890,7 +12890,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -12914,7 +12914,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -12929,7 +12929,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -12944,7 +12944,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -12973,7 +12973,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -13011,7 +13011,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -13031,7 +13031,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -13046,7 +13046,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -13075,7 +13075,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -13099,7 +13099,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 1:
@@ -13114,7 +13114,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 2:
@@ -13134,7 +13134,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
             case 3:
@@ -13163,7 +13163,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 48, 0x20);
                 break;
         }
@@ -13187,7 +13187,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -13207,7 +13207,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -13222,7 +13222,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -13251,7 +13251,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -13275,7 +13275,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_BC | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 1:
@@ -13290,7 +13290,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 2:
@@ -13310,7 +13310,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
             case 3:
@@ -13339,7 +13339,7 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
                 break;
         }
@@ -13417,7 +13417,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -13455,7 +13455,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -13492,13 +13492,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -13544,7 +13544,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -13595,7 +13595,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height - 8, TUNNEL_1);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 1:
@@ -13633,7 +13633,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre,PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -13670,13 +13670,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 4:
@@ -13722,7 +13722,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -13778,7 +13778,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -13815,13 +13815,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_BC | SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -13859,7 +13859,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B4 | SEGMENT_B8 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0, direction),
+                        SEGMENT_B4 | SEGMENT_B8 | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide,PaintSegment::bottomLeftSide),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -13901,7 +13901,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -13956,7 +13956,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 |PaintSegment::topRightSide, SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -13993,13 +13993,13 @@ namespace VekomamineRC
                         break;
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_CC, direction),
+                    session, PaintUtilRotateSegments(SEGMENT_B4 | SEGMENT_BC | PaintSegment::centre, SEGMENT_C8 | SEGMENT_CC, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 2:
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C0 | SEGMENT_C4 | SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(SEGMENT_C0 | PaintSegment::centre, SEGMENT_D0 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
             case 3:
@@ -14037,7 +14037,7 @@ namespace VekomamineRC
                 PaintUtilSetSegmentSupportHeight(
                     session,
                     PaintUtilRotateSegments(
-                        SEGMENT_B8 | SEGMENT_C0 | SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
+                        SEGMENT_B8 | SEGMENT_C0 | PaintSegment::centre, SEGMENT_C8 | SEGMENT_D0 | SEGMENT_D4, direction),
                     0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
@@ -14079,7 +14079,7 @@ namespace VekomamineRC
                     PaintUtilPushTunnelRotated(session, direction + 1, height + 8, TUNNEL_2);
                 }
                 PaintUtilSetSegmentSupportHeight(
-                    session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
+                    session, PaintUtilRotateSegments(PaintSegment::centre, SEGMENT_C8 | SEGMENT_D4, direction), 0xFFFF, 0);
                 PaintUtilSetGeneralSupportHeight(session, height + 72, 0x20);
                 break;
         }
@@ -14151,7 +14151,7 @@ namespace VekomamineRC
         }
         PaintUtilPushTunnelRotated(session, direction, height, TUNNEL_SQUARE_FLAT);
         PaintUtilSetSegmentSupportHeight(
-            session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+            session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
         PaintUtilSetGeneralSupportHeight(session, height + 32, 0x20);
     }
         static void TrackPoweredLift(
@@ -14175,7 +14175,7 @@ namespace VekomamineRC
                 PaintUtilPushTunnelRotated(session, direction, height + 8, TUNNEL_SQUARE_8);
             }
             PaintUtilSetSegmentSupportHeight(
-                session, PaintUtilRotateSegments(SEGMENT_C4 | SEGMENT_CC | SEGMENT_D0, direction), 0xFFFF, 0);
+                session, PaintUtilRotateSegments(PaintSegment::centre,PaintSegment::topRightSide,PaintSegment::bottomLeftSide), 0xFFFF, 0);
             PaintUtilSetGeneralSupportHeight(session, height + 56, 0x20);
         }
 

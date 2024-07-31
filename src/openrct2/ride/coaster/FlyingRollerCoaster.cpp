@@ -24,7 +24,7 @@
 
 using namespace OpenRCT2;
 
-static constexpr MetalSupportType kSupportType = MetalSupportType::TubesInverted;
+static constexpr kSupportType, MetalSupportPlace kSupportType = kSupportType, MetalSupportPlace::TubesInverted;
 
 static constexpr const uint32_t InvertedRCDiagBrakeImages[kNumOrthogonalDirections] = {
     SPR_G2_BM_INVERT_DIAG_BRAKES,
@@ -9858,7 +9858,7 @@ static void FlyingRCTrackDiagBrakesInverted(
     if (trackSequence == 3)
     {
         MetalASupportsPaintSetup(
-            session, MetalSupportType::Boxed, kDiagSupportPlacement[direction], 0, height + 39, session.SupportColours);
+            session, kSupportType, MetalSupportPlace::Boxed, kDiagSupportPlacement[direction], 0, height + 39, session.SupportColours);
     }
     PaintUtilSetGeneralSupportHeight(session, height + 48);
 }
@@ -9872,7 +9872,7 @@ static void FlyingRCTrackDiagBrakes(
         FlyingRCTrackDiagBrakesInverted(session, ride, trackSequence, direction, height, trackElement);
         return;
     }
-    BolligerMabillardTrackDiagBrakes<MetalSupportType::Boxed>(session, ride, trackSequence, direction, height, trackElement);
+    BolligerMabillardTrackDiagBrakes<kSupportType, MetalSupportPlace::Boxed>(session, ride, trackSequence, direction, height, trackElement);
 }
 
 static void FlyingRCTrackDiagBlockBrakes(
@@ -9884,7 +9884,7 @@ static void FlyingRCTrackDiagBlockBrakes(
         FlyingRCTrackDiagBrakesInverted(session, ride, trackSequence, direction, height, trackElement);
         return;
     }
-    BolligerMabillardTrackDiagBlockBrakes<MetalSupportType::Boxed>(
+    BolligerMabillardTrackDiagBlockBrakes<kSupportType, MetalSupportPlace::Boxed>(
         session, ride, trackSequence, direction, height, trackElement);
 }
 

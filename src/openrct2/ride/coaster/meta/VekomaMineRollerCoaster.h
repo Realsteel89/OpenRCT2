@@ -9,47 +9,52 @@
 
 #pragma once
 
+#include "../../../sprites.h"
 #include "../../RideData.h"
+#include "../../ShopItem.h"
 #include "../../Track.h"
+
 
 // clang-format off
 constexpr const RideTypeDescriptor VekomaMineRollerCoasterRTD =
 {
-    SET_FIELD(AlternateType, RIDE_TYPE_NULL),
-    SET_FIELD(Category, RIDE_CATEGORY_ROLLERCOASTER),
-    SET_FIELD(EnabledTrackPieces, { TRACK_FLAT, TRACK_STRAIGHT, TRACK_STATION_END, TRACK_LIFT_HILL, TRACK_LIFT_HILL_STEEP, TRACK_FLAT_ROLL_BANKING, TRACK_SLOPE, TRACK_SLOPE_LONG, TRACK_SLOPE_STEEP_UP, TRACK_SLOPE_STEEP_DOWN, TRACK_SLOPE_CURVE, TRACK_SLOPE_CURVE_STEEP, TRACK_S_BEND, TRACK_CURVE_SMALL, TRACK_CURVE, TRACK_CURVE_LARGE, TRACK_HELIX_DOWN_BANKED_HALF, TRACK_HELIX_UP_BANKED_HALF, TRACK_BRAKES, TRACK_ON_RIDE_PHOTO, TRACK_SLOPE_CURVE_BANKED, TRACK_BLOCK_BRAKES, TRACK_SLOPE_ROLL_BANKING, TRACK_SLOPE_CURVE_LARGE, TRACK_BOOSTER}),
-    SET_FIELD(ExtraTrackPieces,  {TRACK_SLOPE_STEEP_LONG, TRACK_POWERED_LIFT}),
-    SET_FIELD(CoveredTrackPieces, {}),
-    SET_FIELD(StartTrackPiece, TrackElemType::EndStation),
-    SET_FIELD(TrackPaintFunction, VekomamineRC::GetTrackPaintFunction),
-    SET_FIELD(Flags, RIDE_TYPE_FLAGS_TRACK_HAS_3_COLOURS | RIDE_TYPE_FLAG_HAS_TRACK_COLOUR_SUPPORTS | RIDE_TYPE_FLAG_HAS_LEAVE_WHEN_ANOTHER_VEHICLE_ARRIVES_AT_STATION |
+    .Category = RIDE_CATEGORY_ROLLERCOASTER,
+    .StartTrackPiece = OpenRCT2::TrackElemType::EndStation,
+    .TrackPaintFunctions = TrackDrawerDescriptor({
+        .Drawer = TrackpaintFunctionVekomaMineRC,
+        .EnabledTrackPieces = { TRACK_FLAT, TRACK_STRAIGHT, TRACK_STATION_END, TRACK_LIFT_HILL, TRACK_LIFT_HILL_STEEP, TRACK_FLAT_ROLL_BANKING, TRACK_SLOPE, TRACK_SLOPE_LONG, TRACK_SLOPE_STEEP_UP, TRACK_SLOPE_STEEP_DOWN, TRACK_SLOPE_CURVE, TRACK_SLOPE_CURVE_STEEP, TRACK_S_BEND, TRACK_CURVE_SMALL, TRACK_CURVE, TRACK_CURVE_LARGE, TRACK_HELIX_DOWN_BANKED_HALF, TRACK_HELIX_UP_BANKED_HALF, TRACK_BRAKES, TRACK_ON_RIDE_PHOTO, TRACK_SLOPE_CURVE_BANKED, TRACK_BLOCK_BRAKES, TRACK_SLOPE_ROLL_BANKING, TRACK_SLOPE_CURVE_LARGE, TRACK_BOOSTER},
+        .ExtraTrackPieces =  {TRACK_SLOPE_STEEP_LONG, TRACK_POWERED_LIFT},
+    }),
+    .InvertedTrackPaintFunctions = {},
+    .Flags = RIDE_TYPE_FLAGS_TRACK_HAS_3_COLOURS | RIDE_TYPE_FLAG_HAS_TRACK_COLOUR_SUPPORTS | RIDE_TYPE_FLAG_HAS_LEAVE_WHEN_ANOTHER_VEHICLE_ARRIVES_AT_STATION |
                      RIDE_TYPE_FLAGS_COMMON_COASTER | RIDE_TYPE_FLAGS_COMMON_COASTER_NON_ALT |
-                     RIDE_TYPE_FLAG_PEEP_CHECK_GFORCES | RIDE_TYPE_FLAG_ALLOW_MULTIPLE_CIRCUITS),
-    SET_FIELD(RideModes, EnumsToFlags(RideMode::ContinuousCircuit, RideMode::ContinuousCircuitBlockSectioned)),
-    SET_FIELD(DefaultMode, RideMode::ContinuousCircuit),
-    SET_FIELD(OperatingSettings, { 0, 0, 0, 0, 0, 0 }),
-    SET_FIELD(Naming, { STR_RIDE_NAME_VEKOMA_MINE_ROLLER_COASTER, STR_RIDE_DESCRIPTION_VEKOMA_MINE_ROLLER_COASTER }),
-    SET_FIELD(NameConvention, { RideComponentType::Train, RideComponentType::Track, RideComponentType::Station }),
-    SET_FIELD(EnumName, nameof(RIDE_TYPE_VEKOMA_MINE_ROLLER_COASTER)),
-    SET_FIELD(AvailableBreakdowns, (1 << BREAKDOWN_SAFETY_CUT_OUT) | (1 << BREAKDOWN_RESTRAINTS_STUCK_CLOSED) | (1 << BREAKDOWN_RESTRAINTS_STUCK_OPEN) | (1 << BREAKDOWN_VEHICLE_MALFUNCTION) | (1 << BREAKDOWN_BRAKES_FAILURE)),
-    SET_FIELD(Heights, { 28, 24, 8, 11, }),
-    SET_FIELD(MaxMass, 15),
-    SET_FIELD(LiftData, { OpenRCT2::Audio::SoundId::LiftArrow, 4, 6 }),
-    SET_FIELD(RatingsMultipliers, { 50, 30, 10 }),
-    SET_FIELD(UpkeepCosts, { 40, 20, 80, 10, 3, 10 }),
-    SET_FIELD(BuildCosts, { 41.00_GBP, 3.00_GBP, 50, }),
-    SET_FIELD(DefaultPrices, { 20, 20 }),
-    SET_FIELD(DefaultMusic, MUSIC_OBJECT_WILD_WEST),
-    SET_FIELD(PhotoItem, ShopItem::Photo),
-    SET_FIELD(BonusValue, 85),
-    SET_FIELD(ColourPresets, TRACK_COLOUR_PRESETS(
+                     RIDE_TYPE_FLAG_PEEP_CHECK_GFORCES | RIDE_TYPE_FLAG_ALLOW_MULTIPLE_CIRCUITS,
+    .RideModes = EnumsToFlags(RideMode::ContinuousCircuit, RideMode::ContinuousCircuitBlockSectioned),
+    .DefaultMode = RideMode::ContinuousCircuit,
+    .BoosterSettings = { 0, 68 },
+    .LegacyBoosterSettings = { 0, 68, 4 },
+    .Naming = { STR_RIDE_NAME_VEKOMA_MINE_ROLLER_COASTER, STR_RIDE_DESCRIPTION_VEKOMA_MINE_ROLLER_COASTER },
+    .NameConvention = { RideComponentType::Train, RideComponentType::Track, RideComponentType::Station },
+    .EnumName ="RIDE_TYPE_VEKOMA_MINE_ROLLER_COASTER",
+    .AvailableBreakdowns = (1 << BREAKDOWN_SAFETY_CUT_OUT) | (1 << BREAKDOWN_RESTRAINTS_STUCK_CLOSED) | (1 << BREAKDOWN_RESTRAINTS_STUCK_OPEN) | (1 << BREAKDOWN_VEHICLE_MALFUNCTION) | (1 << BREAKDOWN_BRAKES_FAILURE),
+    .Heights = { 28, 24, 8, 11, },
+    .MaxMass = 15,
+    .LiftData = { OpenRCT2::Audio::SoundId::LiftArrow, 4, 6 },
+    .RatingsMultipliers = { 50, 30, 10 },
+    .UpkeepCosts = { 40, 20, 80, 10, 3, 10 },
+    .BuildCosts = { 41.00_GBP, 3.00_GBP, 50, },
+    .DefaultPrices = { 20, 20 },
+    .DefaultMusic = MUSIC_OBJECT_WILD_WEST,
+    .PhotoItem = ShopItem::Photo,
+    .BonusValue = 85,
+    .ColourPresets = TRACK_COLOUR_PRESETS(
         { COLOUR_DARK_BROWN, COLOUR_GREY, COLOUR_DARK_BROWN },
         { COLOUR_DARK_BROWN, COLOUR_GREY, COLOUR_BLACK },
-    )),
-    SET_FIELD(ColourPreview, { SPR_RIDE_DESIGN_PREVIEW_MINE_TRAIN_COASTER_TRACK, SPR_RIDE_DESIGN_PREVIEW_MINE_TRAIN_COASTER_SUPPORTS }),
-    SET_FIELD(ColourKey, RideColourKey::Ride),
-    SET_FIELD(Name, "vekoma_mine_rc"),
-    SET_FIELD(RatingsData,
+    ),
+    .ColourPreview = { SPR_RIDE_DESIGN_PREVIEW_MINE_TRAIN_COASTER_TRACK, SPR_RIDE_DESIGN_PREVIEW_MINE_TRAIN_COASTER_SUPPORTS },
+    .ColourKey = RideColourKey::Ride,
+    .Name = "vekoma_mine_rc",
+    .RatingsData =
     {
         RatingsCalculationType::Normal,
         { RIDE_RATING(2, 90), RIDE_RATING(2, 30), RIDE_RATING(2, 10) },
@@ -77,7 +82,7 @@ constexpr const RideTypeDescriptor VekomaMineRollerCoasterRTD =
             { RatingsModifierType::RequirementNumDrops,   2,                2, 2, 2 },
             { RatingsModifierType::PenaltyLateralGs,      0,                40960, 35746, 49648 },
         },
-    }),
+    },
     
 };
 // clang-format on

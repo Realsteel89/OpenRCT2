@@ -85,3 +85,4 @@ constexpr RideTypeDescriptor MiniRollerCoasterRTD =
     },
 };
 // clang-format on
+

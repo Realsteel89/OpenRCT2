@@ -20,9 +20,10 @@
 #include "RideData.h"
 
 #include "../Cheats.h"
+#include "../Diagnostic.h"
+#include "../GameState.h"
 #include "../audio/audio.h"
 #include "../interface/Colour.h"
-#include "../localisation/Localisation.h"
 #include "../management/Research.h"
 #include "../sprites.h"
 #include "Ride.h"
@@ -62,7 +63,7 @@
 #include "coaster/meta/SpinningWildMouse.h"
 #include "coaster/meta/SpiralRollerCoaster.h"
 #include "coaster/meta/StandUpRollerCoaster.h"
-#include "coaster/meta/SteelSpinningRollerCoaster.h"
+#include "coaster/meta/SpinningRollerCoaster.h"
 #include "coaster/meta/SteelWildMouse.h"
 #include "coaster/meta/Steeplechase.h"
 #include "coaster/meta/SuspendedSwingingCoaster.h"
@@ -124,79 +125,84 @@
 
 #include <iterator>
 
+using namespace OpenRCT2;
 using namespace OpenRCT2::Entity::Yaw;
 
 // clang-format off
 
 const CarEntry CableLiftVehicle = {
-    /* .TabRotationMask = */ 31,
-    /* .spacing = */ 0,
-    /* .car_mass = */ 0,
-    /* .tab_height = */ 0,
-    /* .num_seats = */ 0,
-    /* .sprite_width = */ 0,
-    /* .sprite_height_negative = */ 0,
-    /* .sprite_height_positive = */ 0,
-    /* .animation = */ CarEntryAnimation::None,
-    /* .flags = */ 0,
-    /* .base_num_frames = */ 1,
-    /* .base_image_id = */ 29110,
-    /* .SpriteGroups[SlopeFlat] = */ 29110, SpritePrecision::Sprites32,
-    /* .SpriteGroups[Slopes12] = */ 29142, SpritePrecision::Sprites4,
-    /* .SpriteGroups[Slopes25] = */ 29150, SpritePrecision::Sprites32,
-    /* .SpriteGroups[Slopes42] = */ 29214, SpritePrecision::Sprites8,
-    /* .SpriteGroups[Slopes60] = */ 29230, SpritePrecision::Sprites32,
-    /* .SpriteGroups[Slopes75] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes90] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[SlopesLoop] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[SlopeInverted] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes8] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes16] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes50] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[FlatBanked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[FlatBanked45] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[FlatBanked67] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[FlatBanked90] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[InlineTwists] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes12Banked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes8Banked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes25Banked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes8Banked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes16Banked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes16Banked45] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes25Banked45] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes12Banked45] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes25Banked67] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes25Banked90] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes25InlineTwists] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes42Banked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes42Banked45] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes42Banked67] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes42Banked90] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Slopes60Banked22] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[Corkscrews] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[RestraintAnimation] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[CurvedLiftHillUp] = */ 0, SpritePrecision::None,
-    /* .SpriteGroups[CurvedLiftHillDown] = */ 0, SpritePrecision::None,
-    /* .no_vehicle_images = */ 0,
-    /* .no_seating_rows = */ 0,
-    /* .spinning_inertia = */ 0,
-    /* .spinning_friction = */ 255,
-    /* .friction_sound_id = */ OpenRCT2::Audio::SoundId::LiftClassic,
-    /* .log_flume_reverser_vehicle_type = */ 0,
-    /* .sound_range = */ 0,
-    /* .double_sound_frequency = */ 0,
-    /* .powered_acceleration = */ 0,
-    /* .powered_max_speed = */ 0,
-    /* .PaintStyle = */ 0,
-    /* .effect_visual = */ 1,
-    /* .draw_order = */ 14,
-    /* .num_vertical_frames_override = */ 0,
-    /* .peep_loading_positions = */ 0,
-    /* .AnimationExponent = */ 0,
-    /* .AnimationFrames = */ 0,
-    /* .SteamEffectType.longitudinal = */ 0,
-    /* .SteamEffectType.vertical = */ 0
+    .TabRotationMask = 31,
+    .spacing = 0,
+    .car_mass = 0,
+    .tab_height = 0,
+    .num_seats = 0,
+    .sprite_width = 0,
+    .sprite_height_negative = 0,
+    .sprite_height_positive = 0,
+    .animation = CarEntryAnimation::None,
+    .flags = 0,
+    .base_num_frames = 1,
+    .base_image_id = 29110,
+    .SpriteGroups = {
+        /* SpriteGroupType::SlopeFlat */            { 29110, SpritePrecision::Sprites32},
+        /* SpriteGroupType::Slopes12 */             { 29142, SpritePrecision::Sprites4},
+        /* SpriteGroupType::Slopes25 */             { 29150, SpritePrecision::Sprites32},
+        /* SpriteGroupType::Slopes42 */             { 29214, SpritePrecision::Sprites8},
+        /* SpriteGroupType::Slopes60 */             { 29230, SpritePrecision::Sprites32},
+        /* SpriteGroupType::Slopes75 */             { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes90 */             { 0, SpritePrecision::None},
+        /* SpriteGroupType::SlopesLoop */           { 0, SpritePrecision::None},
+        /* SpriteGroupType::SlopeInverted */        { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes8 */              { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes16 */             { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes50 */             { 0, SpritePrecision::None},
+        /* SpriteGroupType::FlatBanked22 */         { 0, SpritePrecision::None},
+        /* SpriteGroupType::FlatBanked45 */         { 0, SpritePrecision::None},
+        /* SpriteGroupType::FlatBanked67 */         { 0, SpritePrecision::None},
+        /* SpriteGroupType::FlatBanked90 */         { 0, SpritePrecision::None},
+        /* SpriteGroupType::InlineTwists */         { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes12Banked22 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes8Banked22 */      { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes25Banked22 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes8Banked22 */      { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes16Banked22 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes16Banked45 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes25Banked45 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes12Banked45 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes25Banked67 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes25Banked90 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes25InlineTwists */ { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes42Banked22 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes42Banked45 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes42Banked67 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes42Banked90 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Slopes60Banked22 */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::Corkscrews */           { 0, SpritePrecision::None},
+        /* SpriteGroupType::RestraintAnimation */   { 0, SpritePrecision::None},
+        /* SpriteGroupType::CurvedLiftHillUp */     { 0, SpritePrecision::None},
+        /* SpriteGroupType::CurvedLiftHillDown */   { 0, SpritePrecision::None},
+    },
+    .NumCarImages = 0,
+    .no_seating_rows = 0,
+    .spinning_inertia = 0,
+    .spinning_friction = 255,
+    .friction_sound_id = Audio::SoundId::LiftClassic,
+    .ReversedCarIndex = 0,
+    .sound_range = 0,
+    .double_sound_frequency = 0,
+    .powered_acceleration = 0,
+    .powered_max_speed = 0,
+    .PaintStyle = 0,
+    .effect_visual = 1,
+    .draw_order = 14,
+    .num_vertical_frames_override = 0,
+    .peep_loading_waypoint_segments = 0,
+    .AnimationSpeed = 0,
+    .AnimationFrames = 0,
+    .SteamEffect = {
+        .Longitudinal = 0,
+        .Vertical = 0,
+    },
 };
 
 /* rct2: 0x009A0AA0 */
@@ -348,10 +354,13 @@ constexpr RideTypeDescriptor RideTypeDescriptors[RIDE_TYPE_COUNT] = {
     /* RIDE_TYPE_SINGLE_RAIL_ROLLER_COASTER         */ SingleRailRollerCoasterRTD,
     /* RIDE_TYPE_ALPINE_COASTER                     */ AlpineCoasterRTD,
     /* RIDE_TYPE_CLASSIC_WOODEN_ROLLER_COASTER      */ ClassicWoodenRollerCoasterRTD,
-    /* RIDE_TYPE_T_REX_ROLLER_COASTER               */ TRexRollerCoasterRTD,
-    /* RIDE_TYPE_SPINNING_STEEL_ROLLER_COASTER      */ SteelSpinningRollerCoasterRTD,
     /* RIDE_TYPE_VEKOMA_MINE_ROLLER_COASTER         */ VekomaMineRollerCoasterRTD,
-    /* RIDE_TYPE_HYDRAULIC_LAUNCHED_ROLLER_COASTER  */ HydraulicLaunchedRollerCoasterRTD,
+    /* RIDE_TYPE_T_REX_ROLLER_COASTER               */ TRexRollerCoasterRTD,
+    /* RIDE_TYPE_SPINNING_ROLLER_COASTER            */ SpinningRollerCoasterRTD,
+
+
+
+   
 };
 
 bool RideTypeDescriptor::HasFlag(uint64_t flag) const
@@ -359,16 +368,9 @@ bool RideTypeDescriptor::HasFlag(uint64_t flag) const
     return Flags & flag;
 }
 
-void RideTypeDescriptor::GetAvailableTrackPieces(RideTrackGroup& res) const
-{
-    res = EnabledTrackPieces;
-    if (gCheatsEnableAllDrawableTrackPieces)
-        res |= ExtraTrackPieces;
-}
-
 bool RideTypeDescriptor::SupportsTrackPiece(const uint64_t trackPiece) const
 {
-    return EnabledTrackPieces.get(trackPiece) || (gCheatsEnableAllDrawableTrackPieces && ExtraTrackPieces.get(trackPiece));
+    return TrackPaintFunctions.Regular.SupportsTrackPiece(trackPiece);
 }
 
 ResearchCategory RideTypeDescriptor::GetResearchCategory() const
@@ -407,11 +409,11 @@ bool IsTrackEnabled(int32_t trackFlagIndex)
     return _enabledRidePieces.get(trackFlagIndex);
 }
 
-void UpdateEnabledRidePieces(ride_type_t rideType)
+void UpdateEnabledRidePieces(TrackDrawerDescriptor trackDrawerDescriptor)
 {
-    GetRideTypeDescriptor(rideType).GetAvailableTrackPieces(_enabledRidePieces);
+    trackDrawerDescriptor.Regular.GetAvailableTrackPieces(_enabledRidePieces);
 
-    if (!gCheatsEnableAllDrawableTrackPieces)
+    if (!GetGameState().Cheats.EnableAllDrawableTrackPieces)
     {
         _enabledRidePieces &= ~_disabledRidePieces;
     }
@@ -420,4 +422,44 @@ void UpdateEnabledRidePieces(ride_type_t rideType)
 void UpdateDisabledRidePieces(const RideTrackGroup& res)
 {
     _disabledRidePieces = res;
+}
+
+void TrackDrawerEntry::GetAvailableTrackPieces(RideTrackGroup& res) const
+{
+    res = EnabledTrackPieces;
+    if (GetGameState().Cheats.EnableAllDrawableTrackPieces)
+        res |= ExtraTrackPieces;
+}
+
+bool TrackDrawerEntry::SupportsTrackPiece(const uint64_t trackPiece) const
+{
+    return EnabledTrackPieces.get(trackPiece)
+        || (GetGameState().Cheats.EnableAllDrawableTrackPieces && ExtraTrackPieces.get(trackPiece));
+}
+
+bool TrackDrawerDescriptor::HasCoveredPieces() const
+{
+    return Covered.EnabledTrackPieces.count() > 0;
+}
+
+bool TrackDrawerDescriptor::SupportsTrackPiece(const uint64_t trackPiece) const
+{
+    return Regular.SupportsTrackPiece(trackPiece);
+}
+
+TrackDrawerDescriptor getTrackDrawerDescriptor(const RideTypeDescriptor& rtd, bool isInverted)
+{
+    return isInverted ? rtd.InvertedTrackPaintFunctions : rtd.TrackPaintFunctions;
+}
+
+TrackDrawerEntry getTrackDrawerEntry(const RideTypeDescriptor& rtd, bool isInverted, bool isCovered)
+{
+    auto descriptor = getTrackDrawerDescriptor(rtd, isInverted);
+
+    if (isCovered)
+    {
+        return descriptor.Covered;
+    }
+
+    return descriptor.Regular;
 }
