@@ -639,3 +639,7 @@ namespace OpenRCT2::AlpineRC
 }
 TRACK_PAINT_FUNCTION GetTrackPaintFunctionClassicWoodenRC(int32_t trackType);
 TRACK_PAINT_FUNCTION GetTrackPaintFunctionClassicStandUpRC(int32_t trackType);
+namespace OpenRCT2::VekomaMineRC
+{
+    TRACK_PAINT_FUNCTION GetTrackPaintFunction(int32_t trackType);
+}

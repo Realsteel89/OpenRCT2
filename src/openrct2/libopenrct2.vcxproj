@@ -461,6 +461,7 @@
     <ClInclude Include="ride\rtd\coaster\Steeplechase.h" />
     <ClInclude Include="ride\rtd\coaster\SuspendedSwingingCoaster.h" />
     <ClInclude Include="ride\rtd\coaster\TwisterRollerCoaster.h" />
+    <ClInclude Include="ride\rtd\coaster\VekomaMineTrainRollerCoaster.h" />
     <ClInclude Include="ride\rtd\coaster\VerticalDropCoaster.h" />
     <ClInclude Include="ride\rtd\coaster\VirginiaReel.h" />
     <ClInclude Include="ride\rtd\coaster\WaterCoaster.h" />
@@ -924,6 +925,7 @@
     <ClCompile Include="paint\track\coaster\Steeplechase.cpp" />
     <ClCompile Include="paint\track\coaster\SuspendedSwingingCoaster.cpp" />
     <ClCompile Include="paint\track\coaster\TwisterRollerCoaster.cpp" />
+    <ClCompile Include="paint\track\coaster\VekomaMineTrainRollerCoaster.cpp" />
     <ClCompile Include="paint\track\coaster\VirginiaReel.cpp" />
     <ClCompile Include="paint\track\coaster\WildMouse.cpp" />
     <ClCompile Include="paint\track\coaster\WoodenRollerCoaster.cpp" />
